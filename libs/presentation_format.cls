@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{libs/presentation_format}[15/03/2021 v1.0 template beamer]
+\ProvidesClass{../libs/presentation_format}[15/03/2021 v1.0 template beamer]
 
 \PassOptionsToPackage{svgnames}{xcolor} 
 \LoadClass[compress, 10pt]{beamer}
@@ -15,8 +15,8 @@
 \usebackgroundtemplate{%
   \rule{0pt}{\paperheight}%
   \hspace*{\paperwidth}%
-  \makebox[0pt][r]{\includegraphics[width=60mm]{libs/docker-engine-logo.png}}}
-\logo{\includegraphics[scale=0.3]{libs/emblem.png}\hspace{10cm} \vspace{-0.2cm}}
+  \makebox[0pt][r]{\includegraphics[width=60mm]{../libs/banner-flutter-logo.png}}}
+\logo{\includegraphics[scale=0.3]{../libs/emblem.png}\hspace{10cm} \vspace{-0.2cm}}
 
 %% Packages Used
 \RequirePackage[utf8]{inputenc}

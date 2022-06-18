@@ -5,16 +5,16 @@
 %%    e-mail: luigi.durso@si2001.it                                             %%
 %%    linktree: https://linktr.ee/maumneto                                      %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass{libs/presentation_format}
+\documentclass{../libs/presentation_format}
 % Inserting the preamble file with the packages
-\input{libs/preamble.tex}
+\input{../libs/preamble.tex}
 % Inserting the references file
-\bibliography{references.bib}
+\bibliography{../references.bib}
 
 % Title
 \title[Flutter-Dart]{\huge\textbf{Flutter e Dart - Le basi}}
 % Subtitle
-\subtitle{Preparazione alla programmazione mobile con Dart e Flutter}
+\subtitle{Introduzione al corso}
 % Author of the presentation
 \author{Luigi Durso}
 % Company's Name
@@ -23,7 +23,7 @@
     \normalsize{\email{luigi.durso@si2001.it}}
     \newline
     \centering
-    \includegraphics[scale=0.3]{libs/emblem.png}
+    \includegraphics[scale=0.3]{../libs/emblem.png}
     \newline
     % company name
     \company
@@ -37,7 +37,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 % insert the code style
-\input{libs/code_style}
+\input{../libs/code_style}
 
 %% ---------------------------------------------------------------------------
 % First frame (with tile, subtitle, ...)
@@ -54,22 +54,167 @@
 \end{frame}
 
 %% ---------------------------------------------------------------------------
+
 % Section what and why
-\section{Docker: Cosa e Perché}
-\begin{frame}{Evoluzione delle infrastrutture}
-    % itemize
-    \begin{itemize}
-    	\item Dai Mainframe ai PC
-    	\item Dai PC alla virtualizzazione
-    	\item Dai Datacenter al Cloud
-    	\item \emph{Container (Serverless)}
-    \end{itemize}
+\section{Flutter: Cosa}
+\begin{frame}{Cos'è flutter}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.35\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4.2cm]{../libs/google-flutter-logo.png}
+					\caption{Flutter logo}
+					\label{fig:Flutter logo}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.65\textwidth}
+				\emph{Flutter}
+				\newline
+				Flutter è un "tool" che permette la creazione di applicativi \emph{cross-platform nativi}, utilizzando un solo linguaggio ed una sola codebase.
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Composizione}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/flutter-composition}
+		\caption{Composizione Flutter}
+		\label{fig: Composizione Flutter}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Dart}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4cm]{../libs/dart-logo.png}
+					\caption{Dart logo}
+					\label{fig:Dart logo}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Dart}
+				\newline
+				Dart è un linguaggio di programmazione sviluppato da Google.
+				\begin{itemize}
+					\item Finalizzato allo sviluppo frontend ed interfacce utente
+					\item Fortemente tipizzato ed orientato agli oggetti
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Flutter: Come}
+\begin{frame}{Architettura}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/flutter-architecture}
+		\caption{Architettura Flutter}
+		\label{fig: Architettura Flutter}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Controllo totale di ogni pixel}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4cm]{../libs/flutter-architecture}
+					\caption{Architettura Flutter}
+					\label{fig:Architettura Flutter}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Dart}
+				\newline
+				Flutter ha il controllo totale di ogni pixel disegnato
+				\begin{itemize}
+					\item Maggiore controllo
+					\item Minore limitazioni date dalla piattaforme
+					\item Migliori performance
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{E' tutta una questione di widgets}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/sample-widgets}
+		\caption{Esempio widgets}
+		\label{fig: Esempio widgets}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Composizione ad Albero}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4cm]{../libs/button-section-diagram}
+					\caption{Esempio selezione \cite{flutterLayout}}
+					\label{fig:Esempio selezione}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.5\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4cm]{../libs/sample-flutter-layout}
+					\caption{Esempio albero \cite{flutterLayout}}
+					\label{fig:Esempio albero}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Dart}
+\begin{frame}{Prima di iniziare: DART!}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4cm]{../libs/dart-logo.png}
+					\caption{Dart logo}
+					\label{fig:Dart logo}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Giochiamo un po' con dart!}
+				\newline
+				\href{https://dartpad.dev/?}{\beamergotobutton{Lancia dart pad}}
+			\end{column}
+		\end{columns}
+	\end{minipage}
 \end{frame}
 
 %% ---------------------------------------------------------------------------
 
 % Reference frames
-\section{Riferimenti}
 \begin{frame}[allowframebreaks]
     \frametitle{Riferimenti}
     \printbibliography
@@ -82,7 +227,7 @@
 	\huge\emph{Grazie per l'attenzione!}
 	\newline
 	\vfill
-	\hfill\includegraphics[width=6cm]{libs/alphonse-gaston-regards}
+	\hfill\includegraphics[width=6cm]{../libs/alphonse-gaston-regards}
 \end{frame}
 
 \end{document}

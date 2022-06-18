@@ -11,33 +11,73 @@
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@subsectionpages {1}{2}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {1}{Docker: Cosa e Perché}{3}{Docker: Cosa e Perché}{0}}
+\headcommand {\sectionentry {1}{Flutter: Cosa}{3}{Flutter: Cosa}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {3}{3}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@sectionpages {3}{3}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\beamer@subsectionpages {3}{3}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {2}{Riferimenti}{4}{Riferimenti}{0}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {2}{0}{1}{4/4}{}{0}}
+\headcommand {\slideentry {1}{0}{2}{4/4}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {4}{4}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@sectionpages {4}{4}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\beamer@subsectionpages {4}{4}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {3}{Fine}{5}{Fine}{0}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {3}{0}{1}{5/5}{}{0}}
+\headcommand {\slideentry {1}{0}{3}{5/5}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@partpages {1}{5}}
-\headcommand {\beamer@subsectionpages {5}{5}}
-\headcommand {\beamer@sectionpages {5}{5}}
-\headcommand {\beamer@documentpages {5}}
-\headcommand {\gdef \inserttotalframenumber {5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {3}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {3}{5}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {2}{Flutter: Come}{6}{Flutter: Come}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{1}{6/6}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {6}{6}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{2}{7/7}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {7}{7}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{3}{8/8}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {8}{8}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {2}{0}{4}{9/9}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {9}{9}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {6}{9}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {6}{9}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {3}{Dart}{10}{Dart}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {3}{0}{1}{10/10}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {10}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {10}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {10}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {4}{Riferimenti bibliografici}{11}{Riferimenti bibliografici}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {4}{0}{0}{11/11}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {11}{11}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {10}{11}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {10}{11}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {5}{Fine}{12}{Fine}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {5}{0}{1}{12/12}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\beamer@partpages {1}{12}}
+\headcommand {\beamer@subsectionpages {12}{12}}
+\headcommand {\beamer@sectionpages {12}{12}}
+\headcommand {\beamer@documentpages {12}}
+\headcommand {\gdef \inserttotalframenumber {12}}
