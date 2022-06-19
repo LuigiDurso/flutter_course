@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.16)  18 JUN 2022 21:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.16)  19 JUN 2022 18:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1723,26 +1723,14 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 190.
 .png>]
 File: ../libs/dart-logo.png Graphic file (type png)
 <use ../libs/dart-logo.png>
-Package pdftex.def Info: ../libs/dart-logo.png  used on input line 213.
+Package pdftex.def Info: ../libs/dart-logo.png  used on input line 221.
 (pdftex.def)             Requested size: 113.81102pt x 113.79987pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:Dart\040l
 ogo}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.213 \end{frame}
+l.221 \end{frame}
                  
-File: ../libs/banner-flutter-logo.png Graphic file (type png)
-<use ../libs/banner-flutter-logo.png>
-Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 21
-3.
-(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
-File: ../libs/emblem.png Graphic file (type png)
-<use ../libs/emblem.png>
-Package pdftex.def Info: ../libs/emblem.png  used on input line 213.
-(pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
- [10
-
-]
 File: ../libs/banner-flutter-logo.png Graphic file (type png)
 <use ../libs/banner-flutter-logo.png>
 Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 22
@@ -1752,23 +1740,35 @@ File: ../libs/emblem.png Graphic file (type png)
 <use ../libs/emblem.png>
 Package pdftex.def Info: ../libs/emblem.png  used on input line 221.
 (pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
+ [10
+
+]
+File: ../libs/banner-flutter-logo.png Graphic file (type png)
+<use ../libs/banner-flutter-logo.png>
+Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 22
+9.
+(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
+File: ../libs/emblem.png Graphic file (type png)
+<use ../libs/emblem.png>
+Package pdftex.def Info: ../libs/emblem.png  used on input line 229.
+(pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
  [11
 
  </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
-<../libs/alphonse-gaston-regards.jpg, id=320, 1204.5pt x 680.5425pt>
+<../libs/alphonse-gaston-regards.jpg, id=322, 1204.5pt x 680.5425pt>
 File: ../libs/alphonse-gaston-regards.jpg Graphic file (type jpg)
 <use ../libs/alphonse-gaston-regards.jpg>
 Package pdftex.def Info: ../libs/alphonse-gaston-regards.jpg  used on input lin
-e 231.
+e 239.
 (pdftex.def)             Requested size: 170.71652pt x 96.44872pt.
 File: ../libs/banner-flutter-logo.png Graphic file (type png)
 <use ../libs/banner-flutter-logo.png>
 Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 23
-1.
+9.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
 File: ../libs/emblem.png Graphic file (type png)
 <use ../libs/emblem.png>
-Package pdftex.def Info: ../libs/emblem.png  used on input line 231.
+Package pdftex.def Info: ../libs/emblem.png  used on input line 239.
 (pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
  [12
 
@@ -1782,11 +1782,11 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 231.
 \tf@snm=\write12
 \openout12 = `main.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 233.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 233.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 241.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 233.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 233.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 241.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 72ECB838E170B6B573D6871E546DF7E9;234.
 
@@ -1800,7 +1800,7 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 Here is how much of TeX's memory you used:
  34857 strings out of 481239
  662981 string characters out of 5920377
- 1344753 words of memory out of 5000000
+ 1345753 words of memory out of 5000000
  49367 multiletter control sequences out of 15000+600000
  567531 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1809,10 +1809,10 @@ Here is how much of TeX's memory you used:
 e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/c
 m-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
 vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (12 pages, 681450 bytes).
+Output written on main.pdf (12 pages, 681930 bytes).
 PDF statistics:
- 367 PDF objects out of 1000 (max. 8388607)
- 302 compressed objects within 4 object streams
+ 369 PDF objects out of 1000 (max. 8388607)
+ 304 compressed objects within 4 object streams
  39 named destinations out of 1000 (max. 500000)
  21125 words of extra memory for PDF output out of 24883 (max. 10000000)
 
