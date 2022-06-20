@@ -1,0 +1,147 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This project aims to create the template for presentation.                   %%
+%% author: Luigi Durso                                                          %%
+%% contacts:                                                                    %%
+%%    e-mail: luigi.durso@si2001.it                                             %%
+%%    linktree: https://linktr.ee/maumneto                                      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{../libs/presentation_format}
+% Inserting the preamble file with the packages
+\input{../libs/preamble.tex}
+% Inserting the references file
+\bibliography{../references.bib}
+
+% Title
+\title[Flutter-Dart]{\huge\textbf{Flutter e Dart - Le basi}}
+% Subtitle
+\subtitle{Flutter - Le basi}
+% Author of the presentation
+\author{Luigi Durso}
+% Company's Name
+\institute[SI2001]{
+    % email for contact
+    \normalsize{\email{luigi.durso@si2001.it}}
+    \newline
+    \centering
+    \includegraphics[scale=0.3]{../libs/emblem.png}
+    \newline
+    % company name
+    \company
+}
+% date of the presentation
+\date{\today}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start Document of the Presentation                                           %%               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% insert the code style
+\input{../libs/code_style}
+
+%% ---------------------------------------------------------------------------
+% First frame (with tile, subtitle, ...)
+\begin{frame}{}
+    \maketitle
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Table of content frame
+\begin{frame}{Sommario}
+    \begin{multicols}{2}
+        \tableofcontents
+    \end{multicols}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Widget: Cosa sono}
+\begin{frame}{E' tutta una questione di widgets}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/sample-widgets}
+		\caption{Esempio widgets}
+		\label{fig: Esempio widgets}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Cos'è un widget?}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4cm]{../libs/sample-flutter-layout}
+					\caption{Esempio albero \cite{flutterLayout}}
+					\label{fig:Esempio albero}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				L'idea dietro alla composizione della UI in FLutter è la stessa di \emph{React},
+				tutto ciò che compone una schermata è un widget!
+				Quando lo stato di un widget cambia, il widget e tutti i suoi discendenti sono ridisegnati.
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Widget: Tipi}
+\begin{frame}{Esistono differenti tipo di widgets}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/widget-types.png}
+		\caption{Tipi di widgets}
+		\label{fig: Tipi di widgets}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Diamo una prima occhiata}
+	\emph{Alcuni esempi di layout per tipo:}
+	\begin{itemize}
+		\item Visibili: Text, Icon...\href{https://docs.flutter.dev/development/ui/layout}{\beamergotobutton{Documentazione}}
+		\item Invisibili: Column, Row...\href{https://docs.flutter.dev/development/ui/layout}{\beamergotobutton{Documentazione}}
+	\end{itemize}
+	\emph{Esiste un widget per ogni necessità}
+	\newline
+	\href{https://docs.flutter.dev/development/ui/widgets}{\beamergotobutton{Catologo}}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Un po' di pratica}
+\begin{tabular}{lll}
+	\raisebox{-.5\height}{\includegraphics[scale=0.3]{../libs/Developer-Friendly.png}}
+	 \emph{Creiamo il nostro primo progetto}\\
+\end{tabular}
+\end{frame}
+
+
+%% ---------------------------------------------------------------------------
+
+%% ora si parte con stateless/statefull
+
+%% ---------------------------------------------------------------------------
+
+% Reference frames
+\begin{frame}[allowframebreaks]
+    \frametitle{Riferimenti}
+    \printbibliography
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Final frame
+\section{Fine}
+\begin{frame}{}
+	\huge\emph{Grazie per l'attenzione!}
+	\newline
+	\vfill
+	\hfill\includegraphics[width=6cm]{../libs/alphonse-gaston-regards}
+\end{frame}
+
+\end{document}
