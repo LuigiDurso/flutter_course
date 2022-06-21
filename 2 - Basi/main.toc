@@ -6,4 +6,6 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {2}{Widget: Tipi}{5}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Fine}{9}{0}{3}
+\beamer@sectionintoc {3}{Stato dell'applicazione}{8}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{Fine}{11}{0}{4}

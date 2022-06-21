@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'branches_list.dart';
+import 'branches_overview.dart';
 
 class BranchesPage extends StatelessWidget {
   const BranchesPage({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class BranchesPage extends StatelessWidget {
           )
         ],
       ),
-      body: BranchesList(),
+      body: BranchesOverview(),
     );
   }
 }

@@ -1,21 +1,21 @@
 [0] Config.pm:304> INFO - This is Biber 2.14 (beta)
 [0] Config.pm:307> INFO - Logfile is 'main.blg'
-[114] biber:322> INFO - === Mon Jun 20, 2022, 17:01:09
-[127] Biber.pm:415> INFO - Reading 'main.bcf'
-[188] Biber.pm:943> INFO - Found 1 citekeys in bib section 0
-[201] Biber.pm:4256> INFO - Processing section 0
-[202] Utils.pm:75> INFO - Globbing data source '../references.bib'
-[202] Utils.pm:91> INFO - Globbed data source '../references.bib' to ../references.bib
-[211] Biber.pm:4455> INFO - Looking for bibtex format file '../references.bib' for section 0
-[211] bibtex.pm:1653> INFO - LaTeX decoding ...
-[214] bibtex.pm:1471> INFO - Found BibTeX data source '../references.bib'
-[232] Utils.pm:293> WARN - BibTeX subsystem: /tmp/biber_tmp_YK9H/references.bib_53910.utf8, line 8, warning: 1 characters of junk seen at toplevel
-[232] Utils.pm:293> WARN - BibTeX subsystem: /tmp/biber_tmp_YK9H/references.bib_53910.utf8, line 5, warning: undefined macro "https://docs.flutter.dev/get-started/install"
-[232] Utils.pm:293> WARN - BibTeX subsystem: /tmp/biber_tmp_YK9H/references.bib_53910.utf8, line 12, warning: undefined macro "https://docs.flutter.dev/development/ui/layout"
-[239] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'variable = shifted' with 'variable = non-ignorable'
-[239] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[239] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'it-IT'
-[239] Biber.pm:4090> INFO - No sort tailoring available for locale 'it-IT'
-[240] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[241] bbl.pm:755> INFO - Output to main.bbl
-[241] Biber.pm:128> INFO - WARNINGS: 3
+[121] biber:322> INFO - === Tue Jun 21, 2022, 15:15:49
+[142] Biber.pm:415> INFO - Reading 'main.bcf'
+[247] Biber.pm:943> INFO - Found 1 citekeys in bib section 0
+[269] Biber.pm:4256> INFO - Processing section 0
+[269] Utils.pm:75> INFO - Globbing data source '../references.bib'
+[270] Utils.pm:91> INFO - Globbed data source '../references.bib' to ../references.bib
+[285] Biber.pm:4455> INFO - Looking for bibtex format file '../references.bib' for section 0
+[286] bibtex.pm:1653> INFO - LaTeX decoding ...
+[290] bibtex.pm:1471> INFO - Found BibTeX data source '../references.bib'
+[321] Utils.pm:293> WARN - BibTeX subsystem: /tmp/biber_tmp_QdgF/references.bib_38873.utf8, line 8, warning: 1 characters of junk seen at toplevel
+[321] Utils.pm:293> WARN - BibTeX subsystem: /tmp/biber_tmp_QdgF/references.bib_38873.utf8, line 5, warning: undefined macro "https://docs.flutter.dev/get-started/install"
+[322] Utils.pm:293> WARN - BibTeX subsystem: /tmp/biber_tmp_QdgF/references.bib_38873.utf8, line 12, warning: undefined macro "https://docs.flutter.dev/development/ui/layout"
+[334] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[334] UCollate.pm:68> INFO - Overriding locale 'it-IT' defaults 'variable = shifted' with 'variable = non-ignorable'
+[334] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'it-IT'
+[334] Biber.pm:4090> INFO - No sort tailoring available for locale 'it-IT'
+[336] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[337] bbl.pm:755> INFO - Output to main.bbl
+[338] Biber.pm:128> INFO - WARNINGS: 3

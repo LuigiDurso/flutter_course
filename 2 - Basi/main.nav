@@ -43,23 +43,37 @@
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@subsectionpages {5}{7}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {3}{Riferimenti bibliografici}{8}{Riferimenti bibliografici}{0}}
+\headcommand {\sectionentry {3}{Stato dell'applicazione}{8}{Stato dell'applicazione}{0}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {3}{0}{0}{8/8}{}{0}}
+\headcommand {\slideentry {3}{0}{1}{8/8}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {8}{8}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@sectionpages {5}{8}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\beamer@subsectionpages {5}{8}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {4}{Fine}{9}{Fine}{0}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {4}{0}{1}{9/9}{}{0}}
+\headcommand {\slideentry {3}{0}{2}{9/9}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\beamer@partpages {1}{9}}
-\headcommand {\beamer@subsectionpages {9}{9}}
-\headcommand {\beamer@sectionpages {9}{9}}
-\headcommand {\beamer@documentpages {9}}
-\headcommand {\gdef \inserttotalframenumber {9}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {8}{9}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {8}{9}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {4}{Riferimenti bibliografici}{10}{Riferimenti bibliografici}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {4}{0}{0}{10/10}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {10}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {8}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {8}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {5}{Fine}{11}{Fine}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {5}{0}{1}{11/11}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@partpages {1}{11}}
+\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\beamer@sectionpages {11}{11}}
+\headcommand {\beamer@documentpages {11}}
+\headcommand {\gdef \inserttotalframenumber {11}}
