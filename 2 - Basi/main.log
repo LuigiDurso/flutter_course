@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.16)  21 JUN 2022 15:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.16)  21 JUN 2022 18:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1298,14 +1298,7 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count485
 \l__pdf_internal_box=\box144
 )
-(./main.aux
-
-LaTeX Warning: Label `fig: Tipi di widgets' multiply defined.
-
-
-LaTeX Warning: Label `fig: Tipi di widgets' multiply defined.
-
-)
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
@@ -1532,12 +1525,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<../libs/emblem.png, id=48, 70.2625pt x 71.26625pt>
+<../libs/emblem.png, id=53, 70.2625pt x 71.26625pt>
 File: ../libs/emblem.png Graphic file (type png)
 <use ../libs/emblem.png>
 Package pdftex.def Info: ../libs/emblem.png  used on input line 46.
 (pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
-<../libs/banner-flutter-logo.png, id=50, 401.5pt x 401.5pt>
+<../libs/banner-flutter-logo.png, id=55, 401.5pt x 401.5pt>
 File: ../libs/banner-flutter-logo.png Graphic file (type png)
 <use ../libs/banner-flutter-logo.png>
 Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 46
@@ -1562,7 +1555,7 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 54.
  [2
 
 ]
-<../libs/sample-widgets.png, id=108, 916.42375pt x 395.4775pt>
+<../libs/sample-widgets.png, id=128, 916.42375pt x 395.4775pt>
 File: ../libs/sample-widgets.png Graphic file (type png)
 <use ../libs/sample-widgets.png>
 Package pdftex.def Info: ../libs/sample-widgets.png  used on input line 66.
@@ -1579,7 +1572,7 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 66.
  [3
 
  <../libs/sample-widgets.png>]
-<../libs/sample-flutter-layout.png, id=129, 602.25pt x 528.97626pt>
+<../libs/sample-flutter-layout.png, id=154, 602.25pt x 528.97626pt>
 File: ../libs/sample-flutter-layout.png Graphic file (type png)
 <use ../libs/sample-flutter-layout.png>
 Package pdftex.def Info: ../libs/sample-flutter-layout.png  used on input line 
@@ -1625,7 +1618,7 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 88.
  [4
 
  <../libs/sample-flutter-layout.png>]
-<../libs/widget-types.png, id=153, 846.16125pt x 357.335pt>
+<../libs/widget-types.png, id=184, 846.16125pt x 357.335pt>
 File: ../libs/widget-types.png Graphic file (type png)
 <use ../libs/widget-types.png>
 Package pdftex.def Info: ../libs/widget-types.png  used on input line 100.
@@ -1654,7 +1647,7 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 113.
  [6
 
 ]
-<../libs/Developer-Friendly.png, id=196, 385.44pt x 385.44pt>
+<../libs/Developer-Friendly.png, id=236, 385.44pt x 385.44pt>
 File: ../libs/Developer-Friendly.png Graphic file (type png)
 <use ../libs/Developer-Friendly.png>
 Package pdftex.def Info: ../libs/Developer-Friendly.png  used on input line 122
@@ -1672,18 +1665,12 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 122.
  [7
 
  <../libs/Developer-Friendly.png>]
-<../libs/understanding-state.png, id=217, 560.0925pt x 502.87875pt>
+<../libs/understanding-state.png, id=262, 560.0925pt x 502.87875pt>
 File: ../libs/understanding-state.png Graphic file (type png)
 <use ../libs/understanding-state.png>
 Package pdftex.def Info: ../libs/understanding-state.png  used on input line 13
 4.
 (pdftex.def)             Requested size: 168.02904pt x 150.86478pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:\040Tipi\
-040di\040widgets}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.134 \end{frame}
-                 
 File: ../libs/banner-flutter-logo.png Graphic file (type png)
 <use ../libs/banner-flutter-logo.png>
 Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 13
@@ -1696,18 +1683,12 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 134.
  [8
 
  <../libs/understanding-state.png>]
-<../libs/stateless-statefull.png, id=237, 876.27374pt x 442.65375pt>
+<../libs/stateless-statefull.png, id=289, 876.27374pt x 442.65375pt>
 File: ../libs/stateless-statefull.png Graphic file (type png)
 <use ../libs/stateless-statefull.png>
 Package pdftex.def Info: ../libs/stateless-statefull.png  used on input line 14
 5.
-(pdftex.def)             Requested size: 438.13579pt x 221.32632pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:\040Tipi\
-040di\040widgets}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.145 \end{frame}
-                 
+(pdftex.def)             Requested size: 256.0748pt x 129.35918pt.
 File: ../libs/banner-flutter-logo.png Graphic file (type png)
 <use ../libs/banner-flutter-logo.png>
 Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 14
@@ -1720,34 +1701,120 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 145.
  [9
 
  <../libs/stateless-statefull.png>]
+<../libs/widget-lifecycle.png, id=315, 931.48pt x 474.77374pt>
+File: ../libs/widget-lifecycle.png Graphic file (type png)
+<use ../libs/widget-lifecycle.png>
+Package pdftex.def Info: ../libs/widget-lifecycle.png  used on input line 156.
+(pdftex.def)             Requested size: 256.0748pt x 130.51608pt.
 File: ../libs/banner-flutter-logo.png Graphic file (type png)
 <use ../libs/banner-flutter-logo.png>
 Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 15
-3.
+6.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
 File: ../libs/emblem.png Graphic file (type png)
 <use ../libs/emblem.png>
-Package pdftex.def Info: ../libs/emblem.png  used on input line 153.
+Package pdftex.def Info: ../libs/emblem.png  used on input line 156.
 (pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
  [10
 
- </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
-<../libs/alphonse-gaston-regards.jpg, id=283, 1204.5pt x 680.5425pt>
-File: ../libs/alphonse-gaston-regards.jpg Graphic file (type jpg)
-<use ../libs/alphonse-gaston-regards.jpg>
-Package pdftex.def Info: ../libs/alphonse-gaston-regards.jpg  used on input lin
-e 163.
-(pdftex.def)             Requested size: 170.71652pt x 96.44872pt.
+ <../libs/widget-lifecycle.png>]
+<../libs/app-lifecycle.png, id=341, 663.47874pt x 439.6425pt>
+File: ../libs/app-lifecycle.png Graphic file (type png)
+<use ../libs/app-lifecycle.png>
+Package pdftex.def Info: ../libs/app-lifecycle.png  used on input line 167.
+(pdftex.def)             Requested size: 256.0748pt x 169.68216pt.
 File: ../libs/banner-flutter-logo.png Graphic file (type png)
 <use ../libs/banner-flutter-logo.png>
 Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 16
-3.
+7.
 (pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
 File: ../libs/emblem.png Graphic file (type png)
 <use ../libs/emblem.png>
-Package pdftex.def Info: ../libs/emblem.png  used on input line 163.
+Package pdftex.def Info: ../libs/emblem.png  used on input line 167.
 (pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
  [11
+
+ <../libs/app-lifecycle.png>]
+<../libs/widget-tree-build.png, id=367, 1043.9pt x 531.9875pt>
+File: ../libs/widget-tree-build.png Graphic file (type png)
+<use ../libs/widget-tree-build.png>
+Package pdftex.def Info: ../libs/widget-tree-build.png  used on input line 176.
+
+(pdftex.def)             Requested size: 521.94872pt x 265.9931pt.
+File: ../libs/banner-flutter-logo.png Graphic file (type png)
+<use ../libs/banner-flutter-logo.png>
+Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 17
+6.
+(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
+File: ../libs/emblem.png Graphic file (type png)
+<use ../libs/emblem.png>
+Package pdftex.def Info: ../libs/emblem.png  used on input line 176.
+(pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
+ [12
+
+ <../libs/widget-tree-build.png>]
+File: ../libs/Developer-Friendly.png Graphic file (type png)
+<use ../libs/Developer-Friendly.png>
+Package pdftex.def Info: ../libs/Developer-Friendly.png  used on input line 185
+.
+(pdftex.def)             Requested size: 115.63289pt x 115.63289pt.
+File: ../libs/banner-flutter-logo.png Graphic file (type png)
+<use ../libs/banner-flutter-logo.png>
+Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 18
+5.
+(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
+File: ../libs/emblem.png Graphic file (type png)
+<use ../libs/emblem.png>
+Package pdftex.def Info: ../libs/emblem.png  used on input line 185.
+(pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
+ [13
+
+]
+<../libs/making-decision.png, id=417, 237.49254pt x 135.74397pt>
+File: ../libs/making-decision.png Graphic file (type png)
+<use ../libs/making-decision.png>
+Package pdftex.def Info: ../libs/making-decision.png  used on input line 209.
+(pdftex.def)             Requested size: 113.81102pt x 65.05278pt.
+File: ../libs/banner-flutter-logo.png Graphic file (type png)
+<use ../libs/banner-flutter-logo.png>
+Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 20
+9.
+(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
+File: ../libs/emblem.png Graphic file (type png)
+<use ../libs/emblem.png>
+Package pdftex.def Info: ../libs/emblem.png  used on input line 209.
+(pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
+ [14
+
+ <../libs/making-decision.png (PNG copy)>]
+File: ../libs/banner-flutter-logo.png Graphic file (type png)
+<use ../libs/banner-flutter-logo.png>
+Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 21
+7.
+(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
+File: ../libs/emblem.png Graphic file (type png)
+<use ../libs/emblem.png>
+Package pdftex.def Info: ../libs/emblem.png  used on input line 217.
+(pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
+ [15
+
+ </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
+<../libs/alphonse-gaston-regards.jpg, id=471, 1204.5pt x 680.5425pt>
+File: ../libs/alphonse-gaston-regards.jpg Graphic file (type jpg)
+<use ../libs/alphonse-gaston-regards.jpg>
+Package pdftex.def Info: ../libs/alphonse-gaston-regards.jpg  used on input lin
+e 227.
+(pdftex.def)             Requested size: 170.71652pt x 96.44872pt.
+File: ../libs/banner-flutter-logo.png Graphic file (type png)
+<use ../libs/banner-flutter-logo.png>
+Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 22
+7.
+(pdftex.def)             Requested size: 170.71652pt x 170.71794pt.
+File: ../libs/emblem.png Graphic file (type png)
+<use ../libs/emblem.png>
+Package pdftex.def Info: ../libs/emblem.png  used on input line 227.
+(pdftex.def)             Requested size: 21.0789pt x 21.38002pt.
+ [16
 
  <../libs/alphonse-gaston-regards.jpg>]
 \tf@nav=\write10
@@ -1759,26 +1826,22 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 163.
 \tf@snm=\write12
 \openout12 = `main.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 165.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 165.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 229.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 229.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 165.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 165.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 229.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 229.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 6EB791DE29B52557353DCF57F84CBDCA;256.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34831 strings out of 481239
- 662322 string characters out of 5920377
- 1344516 words of memory out of 5000000
- 49349 multiletter control sequences out of 15000+600000
+ 34885 strings out of 481239
+ 663531 string characters out of 5920377
+ 1346673 words of memory out of 5000000
+ 49385 multiletter control sequences out of 15000+600000
  567531 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,19n,84p,809b,1834s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1786,10 +1849,10 @@ Here is how much of TeX's memory you used:
 e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/c
 m-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
 vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (11 pages, 746046 bytes).
+Output written on main.pdf (16 pages, 1873937 bytes).
 PDF statistics:
- 325 PDF objects out of 1000 (max. 8388607)
- 265 compressed objects within 3 object streams
- 32 named destinations out of 1000 (max. 500000)
- 21120 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 523 PDF objects out of 1000 (max. 8388607)
+ 444 compressed objects within 5 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 21140 words of extra memory for PDF output out of 24883 (max. 10000000)
 

@@ -5,6 +5,10 @@
 \defcounter {refsection}{0}\relax 
 \beamer@slide {fig: Tipi di widgets}{5}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {fig: Tipi di widgets}{8}
+\beamer@slide {fig: Stato di un'applicazione}{8}
 \defcounter {refsection}{0}\relax 
-\beamer@slide {fig: Tipi di widgets}{9}
+\beamer@slide {fig: Statefull-Stateless widgets}{9}
+\defcounter {refsection}{0}\relax 
+\beamer@slide {fig: Ciclo di vita dei widgets}{10}
+\defcounter {refsection}{0}\relax 
+\beamer@slide {fig: Ciclo di vita dell'app}{11}

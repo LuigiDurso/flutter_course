@@ -61,23 +61,33 @@
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@subsectionpages {10}{10}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {4}{Riferimenti bibliografici}{11}{Riferimenti bibliografici}{0}}
+\headcommand {\sectionentry {4}{Installazione}{11}{Installazione}{0}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {4}{0}{0}{11/11}{}{0}}
+\headcommand {\slideentry {4}{0}{1}{11/11}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {11}{11}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@sectionpages {10}{11}}
+\headcommand {\beamer@sectionpages {11}{11}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\beamer@subsectionpages {10}{11}}
+\headcommand {\beamer@subsectionpages {11}{11}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {5}{Fine}{12}{Fine}{0}}
+\headcommand {\sectionentry {5}{Riferimenti bibliografici}{12}{Riferimenti bibliografici}{0}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {5}{0}{1}{12/12}{}{0}}
+\headcommand {\slideentry {5}{0}{0}{12/12}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\beamer@partpages {1}{12}}
-\headcommand {\beamer@subsectionpages {12}{12}}
-\headcommand {\beamer@sectionpages {12}{12}}
-\headcommand {\beamer@documentpages {12}}
-\headcommand {\gdef \inserttotalframenumber {12}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@sectionpages {11}{12}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {11}{12}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {6}{Fine}{13}{Fine}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {6}{0}{1}{13/13}{}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\beamer@partpages {1}{13}}
+\headcommand {\beamer@subsectionpages {13}{13}}
+\headcommand {\beamer@sectionpages {13}{13}}
+\headcommand {\beamer@documentpages {13}}
+\headcommand {\gdef \inserttotalframenumber {13}}

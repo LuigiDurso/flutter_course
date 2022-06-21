@@ -128,8 +128,8 @@
 	\begin{figure}[htpb]
 		\centering
 		\includegraphics[scale=0.3]{../libs/understanding-state.png}
-		\caption{Tipi di widgets}
-		\label{fig: Tipi di widgets}
+		\caption{Stato di un'applicazione}
+		\label{fig: Stato di un'applicazione}
 	\end{figure}
 \end{frame}
 
@@ -138,9 +138,40 @@
 \begin{frame}{Rendering dello stato}
 	\begin{figure}[htpb]
 		\centering
-		\includegraphics[scale=0.5, width=9cm]{../libs/stateless-statefull.png}
-		\caption{Tipi di widgets}
-		\label{fig: Tipi di widgets}
+		\includegraphics[width=9cm]{../libs/stateless-statefull.png}
+		\caption{Statefull-Stateless widgets}
+		\label{fig: Statefull-Stateless widgets}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Ciclo di vita dei widget}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/widget-lifecycle.png}
+		\caption{Ciclo di vita dei widgets}
+		\label{fig: Ciclo di vita dei widgets}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Ciclo di vita di un' app}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/app-lifecycle.png}
+		\caption{Ciclo di vita dell'app}
+		\label{fig: Ciclo di vita dell'app}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Diversi livelli di gestione}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[scale=0.5, width=9cm]{../libs/widget-tree-build.png}
 	\end{figure}
 \end{frame}
 
@@ -149,12 +180,41 @@
 \begin{frame}{Un po' di pratica}
 \begin{tabular}{lll}
 	\raisebox{-.5\height}{\includegraphics[scale=0.3]{../libs/Developer-Friendly.png}}
-	 \emph{Applichiamo qualche ritocco al nostro progetto.}\\
+	\emph{Ritocchiamo un po' progetto.}\\
 \end{tabular}
 \end{frame}
 
 %% ---------------------------------------------------------------------------
 
+\begin{frame}{Idee di ottimizzazione}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4cm]{../libs/making-decision}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Dart}
+				\newline
+				Scrivere del codice ottimizzato potrebbe fare la differenza:
+				\begin{itemize}
+					\item Utilizzare dei widget \emph{const} quando possibile ( riduzione delle rebuild )
+					\item Estrazione di componenti in widget separati
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Piccolo "Assignment" per la prossima lezione}
+	
+\end{frame}
+
+%% ---------------------------------------------------------------------------
 
 % Reference frames
 \begin{frame}[allowframebreaks]

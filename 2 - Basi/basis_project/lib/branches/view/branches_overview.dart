@@ -9,7 +9,7 @@ class BranchesOverview extends StatefulWidget {
   State<BranchesOverview> createState() => _BranchesOverviewState();
 }
 
-class _BranchesOverviewState extends State<BranchesOverview> {
+class _BranchesOverviewState extends State<BranchesOverview> with WidgetsBindingObserver {
   final _branches = [
     {
       'name': 'Treviolo',
@@ -43,6 +43,13 @@ class _BranchesOverviewState extends State<BranchesOverview> {
 
   var _currentBranch = "Nessuna sede selezionata!";
 
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
   void _setCurrentBranch(newBranch) {
     print("Hai cliccato $_currentBranch");
     if ( newBranch == null ) {
@@ -51,6 +58,18 @@ class _BranchesOverviewState extends State<BranchesOverview> {
     setState(() {
       _currentBranch = newBranch;
     });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state.name);
+
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
   @override
