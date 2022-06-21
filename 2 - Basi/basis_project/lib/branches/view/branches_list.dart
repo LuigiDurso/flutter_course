@@ -39,11 +39,31 @@ class BranchesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ..._branches.map((e) => Expanded(
-          child: Card(
-            child: Text(e['name'] as String),
+        ..._branches.map((e) => Row(
+          children: [
+            Expanded(
+              child: Card(
+                child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(e['name'] as String)
+                ),
+              ),
+            )
+          ],
+        )).toList(),
+        const Divider(),
+        Expanded(
+          child: ListView.builder(
+              itemCount: _branches.length,
+              itemBuilder: (_, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text(_branches[index]['name'] as String),
+                  ),
+                );
+              }
           ),
-        )).toList()
+        )
       ],
     );
   }
