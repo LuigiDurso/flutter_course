@@ -1,0 +1,98 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This project aims to create the template for presentation.                   %%
+%% author: Luigi Durso                                                          %%
+%% contacts:                                                                    %%
+%%    e-mail: luigi.durso@si2001.it                                             %%
+%%    linktree: https://linktr.ee/maumneto                                      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{../libs/presentation_format}
+% Inserting the preamble file with the packages
+\input{../libs/preamble.tex}
+% Inserting the references file
+\bibliography{../references.bib}
+
+% Title
+\title[Flutter-Dart]{\huge\textbf{Flutter e Dart - Le basi}}
+% Subtitle
+\subtitle{Flutter - Le basi}
+% Author of the presentation
+\author{Luigi Durso}
+% Company's Name
+\institute[SI2001]{
+    % email for contact
+    \normalsize{\email{luigi.durso@si2001.it}}
+    \newline
+    \centering
+    \includegraphics[scale=0.3]{../libs/emblem.png}
+    \newline
+    % company name
+    \company
+}
+% date of the presentation
+\date{\today}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start Document of the Presentation                                           %%               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% insert the code style
+\input{../libs/code_style}
+
+%% ---------------------------------------------------------------------------
+% First frame (with tile, subtitle, ...)
+\begin{frame}{}
+    \maketitle
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Table of content frame
+\begin{frame}{Sommario}
+    \begin{multicols}{2}
+        \tableofcontents
+    \end{multicols}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Diamo una occhiata all'elaborato precedente}
+\begin{frame}{E' tutta una questione di widgets}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/sample-widgets}
+		\caption{Esempio widgets}
+		\label{fig: Esempio widgets}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Struttura del progetto}
+\begin{frame}{E' tutta una questione di widgets}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/sample-widgets}
+		\caption{Esempio widgets}
+		\label{fig: Esempio widgets}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+% Reference frames
+\begin{frame}[allowframebreaks]
+    \frametitle{Riferimenti}
+    \printbibliography
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Final frame
+\section{Fine}
+\begin{frame}{}
+	\huge\emph{Grazie per l'attenzione!}
+	\newline
+	\vfill
+	\hfill\includegraphics[width=6cm]{../libs/alphonse-gaston-regards}
+\end{frame}
+
+\end{document}
