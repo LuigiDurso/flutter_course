@@ -29,7 +29,7 @@ class _BranchesOverviewState extends State<BranchesOverview> {
     super.initState();
   }
 
-  void _setCurrentBranch(newBranch) {
+  void _setCurrentBranch(Branch newBranch) {
     if (newBranch == null) {
       return;
     }
@@ -55,7 +55,7 @@ class _BranchesOverviewState extends State<BranchesOverview> {
             (_, index) => BranchListItem(
               branch: Branch.fromMap(_branches[index]),
               actionFn: () {
-                _setCurrentBranch(_branches[index]);
+                _setCurrentBranch(Branch.fromMap(_branches[index]));
               },
             ),
             childCount: _branches.length,
