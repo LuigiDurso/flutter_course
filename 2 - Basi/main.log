@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.16)  25 JUN 2022 22:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.16)  27 JUN 2022 14:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1787,11 +1787,11 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 209.
  [14
 
  <../libs/making-decision.png (PNG copy)>]
-<../libs/Home - List-1.png, id=477, 347.2975pt x 577.15625pt>
+<../libs/Home - List-1.png, id=477, 1084.05pt x 2348.775pt>
 File: ../libs/Home - List-1.png Graphic file (type png)
 <use ../libs/Home - List-1.png>
 Package pdftex.def Info: ../libs/Home - List-1.png  used on input line 235.
-(pdftex.def)             Requested size: 56.9055pt x 94.56616pt.
+(pdftex.def)             Requested size: 56.9055pt x 123.28745pt.
 File: ../libs/banner-flutter-logo.png Graphic file (type png)
 <use ../libs/banner-flutter-logo.png>
 Package pdftex.def Info: ../libs/banner-flutter-logo.png  used on input line 23
@@ -1866,7 +1866,7 @@ Here is how much of TeX's memory you used:
 e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/c
 m-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
 vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (17 pages, 1894081 bytes).
+Output written on main.pdf (17 pages, 1936949 bytes).
 PDF statistics:
  592 PDF objects out of 1000 (max. 8388607)
  507 compressed objects within 6 object streams
