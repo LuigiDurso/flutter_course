@@ -102,7 +102,7 @@
 %% ---------------------------------------------------------------------------
 
 \begin{frame}{Diamo una prima occhiata}
-	\emph{Alcuni esempi di layout per tipo:}
+	\emph{Alcuni esempi di widget per tipo:}
 	\begin{itemize}
 		\item Visibili: Text, Icon...\href{https://docs.flutter.dev/development/ui/layout}{\beamergotobutton{Documentazione}}
 		\item Invisibili: Column, Row...\href{https://docs.flutter.dev/development/ui/layout}{\beamergotobutton{Documentazione}}
@@ -177,10 +177,33 @@
 
 %% ---------------------------------------------------------------------------
 
+\begin{frame}{Contesto}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=4cm]{../libs/widget-context}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				Ogni widget ha associato un elemento di tipo \emph{Context}
+				\begin{itemize}
+					\item Il context è l'element del widget nell'albero degli element visto precedentemente
+					\item Contiene informazioni sul widget e sulla sua posizione nell'albero
+					\item Il context contiene un canale di comunicazione diretto attraverso tutto l'albero di widget, in questo modo possiamo accedere ad informazioni quali: tema, navigator, mediaquery...
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
 \begin{frame}{Un po' di pratica}
 \begin{tabular}{lll}
 	\raisebox{-.5\height}{\includegraphics[scale=0.3]{../libs/Developer-Friendly.png}}
-	\emph{Ritocchiamo un po' progetto.}\\
+	\emph{Ritocchiamo un po' il progetto.}\\
 \end{tabular}
 \end{frame}
 

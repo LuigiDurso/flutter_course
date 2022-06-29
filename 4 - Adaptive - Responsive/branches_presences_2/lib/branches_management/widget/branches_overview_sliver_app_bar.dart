@@ -15,6 +15,7 @@ class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     final theme = Theme.of(context);
+    final mediaQuery = MediaQuery.of(context);
 
     return Stack(
       clipBehavior: Clip.none,
@@ -69,7 +70,7 @@ class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
         ),
         if (shrinkOffset < (expandedHeight / 2))
           Positioned(
-            width: MediaQuery.of(context).size.width,
+            width: mediaQuery.size.width,
             height: 50,
             bottom: 0,
             child: Container(

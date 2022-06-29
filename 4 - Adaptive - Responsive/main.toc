@@ -2,12 +2,12 @@
 \babel@toc {italian}{}
 \babel@toc {italian}{}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {1}{Widget: Cosa sono}{3}{0}{1}
+\beamer@sectionintoc {1}{Lezione precedente}{3}{0}{1}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {2}{Widget: Tipi}{5}{0}{2}
+\beamer@sectionintoc {2}{Responsive}{4}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{Stato dell'applicazione}{8}{0}{3}
+\beamer@sectionintoc {3}{Adaptive}{8}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Esercitazione}{16}{0}{4}
+\beamer@sectionintoc {4}{Esercitazione}{10}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {6}{Fine}{18}{0}{5}
+\beamer@sectionintoc {5}{Fine}{12}{0}{5}
