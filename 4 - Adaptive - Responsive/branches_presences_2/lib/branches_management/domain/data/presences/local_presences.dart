@@ -38,6 +38,18 @@ class LocalPresences implements PresencesDataProvider {
         branchId: 1,
         dateTime: DateTime.now().add(const Duration(days: 2)),
         username: "luigi.durso"),
+    Presence(
+        branchId: 1,
+        dateTime: DateTime.now().add(const Duration(days: 2)),
+        username: "qwe.qwe"),
+    Presence(
+        branchId: 1,
+        dateTime: DateTime.now().add(const Duration(days: 2)),
+        username: "ewq.eqw"),
+    Presence(
+        branchId: 1,
+        dateTime: DateTime.now().add(const Duration(days: 2)),
+        username: "ww.ee"),
   ];
 
   @override

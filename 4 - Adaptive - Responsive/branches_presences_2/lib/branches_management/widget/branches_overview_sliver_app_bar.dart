@@ -81,7 +81,6 @@ class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
                   bottomLeft: Radius.circular(10),
                 ),
               ),
-              // opacity: (1 - shrinkOffset / expandedHeight),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(

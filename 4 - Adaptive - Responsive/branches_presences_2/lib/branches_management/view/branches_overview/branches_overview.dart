@@ -4,10 +4,12 @@ import 'package:branches_presences_2/branches_management/domain/data/branches/lo
 import 'package:branches_presences_2/branches_management/domain/data/presences/local_presences.dart';
 import 'package:branches_presences_2/branches_management/domain/repository/branches/branches_repository.dart';
 import 'package:branches_presences_2/branches_management/domain/repository/presences/presences_repository.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../branches.dart';
+import '../../widget/bar_chart_presences.dart';
 
 class BranchesOverview extends StatefulWidget {
   const BranchesOverview({Key? key}) : super(key: key);
@@ -17,37 +19,30 @@ class BranchesOverview extends StatefulWidget {
 }
 
 class _BranchesOverviewState extends State<BranchesOverview> {
-
   late List<Branch> _branches;
   late Branch _currentBranch;
   late List<Presence> _currentPresences;
 
-  BranchesRepository branchesRepository = BranchesRepository(
-      branchesDataProvider: LocalBranches()
-  );
-  PresencesRepository presencesRepository = PresencesRepository(
-      presencesDataProvider: LocalPresences()
-  );
-
+  BranchesRepository branchesRepository =
+      BranchesRepository(branchesDataProvider: LocalBranches());
+  PresencesRepository presencesRepository =
+      PresencesRepository(presencesDataProvider: LocalPresences());
 
   @override
   void initState() {
     _branches = branchesRepository.getAllBranches();
     _currentBranch = _branches[0];
     _currentPresences = presencesRepository.getPresencesByBranchIdAndDateAfter(
-      _currentBranch.id,
-      DateTime.now()
-    );
+        _currentBranch.id, DateTime.now());
     super.initState();
   }
 
   void _setCurrentBranch(Branch newBranch) {
     setState(() {
       _currentBranch = newBranch;
-      _currentPresences = presencesRepository.getPresencesByBranchIdAndDateAfter(
-          _currentBranch.id,
-          DateTime.now()
-      );
+      _currentPresences =
+          presencesRepository.getPresencesByBranchIdAndDateAfter(
+              _currentBranch.id, DateTime.now());
     });
   }
 
@@ -65,7 +60,7 @@ class _BranchesOverviewState extends State<BranchesOverview> {
         const SliverPadding(padding: EdgeInsets.only(top: 5)),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-                (_, index) => BranchGridItem(
+            (_, index) => BranchGridItem(
               branch: _branches[index],
               actionFn: () {
                 _setCurrentBranch(_branches[index]);
@@ -86,54 +81,74 @@ class _BranchesOverviewState extends State<BranchesOverview> {
         Flexible(
           flex: 1,
           fit: FlexFit.tight,
-          child: Card(
-            elevation: 10,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                    child: Image.network(_currentBranch.imagePath,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                fit: FlexFit.tight,
+                flex: 1,
+                child: LayoutBuilder(
+                  builder: (_, constraints) => Stack(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 3),
-                        child: Text(
-                          _currentBranch.name,
-                          style: theme.textTheme.titleLarge,
+                      Card(
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Image.network(
+                          _currentBranch.imagePath,
+                          fit: BoxFit.cover,
+                          width: constraints.maxWidth,
+                          height: constraints.maxHeight,
                         ),
                       ),
-                      const Padding(padding: EdgeInsets.all(2)),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 3),
-                        child: Text(
-                          _currentBranch.address,
-                          style: theme.textTheme.bodyLarge,
+                      Positioned(
+                        bottom: 4,
+                        left: 4,
+                        width: constraints.maxWidth - 9,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.black26,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              _currentBranch.name,
+                              style: theme.textTheme.headline5!.copyWith(
+                                  fontWeight: FontWeight.w700, color: Colors.white),
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 )
-              ],
-            ),
+              ),
+              Flexible(
+                fit: FlexFit.tight,
+                flex: 2,
+                child: Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  color: const Color(0xff2c4260),
+                  child: BarChartPresences(currentPresences: _currentPresences,),
+                ),
+              ),
+            ],
           ),
         ),
         Flexible(
           flex: 2,
           fit: FlexFit.tight,
           child: ListView.builder(
-            itemBuilder: (_, index) => ListTile(
-              title: Text(
-                  _currentPresences[index].username
-              ),
-              subtitle: Text(
-                  DateFormat.yMMMd().format(_currentPresences[index].dateTime)
+            itemBuilder: (_, index) => Card(
+              child: ListTile(
+                title: Text(_currentPresences[index].username),
+                subtitle: Text(DateFormat.yMMMd()
+                    .format(_currentPresences[index].dateTime)),
               ),
             ),
             itemCount: _currentPresences.length,
@@ -146,7 +161,8 @@ class _BranchesOverviewState extends State<BranchesOverview> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-    return mediaQuery.orientation == Orientation.portrait ?
-        _buildPortraitBody(context) : _buildLandscapeBody(context, mediaQuery);
+    return mediaQuery.orientation == Orientation.portrait
+        ? _buildPortraitBody(context)
+        : _buildLandscapeBody(context, mediaQuery);
   }
 }
