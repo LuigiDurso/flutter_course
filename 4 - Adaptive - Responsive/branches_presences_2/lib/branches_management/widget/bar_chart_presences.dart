@@ -73,19 +73,18 @@ class BarChartPresences extends StatelessWidget {
 
   List<BarChartGroupData> get barGroups {
     List<BarChartGroupData> result = [];
-    groupBy(currentPresences, (Presence cp) => cp.dateTime.weekday).forEach((day, value) {
-      result.add(BarChartGroupData(
-        x: day,
-        barRods: [
-          BarChartRodData(
-            toY: value.length.toDouble(),
-            gradient: _barsGradient,
-          )
-        ],
-        showingTooltipIndicators: [0],
-      ));
-    });
-    return result;
+    Map<int, int> resultMap = groupBy(currentPresences, (Presence cp) => cp.dateTime.weekday)
+        .map((key, value) => MapEntry(key, value.length));
+    return List.generate(7, (index) => BarChartGroupData(
+      x: index,
+      barRods: [
+        BarChartRodData(
+          toY: (resultMap[index + 1] ?? 0).toDouble(),
+          gradient: _barsGradient,
+        )
+      ],
+      showingTooltipIndicators: [0],
+    ));
   }
 
   Widget getTitles(double value, TitleMeta meta) {
@@ -94,9 +93,17 @@ class BarChartPresences extends StatelessWidget {
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
-    DateTime.
-    String text = DateFormat.E().format(DateFormat.d().parse(value.toInt().toString()));
-    print('$text $value ${DateFormat.d().parse(value.toInt().toString())}');
+    int day = value.toInt() + 1;
+    String text = DateFormat.E().format(
+        DateTime
+            .now()
+            .add(
+            Duration(days: (-DateTime.now().weekday.toInt() + day))
+        )
+    );
+    switch (meta.formattedValue) {
+      
+    }
     return SideTitleWidget(
       axisSide: meta.axisSide,
       space: 4.0,

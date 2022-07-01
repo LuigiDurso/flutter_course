@@ -45,6 +45,48 @@ class LocalBranches implements BranchesDataProvider {
       'name': 'Roma',
       'address': 'xxx',
       'imagePath': 'https://picsum.photos/id/7/500/500'
+    },
+    {
+      'id': 8,
+      'name': 'Treviolo',
+      'address': 'xxx',
+      'imagePath': 'https://picsum.photos/id/1/500/500'
+    },
+    {
+      'id': 9,
+      'name': 'Milano',
+      'address': 'yyy',
+      'imagePath': 'https://picsum.photos/id/2/500/500'
+    },
+    {
+      'id': 10,
+      'name': 'Battipaglia',
+      'address': 'xxx',
+      'imagePath': 'https://picsum.photos/id/3/500/500'
+    },
+    {
+      'id': 11,
+      'name': 'Palermo',
+      'address': 'xxx',
+      'imagePath': 'https://picsum.photos/id/4/500/500'
+    },
+    {
+      'id': 12,
+      'name': 'Messina',
+      'address': 'xxx',
+      'imagePath': 'https://picsum.photos/id/5/500/500'
+    },
+    {
+      'id': 13,
+      'name': 'Pescara',
+      'address': 'xxx',
+      'imagePath': 'https://picsum.photos/id/6/500/500'
+    },
+    {
+      'id': 14,
+      'name': 'Roma',
+      'address': 'xxx',
+      'imagePath': 'https://picsum.photos/id/7/500/500'
     }
   ];
 
