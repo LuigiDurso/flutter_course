@@ -96,27 +96,35 @@ class _BranchesOverviewState extends State<BranchesOverview> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Image.network(
-                          _currentBranch.imagePath,
-                          fit: BoxFit.cover,
-                          width: constraints.maxWidth,
-                          height: constraints.maxHeight,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            _currentBranch.imagePath,
+                            fit: BoxFit.cover,
+                            width: constraints.maxWidth,
+                            height: constraints.maxHeight,
+                          ),
                         ),
                       ),
                       Positioned(
-                        bottom: 4,
-                        left: 4,
-                        width: constraints.maxWidth - 9,
+                        bottom: 3,
+                        right: 3,
+                        left: 3,
                         child: Container(
                           decoration: const BoxDecoration(
                             color: Colors.black26,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10)
+                            ),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               _currentBranch.name,
                               style: theme.textTheme.headline5!.copyWith(
-                                  fontWeight: FontWeight.w700, color: Colors.white),
+                                  color: Colors.white
+                              ),
                             ),
                           ),
                         ),

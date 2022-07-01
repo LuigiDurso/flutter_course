@@ -86,7 +86,8 @@ class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
                 child: Text(
                   currentBranch,
                   style: theme.textTheme.headline5!.copyWith(
-                      fontWeight: FontWeight.w700, color: Colors.white),
+                      color: Colors.white
+                  ),
                 ),
               ),
             ),
