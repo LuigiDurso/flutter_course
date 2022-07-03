@@ -25,6 +25,7 @@ class UserDetailPage extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          centerTitle: true,
         ),
         body: UserDetailView(
           currentUser: usersRepository.getCurrentUser(),

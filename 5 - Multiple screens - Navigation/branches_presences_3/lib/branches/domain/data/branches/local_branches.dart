@@ -51,4 +51,11 @@ class LocalBranches implements BranchesDataProvider {
   List<Branch> getBranches() {
     return _branches.map((e) => Branch.fromMap(e)).toList();
   }
+
+  @override
+  Branch findBranchById(int id) {
+    return _branches.where((b) => b['id'] == id)
+        .map((e) => Branch.fromMap(e))
+        .first;
+  }
 }

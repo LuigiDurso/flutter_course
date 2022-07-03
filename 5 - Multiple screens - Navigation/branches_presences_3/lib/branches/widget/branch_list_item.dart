@@ -1,3 +1,4 @@
+import 'package:branches_presences_3/presences/view/branch_presences/branch_presences_page.dart';
 import 'package:flutter/material.dart';
 
 import '../domain/domain.dart';
@@ -11,8 +12,11 @@ class BranchGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var navigator = Navigator.of(context);
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        navigator.pushReplacementNamed(BranchPresencesPage.branchPresencesRoute);
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

@@ -48,14 +48,9 @@ class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InkWell(
-                onTap: () {
-                  navigator.pushReplacementNamed('/');
-                },
-                child: Image.asset(
-                  'assets/images/si2001-logo-bianco.png',
-                  height: AppBar().preferredSize.height,
-                ),
+              Image.asset(
+                'assets/images/si2001-logo-bianco.png',
+                height: AppBar().preferredSize.height,
               ),
               Text(
                 currentBranch,

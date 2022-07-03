@@ -12,4 +12,8 @@ class BranchesRepository {
   List<Branch> getAllBranches() {
     return branchesDataProvider.getBranches();
   }
+
+  Branch findBranchById(int id) {
+    return branchesDataProvider.findBranchById(id);
+  }
 }

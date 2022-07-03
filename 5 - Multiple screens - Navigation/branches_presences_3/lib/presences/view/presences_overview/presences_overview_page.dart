@@ -1,24 +1,31 @@
+import 'package:branches_presences_3/branches/branches.dart';
+import 'package:branches_presences_3/users/domain/data/users/local_users.dart';
+import 'package:branches_presences_3/users/domain/repository/users/users_repository.dart';
 import 'package:flutter/material.dart';
 
+import '../../../users/domain/models/user.dart';
 import '../../domain/data/presences/local_presences.dart';
 import '../../domain/repository/presences/presences_repository.dart';
 import 'presences_overview.dart';
 
 class PresencesPage extends StatelessWidget {
-  final _userBranch = {
-    'id': 3,
-    'name': 'Battipaglia',
-    'address': 'xxx',
-    'imagePath': 'https://picsum.photos/id/3/500/500'
-  };
+
   final PresencesRepository presencesRepository = PresencesRepository(
       presencesDataProvider: LocalPresences()
+  );
+  final UsersRepository usersRepository = UsersRepository(
+      usersDataProvider: LocalUsers()
+  );
+  final BranchesRepository branchesRepository = BranchesRepository(
+    branchesDataProvider: LocalBranches()
   );
 
   PresencesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    User currentUser = usersRepository.getCurrentUser();
+    Branch userBranch = branchesRepository.findBranchById(currentUser.branchId);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -27,11 +34,11 @@ class PresencesPage extends StatelessWidget {
           ),
         ),
         body: PresencesOverview(
-          branchId: _userBranch['id'] as int,
-          branchImagePath: _userBranch['imagePath'] as String,
-          branchName: _userBranch['name'] as String,
+          branchId: currentUser.branchId,
+          branchImagePath: userBranch.imagePath,
+          branchName: userBranch.name,
           currentPresences: presencesRepository.getPresencesByBranchIdAndDateAfter(
-              _userBranch['id'] as int,
+              currentUser.branchId,
               DateTime.now()
           ),
         ),
