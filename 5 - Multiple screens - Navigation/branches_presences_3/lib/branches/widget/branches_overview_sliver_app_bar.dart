@@ -1,3 +1,4 @@
+import 'package:branches_presences_3/users/view/user_detail/user_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
@@ -16,6 +17,7 @@ class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     final theme = Theme.of(context);
     final mediaQuery = MediaQuery.of(context);
+    final navigator = Navigator.of(context);
 
     return Stack(
       clipBehavior: Clip.none,
@@ -46,9 +48,14 @@ class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                'assets/images/si2001-logo-bianco.png',
-                height: AppBar().preferredSize.height,
+              InkWell(
+                onTap: () {
+                  navigator.pushReplacementNamed('/');
+                },
+                child: Image.asset(
+                  'assets/images/si2001-logo-bianco.png',
+                  height: AppBar().preferredSize.height,
+                ),
               ),
               Text(
                 currentBranch,
@@ -59,7 +66,9 @@ class BranchesOverviewSliverAppBar extends SliverPersistentHeaderDelegate {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  navigator.pushNamed(UserDetailPage.userDetailRoute);
+                },
                 icon: const Icon(
                   Icons.person,
                   color: Colors.white,

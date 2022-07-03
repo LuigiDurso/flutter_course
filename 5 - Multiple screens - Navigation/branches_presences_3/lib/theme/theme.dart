@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+var primaryColor = const Color(0xff20488f);
+
 final theme = ThemeData(
-  primaryColor: const Color(0xff20488f),
+  primaryColor: primaryColor,
   scaffoldBackgroundColor: const Color(0xFFE0F2F1),
-  colorScheme: const ColorScheme.light().copyWith(
-    secondary: Colors.white
+  colorScheme: const ColorScheme.light(primary: Colors.blue),
+  dividerColor: Colors.black,
+  appBarTheme: ThemeData.light().appBarTheme.copyWith(
+    color: primaryColor,
   ),
   fontFamily: 'Raleway',
   textTheme: ThemeData.light().textTheme.copyWith(

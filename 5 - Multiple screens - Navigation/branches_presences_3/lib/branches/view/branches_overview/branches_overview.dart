@@ -46,11 +46,47 @@ class _BranchesOverviewState extends State<BranchesOverview> {
         const SliverPadding(padding: EdgeInsets.only(top: 5)),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-                (_, index) => BranchGridItem(
-              branch: _branches[index],
-              actionFn: () {
-                _setCurrentBranch(_branches[index]);
-              },
+            (_, index) => Column(
+              children: [
+                BranchGridItem(
+                  branch: _branches[index],
+                  actionFn: () {
+                    _setCurrentBranch(_branches[index]);
+                  },
+                ),
+                if (index < (_branches.length - 1))
+                  SizedBox(
+                    height: 20,
+                    child: Center(
+                      child: Container(
+                        height: 2,
+                        margin: const EdgeInsetsDirectional.only(
+                            start: 60,
+                            end: 60,
+                        ),
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(
+                                Radius.circular(10),
+                            ),
+                            border: Border.all(
+                                color: Colors.transparent,
+                                width: 1,
+                            ),
+                            color: Colors.grey,
+                            gradient: LinearGradient(
+                                begin: Alignment.centerRight,
+                                end: Alignment.centerLeft,
+                                colors: [
+                                  Colors.transparent,
+                                  Colors.black.withOpacity(0.5),
+                                  Colors.transparent,
+                                ],
+                            )
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
             ),
             childCount: _branches.length,
           ),
