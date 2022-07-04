@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../users/domain/data/users/local_users.dart';
+import '../../../users/domain/repository/users/users_repository.dart';
 import '../../branches.dart';
-import '../../domain/data/branches/local_branches.dart';
-import '../../domain/repository/branches/branches_repository.dart';
 
 class BranchesOverview extends StatefulWidget {
   const BranchesOverview({Key? key}) : super(key: key);
@@ -17,11 +17,16 @@ class _BranchesOverviewState extends State<BranchesOverview> {
 
   BranchesRepository branchesRepository =
       BranchesRepository(branchesDataProvider: LocalBranches());
+  UsersRepository usersRepository = UsersRepository(
+      usersDataProvider: LocalUsers()
+  );
 
   @override
   void initState() {
     _branches = branchesRepository.getAllBranches();
-    _currentBranch = _branches[0];
+    _currentBranch = branchesRepository.findBranchById(
+      usersRepository.getCurrentUser().branchId
+    );
     super.initState();
   }
 

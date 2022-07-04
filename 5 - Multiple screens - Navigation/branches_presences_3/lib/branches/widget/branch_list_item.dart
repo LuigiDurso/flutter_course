@@ -64,15 +64,5 @@ class BranchGridItem extends StatelessWidget {
         ),
       ),
     );
-    return Card(
-      elevation: 10,
-      child: ListTile(
-        title: Text(branch.name),
-        trailing: IconButton(
-          onPressed: actionFn ?? () {},
-          icon: const Icon(Icons.remove_red_eye_outlined),
-        ),
-      ),
-    );
   }
 }
