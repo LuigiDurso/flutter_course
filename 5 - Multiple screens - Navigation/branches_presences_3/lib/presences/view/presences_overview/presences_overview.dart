@@ -100,6 +100,7 @@ class PresencesOverview extends StatelessWidget {
           flex: 2,
           fit: FlexFit.tight,
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (_, index) => Card(
               child: ListTile(
                 title: Text(currentPresences[index].username),
