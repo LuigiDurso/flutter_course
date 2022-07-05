@@ -15,7 +15,10 @@ class BranchGridItem extends StatelessWidget {
     var navigator = Navigator.of(context);
     return InkWell(
       onTap: () {
-        navigator.pushReplacementNamed(BranchPresencesPage.branchPresencesRoute);
+        navigator.pushReplacementNamed(
+            BranchPresencesPage.branchPresencesRoute,
+          arguments: branch.id
+        );
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

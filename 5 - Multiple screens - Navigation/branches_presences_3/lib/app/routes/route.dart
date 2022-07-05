@@ -5,13 +5,16 @@ import 'package:flutter/material.dart';
 import '../../presences/view/branch_presences/branch_presences_page.dart';
 
 Route? onGenerateRoute(RouteSettings routeSettings) {
+  var args = routeSettings.arguments;
   switch (routeSettings.name) {
     case '/':
       return MaterialPageRoute(builder: (_) => const HomeView());
     case UserDetailPage.userDetailRoute:
       return MaterialPageRoute(builder: (_) => UserDetailPage());
     case BranchPresencesPage.branchPresencesRoute:
-      return MaterialPageRoute(builder: (_) => BranchPresencesPage());
+      return MaterialPageRoute(
+          builder: (_) => BranchPresencesPage(selectedBranch: args as int,),
+      );
     default:
       return MaterialPageRoute(builder: (_) => const HomeView());
   }
