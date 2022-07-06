@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.16)  6 JUL 2022 16:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.16)  6 JUL 2022 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1767,13 +1767,13 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 189.
  [13
 
  <../libs/cubit-flow.png>]
-<../libs/cubit-bloc-diffs.png, id=432, 893.3375pt x 384.43625pt>
+<../libs/cubit-bloc-diffs.png, id=432, 891.33pt x 365.365pt>
 File: ../libs/cubit-bloc-diffs.png Graphic file (type png)
 <use ../libs/cubit-bloc-diffs.png>
 Package pdftex.def Info: ../libs/cubit-bloc-diffs.png  used on input line 211.
-(pdftex.def)             Requested size: 133.99484pt x 57.66295pt.
+(pdftex.def)             Requested size: 133.69373pt x 54.80238pt.
 
-Overfull \hbox (11.08078pt too wide) in paragraph at lines 211--211
+Overfull \hbox (10.77966pt too wide) in paragraph at lines 211--211
  [] 
  []
 
@@ -1789,7 +1789,7 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 211.
 [14
 
  <../libs/cubit-bloc-diffs.png>]
-<../libs/cubit-bloc-stream-communication.png, id=458, 1072.005pt x 485.815pt>
+<../libs/cubit-bloc-stream-communication.png, id=459, 1072.005pt x 485.815pt>
 File: ../libs/cubit-bloc-stream-communication.png Graphic file (type png)
 <use ../libs/cubit-bloc-stream-communication.png>
 Package pdftex.def Info: ../libs/cubit-bloc-stream-communication.png  used on i
@@ -1819,7 +1819,7 @@ Package pdftex.def Info: ../libs/emblem.png  used on input line 227.
  [16
 
 ]
-<../libs/alphonse-gaston-regards.jpg, id=511, 1204.5pt x 680.5425pt>
+<../libs/alphonse-gaston-regards.jpg, id=512, 1204.5pt x 680.5425pt>
 File: ../libs/alphonse-gaston-regards.jpg Graphic file (type jpg)
 <use ../libs/alphonse-gaston-regards.jpg>
 Package pdftex.def Info: ../libs/alphonse-gaston-regards.jpg  used on input lin
@@ -1869,9 +1869,9 @@ Here is how much of TeX's memory you used:
 e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/c
 m-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uh
 vb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (17 pages, 1327573 bytes).
+Output written on main.pdf (17 pages, 1334118 bytes).
 PDF statistics:
- 563 PDF objects out of 1000 (max. 8388607)
+ 564 PDF objects out of 1000 (max. 8388607)
  485 compressed objects within 5 object streams
  40 named destinations out of 1000 (max. 500000)
  17044 words of extra memory for PDF output out of 17280 (max. 10000000)
