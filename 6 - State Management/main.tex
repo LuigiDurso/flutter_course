@@ -1,0 +1,247 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This project aims to create the template for presentation.                   %%
+%% author: Luigi Durso                                                          %%
+%% contacts:                                                                    %%
+%%    e-mail: luigi.durso@si2001.it                                             %%
+%%    linktree: https://linktr.ee/maumneto                                      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{../libs/presentation_format}
+% Inserting the preamble file with the packages
+\input{../libs/preamble.tex}
+% Inserting the references file
+\bibliography{../references.bib}
+
+% Title
+\title[Flutter-Dart]{\huge\textbf{Flutter e Dart - Le basi}}
+% Subtitle
+\subtitle{Flutter - Gestione dello stato}
+% Author of the presentation
+\author{Luigi Durso}
+% Company's Name
+\institute[SI2001]{
+    % email for contact
+    \normalsize{\email{luigi.durso@si2001.it}}
+    \newline
+    \centering
+    \includegraphics[scale=0.3]{../libs/emblem.png}
+    \newline
+    % company name
+    \company
+}
+% date of the presentation
+\date{\today}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start Document of the Presentation                                           %%               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% insert the code style
+\input{../libs/code_style}
+
+%% ---------------------------------------------------------------------------
+% First frame (with tile, subtitle, ...)
+\begin{frame}{}
+    \maketitle
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Table of content frame
+\begin{frame}{Sommario}
+    \begin{multicols}{2}
+        \tableofcontents
+    \end{multicols}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Lezione precedente}
+\begin{frame}{Un po' di codice}
+\begin{tabular}{lll}
+	\raisebox{-.5\height}{\includegraphics[scale=0.3]{../libs/Developer-Friendly.png}}
+	\emph{Analizziamo l'elaborato precedente!}\\
+\end{tabular}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Problema}
+\begin{frame}{Stato condiviso}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[scale=0.2]{../libs/state-management-problem}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Qual'è il problema?}
+				\begin{itemize}
+					\item Dati condivisi tra più livelli dell'albero dei widgets
+					\item Richiesta di passaggio di parametri anche in widget che non ne hanno bisogno
+					\item Re-build eseguita su tutto il percorso di dipendenze
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Idee di soluzione}
+	\emph{Un possibile approccio di soluzione}
+	\begin{itemize}
+		\item Pensare allo stato disaccoppiato dai widgets
+		\item Interazione tra widget e stato attraverso eventi e funzioni
+		\item Ogni widget si sottoscrive ai cambiamenti della parte di stato a cui è interessato
+	\end{itemize}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Soluzioni}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/state-management-stats}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{BLoC}
+\begin{frame}{BLoC}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/bloc-first-logo}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Perché usare BLoC}
+	\emph{Bloc segue tre principi fondamentali:}
+	\begin{itemize}
+		\item \emph{Semplicità}: Facile da imparare, chiunque può approcciarsi facilmente a questa tecnologia.
+		\item \emph{Potenza}: Attraverso la creazione di piccoli componenti si può creare un'applicativo di grande complessità.
+		\item \emph{Testabilità}: Ogni aspetto dell'applicativo è facilmente testabile.
+	\end{itemize}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Approcci diversi}
+	\emph{Possiamo usare approcci diversi in base alle nostre esigenze:}
+	\begin{itemize}
+		\item Approccio event-driven con \emph{BLoC}
+		\item Approccio basato su funzioni con \emph{Cubit}
+	\end{itemize}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Struttura di BLoC}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[scale=0.15]{../libs/bloc-structure}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\begin{itemize}
+					\item Lettura degli eventi scatenati dalla UI
+					\item Ricezione dell'evento e gestione mediante il giusto event handler
+					\item Elaborazione dell'evento ( Es. Interazione con Repository )
+					\item Rendering del nuovo stato nella UI
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Cosa possiamo osservare}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/bloc-flow}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Struttura di Cubit}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/cubit-structure}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Cosa possiamo osservare}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/cubit-flow}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Cubit vs BLoC}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[scale=0.15]{../libs/cubit-bloc-diffs}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\begin{itemize}
+					\item Una struttura ad eventi necessità di complessità aggiuntiva.
+					\item Non sempre si ha bisogno di una gestione complessa.
+					\item Si può sempre optare per soluzioni ibride, 	\emph{BLoC più Cubit}
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Cubits/BLoCs possono comunicare tra loro}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/cubit-bloc-stream-communication}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Esercitazione}
+\begin{frame}{Migliorare la precedente esercitazione}
+	\emph{Introdurre una gestione di memoria con Bloc/Cubit}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+% Reference frames
+%\begin{frame}[allowframebreaks]
+%    \frametitle{Riferimenti}
+%    \printbibliography
+%\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Final frame
+\section{Fine}
+\begin{frame}{}
+	\huge\emph{Grazie per l'attenzione!}
+	\newline
+	\vfill
+	\hfill\includegraphics[width=6cm]{../libs/alphonse-gaston-regards}
+\end{frame}
+
+\end{document}
