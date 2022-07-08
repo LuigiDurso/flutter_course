@@ -1,4 +1,6 @@
-class User {
+import 'package:equatable/equatable.dart';
+
+class User extends Equatable {
   final int id;
   final String name;
   final String lastname;
@@ -16,6 +18,19 @@ class User {
     required this.about,
     required this.branchId,
   });
+
+  const User.empty() :
+        id = -1,
+        name = '',
+        lastname = '',
+        email = '',
+        imagePath = '',
+        about = '',
+        branchId = -1;
+
+  bool get isNotEmpty {
+    return id > 0;
+  }
 
   @override
   bool operator ==(Object other) =>
@@ -88,4 +103,7 @@ class User {
       branchId: map['branchId'] as int,
     );
   }
+
+  @override
+  List<Object> get props => [id, name, lastname, email, imagePath, about, branchId];
 }

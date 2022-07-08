@@ -1,6 +1,6 @@
-import 'dart:math';
+import 'package:equatable/equatable.dart';
 
-class Branch {
+class Branch extends Equatable {
   final int id;
   final String name;
   final String address;
@@ -14,6 +14,9 @@ class Branch {
     required this.imagePath,
     required this.isCoWorking,
   });
+
+  const Branch.empty() :
+        id = -1, name = '', address = '', imagePath = '', isCoWorking = false;
 
   @override
   bool operator ==(Object other) =>
@@ -74,4 +77,7 @@ class Branch {
   String toString() {
     return 'Branch{ id: $id, name: $name, address: $address, imagePath: $imagePath, isCoWorking: $isCoWorking,}';
   }
+
+  @override
+  List<Object> get props => [id, name, address, imagePath, isCoWorking];
 }

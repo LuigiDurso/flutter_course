@@ -65,4 +65,9 @@ class LocalPresences implements PresencesDataProvider {
         .where((element) => element.branchId == branchId && date.isBefore(element.dateTime))
         .toList();
   }
+
+  @override
+  List<Presence> getAllPresences() {
+    return [ ..._presences ];
+  }
 }

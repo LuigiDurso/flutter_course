@@ -1,4 +1,7 @@
+import 'package:branches_presences_4/app/bloc/app_bloc.dart';
+import 'package:branches_presences_4/branches/bloc/branches_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'branches_overview.dart';
 
@@ -8,6 +11,8 @@ class BranchesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
+    var branches = context.watch<BranchesCubit>().state.branches;
+    var userBranch = context.watch<AppBloc>().state.userBranch;
     return SafeArea(
       child: Scaffold(
         appBar: mediaQuery.orientation == Orientation.landscape ? AppBar(
@@ -15,7 +20,10 @@ class BranchesPage extends StatelessWidget {
             'assets/images/si2001-logo-bianco.png',
           ),
         ) : null,
-        body: const BranchesOverview(),
+        body: BranchesOverview(
+          branches: branches,
+          currentBranch: userBranch,
+        ),
       ),
     );
   }

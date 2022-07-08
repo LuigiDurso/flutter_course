@@ -11,7 +11,7 @@ class HomeView extends StatelessWidget {
     return Builder(
       builder: (ctx) => MediaQuery.of(ctx).orientation == Orientation.portrait
           ? const BranchesPage()
-          : PresencesPage(),
+          : const PresencesPage(),
     );
   }
 }

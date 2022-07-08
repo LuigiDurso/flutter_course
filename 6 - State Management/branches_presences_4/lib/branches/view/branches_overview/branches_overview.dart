@@ -1,40 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../../../users/domain/data/users/local_users.dart';
-import '../../../users/domain/repository/users/users_repository.dart';
 import '../../branches.dart';
 
-class BranchesOverview extends StatefulWidget {
-  const BranchesOverview({Key? key}) : super(key: key);
+class BranchesOverview extends StatelessWidget {
+  final List<Branch> branches;
+  final Branch currentBranch;
 
-  @override
-  State<BranchesOverview> createState() => _BranchesOverviewState();
-}
-
-class _BranchesOverviewState extends State<BranchesOverview> {
-  late List<Branch> _branches;
-  late Branch _currentBranch;
-
-  BranchesRepository branchesRepository =
-      BranchesRepository(branchesDataProvider: LocalBranches());
-  UsersRepository usersRepository = UsersRepository(
-      usersDataProvider: LocalUsers()
-  );
-
-  @override
-  void initState() {
-    _branches = branchesRepository.getAllBranches();
-    _currentBranch = branchesRepository.findBranchById(
-      usersRepository.getCurrentUser().branchId
-    );
-    super.initState();
-  }
-
-  void _setCurrentBranch(Branch newBranch) {
-    setState(() {
-      _currentBranch = newBranch;
-    });
-  }
+  const BranchesOverview({Key? key,
+    required this.branches,
+    required this.currentBranch
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +19,8 @@ class _BranchesOverviewState extends State<BranchesOverview> {
           pinned: true,
           delegate: BranchesOverviewSliverAppBar(
             expandedHeight: 200.0,
-            currentBranch: _currentBranch.name,
-            branchImage: _currentBranch.imagePath,
+            currentBranch: currentBranch.name,
+            branchImage: currentBranch.imagePath,
           ),
         ),
         const SliverPadding(padding: EdgeInsets.only(top: 5)),
@@ -54,12 +29,9 @@ class _BranchesOverviewState extends State<BranchesOverview> {
             (_, index) => Column(
               children: [
                 BranchGridItem(
-                  branch: _branches[index],
-                  actionFn: () {
-                    _setCurrentBranch(_branches[index]);
-                  },
+                  branch: branches[index],
                 ),
-                if (index < (_branches.length - 1))
+                if (index < (branches.length - 1))
                   SizedBox(
                     height: 20,
                     child: Center(
@@ -93,7 +65,7 @@ class _BranchesOverviewState extends State<BranchesOverview> {
                   ),
               ],
             ),
-            childCount: _branches.length,
+            childCount: branches.length,
           ),
         ),
       ],

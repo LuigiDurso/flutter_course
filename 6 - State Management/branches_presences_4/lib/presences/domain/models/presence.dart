@@ -1,4 +1,6 @@
-class Presence {
+import 'package:equatable/equatable.dart';
+
+class Presence extends Equatable {
   final int branchId;
   final DateTime dateTime;
   final String username;
@@ -53,4 +55,7 @@ class Presence {
       username: map['username'] as String,
     );
   }
+
+  @override
+  List<Object> get props => [branchId, dateTime, username];
 }

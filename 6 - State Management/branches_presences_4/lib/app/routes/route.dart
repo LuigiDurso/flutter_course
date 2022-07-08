@@ -9,16 +9,14 @@ class RouteSettingsData {
   final dynamic data;
   final ScreenOrientation rotation;
 
-  RouteSettingsData({
-    this.data,
-    required this.rotation
-  });
+  RouteSettingsData({this.data, required this.rotation});
 }
 
-RouteSettings rotationSettings(RouteSettings settings, ScreenOrientation rotation) {
+RouteSettings rotationSettings(
+    RouteSettings settings, ScreenOrientation rotation) {
   return settings.copyWith(
-    arguments: RouteSettingsData(rotation: rotation, data: settings.arguments)
-  );
+      arguments:
+          RouteSettingsData(rotation: rotation, data: settings.arguments));
 }
 
 Route? onGenerateRoute(RouteSettings routeSettings) {
@@ -32,12 +30,16 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     case UserDetailPage.userDetailRoute:
       return MaterialPageRoute(
         builder: (_) => UserDetailPage(),
-        settings: rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
+        settings:
+            rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
       );
     case BranchPresencesPage.branchPresencesRoute:
       return MaterialPageRoute(
-        builder: (_) => BranchPresencesPage(selectedBranch: args as int,),
-        settings: rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
+        builder: (_) => BranchPresencesPage(
+          selectedBranch: args as int,
+        ),
+        settings:
+            rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
       );
     default:
       return MaterialPageRoute(
@@ -46,5 +48,3 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
       );
   }
 }
-
-// TODO: impedire cambio orientamento dispositivo in alcune pagine

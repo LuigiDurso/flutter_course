@@ -1,13 +1,13 @@
 import 'package:branches_presences_4/presences/view/branch_presences/branch_presences_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../domain/domain.dart';
 
 class BranchGridItem extends StatelessWidget {
   final Branch branch;
-  final VoidCallback? actionFn;
 
-  const BranchGridItem({Key? key, required this.branch, this.actionFn})
+  const BranchGridItem({Key? key, required this.branch})
       : super(key: key);
 
   @override

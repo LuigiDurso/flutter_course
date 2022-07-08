@@ -1,8 +1,9 @@
 import 'package:branches_presences_4/branches/branches.dart';
+import 'package:branches_presences_4/presences/bloc/presences_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/data/presences/local_presences.dart';
-import '../../domain/repository/presences/presences_repository.dart';
+import '../../../app/bloc/app_bloc.dart';
 import 'branch_presences_view.dart';
 
 class BranchPresencesPage extends StatelessWidget {
@@ -10,14 +11,7 @@ class BranchPresencesPage extends StatelessWidget {
 
   final int selectedBranch;
 
-  final PresencesRepository presencesRepository = PresencesRepository(
-      presencesDataProvider: LocalPresences()
-  );
-  final BranchesRepository branchRepository = BranchesRepository(
-    branchesDataProvider: LocalBranches(),
-  );
-
-  BranchPresencesPage({
+  const BranchPresencesPage({
     Key? key,
     required this.selectedBranch
   }) : super(key: key);
@@ -25,7 +19,8 @@ class BranchPresencesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var navigator = Navigator.of(context);
-    Branch selectedBranchObj = branchRepository.findBranchById(selectedBranch);
+    Branch selectedBranchObj = context.read<AppBloc>().state.userBranch;
+    context.read<PresencesCubit>().fetchPresencesByBranchId(selectedBranch);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -40,7 +35,7 @@ class BranchPresencesPage extends StatelessWidget {
           centerTitle: true,
         ),
         body: BranchPresencesView(
-            presences: presencesRepository.getPresencesByBranchId(selectedBranch),
+            presences: context.watch<PresencesCubit>().state.presences,
         ),
       ),
     );

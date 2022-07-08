@@ -1,31 +1,24 @@
+import 'package:branches_presences_4/app/bloc/app_bloc.dart';
+import 'package:branches_presences_4/branches/bloc/branches_cubit.dart';
 import 'package:branches_presences_4/branches/branches.dart';
-import 'package:branches_presences_4/users/domain/data/users/local_users.dart';
-import 'package:branches_presences_4/users/domain/repository/users/users_repository.dart';
+import 'package:branches_presences_4/presences/bloc/presences_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../users/domain/models/user.dart';
-import '../../domain/data/presences/local_presences.dart';
-import '../../domain/repository/presences/presences_repository.dart';
 import 'presences_overview.dart';
 
 class PresencesPage extends StatelessWidget {
 
-  final PresencesRepository presencesRepository = PresencesRepository(
-      presencesDataProvider: LocalPresences()
-  );
-  final UsersRepository usersRepository = UsersRepository(
-      usersDataProvider: LocalUsers()
-  );
-  final BranchesRepository branchesRepository = BranchesRepository(
-    branchesDataProvider: LocalBranches()
-  );
-
-  PresencesPage({Key? key}) : super(key: key);
+  const PresencesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    User currentUser = usersRepository.getCurrentUser();
-    Branch userBranch = branchesRepository.findBranchById(currentUser.branchId);
+    User currentUser = context.read<AppBloc>().state.user;
+    Branch userBranch = context.read<AppBloc>().state.userBranch;
+    context.read<PresencesCubit>().fetchPresencesByBranchIdAndDateAfter(
+      currentUser.branchId, DateTime.now()
+    );
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -37,10 +30,7 @@ class PresencesPage extends StatelessWidget {
           branchId: currentUser.branchId,
           branchImagePath: userBranch.imagePath,
           branchName: userBranch.name,
-          currentPresences: presencesRepository.getPresencesByBranchIdAndDateAfter(
-              currentUser.branchId,
-              DateTime.now()
-          ),
+          currentPresences: context.watch<PresencesCubit>().state.presences,
         ),
       ),
     );
