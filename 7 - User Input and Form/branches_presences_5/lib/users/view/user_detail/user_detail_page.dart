@@ -12,6 +12,7 @@ class UserDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
+    var navigator = Navigator.of(context);
 
     return SafeArea(
       child: Scaffold(
@@ -22,10 +23,18 @@ class UserDetailPage extends StatelessWidget {
               color: Colors.white,
             ),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                navigator.pushNamed(EditUserDetailPage.userDetailRoute);
+              },
+              icon: const Icon(Icons.edit),
+            )
+          ],
           centerTitle: true,
         ),
         body: UserDetailView(
-          currentUser: context.read<AppBloc>().state.user
+          currentUser: context.watch<AppBloc>().state.user
         ),
       ),
     );

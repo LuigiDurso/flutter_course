@@ -9,7 +9,7 @@ import 'package:branches_presences_5/users/domain/repository/users/users_reposit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../theme/theme.dart';
+import '../theme/theme.dart';
 import '../routes/navigator_observer.dart';
 import '../routes/route.dart';
 import 'home_view.dart';
@@ -54,10 +54,9 @@ class AppView extends StatelessWidget {
           ),
           BlocProvider(
             create: (ctx) => AppBloc(
-              branchesCubit: ctx.read<BranchesCubit>()
-            )..add(
-                AppUserChanged(ctx.read<UsersRepository>().getCurrentUser())
-            ),
+              branchesCubit: ctx.read<BranchesCubit>(),
+              usersRepository: ctx.read<UsersRepository>(),
+            )..add(const FetchAppUser(),),
           ),
         ],
         child: MaterialApp(

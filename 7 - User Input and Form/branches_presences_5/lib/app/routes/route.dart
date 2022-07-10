@@ -1,5 +1,6 @@
 import 'package:branches_presences_5/app/view/home_view.dart';
 import 'package:branches_presences_5/users/view/user_detail/user_detail_page.dart';
+import 'package:branches_presences_5/users/view/view.dart';
 import 'package:flutter/material.dart';
 
 import '../../presences/view/branch_presences/branch_presences_page.dart';
@@ -29,9 +30,15 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
       );
     case UserDetailPage.userDetailRoute:
       return MaterialPageRoute(
-        builder: (_) => UserDetailPage(),
+        builder: (_) => const UserDetailPage(),
         settings:
             rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
+      );
+    case EditUserDetailPage.userDetailRoute:
+      return MaterialPageRoute(
+        builder: (_) => const EditUserDetailPage(),
+        settings:
+        rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
       );
     case BranchPresencesPage.branchPresencesRoute:
       return MaterialPageRoute(
