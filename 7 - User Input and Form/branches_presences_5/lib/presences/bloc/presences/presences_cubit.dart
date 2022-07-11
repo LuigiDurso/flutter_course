@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../domain/models/presence.dart';
-import '../domain/repository/presences/presences_repository.dart';
+import '../../domain/models/presence.dart';
+import '../../domain/repository/presences/presences_repository.dart';
 
 part 'presences_state.dart';
 

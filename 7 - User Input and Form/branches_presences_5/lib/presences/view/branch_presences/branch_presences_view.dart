@@ -1,4 +1,6 @@
+import 'package:branches_presences_5/presences/bloc/presences_form/presences_form_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../../domain/data/presences/calendar_presences.dart';
@@ -16,8 +18,10 @@ class BranchPresencesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SfCalendar(
-      onLongPress: (arg) {
-        print(arg.date);
+      onSelectionChanged: (selection) {
+        if (selection.date != null) {
+          context.read<PresencesFormCubit>().selectDate(selection.date!);
+        }
       },
       view: CalendarView.month,
       firstDayOfWeek: 1,

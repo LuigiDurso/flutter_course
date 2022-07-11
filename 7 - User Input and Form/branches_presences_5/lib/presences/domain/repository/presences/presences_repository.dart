@@ -16,4 +16,16 @@ class PresencesRepository {
   List<Presence> getPresencesByBranchIdAndDateAfter(int branchId, DateTime dateTime) {
     return presencesDataProvider.getPresencesByBranchIdAndDateAfter(branchId, dateTime);
   }
+
+  void addPresence(Presence presence) {
+    presencesDataProvider.addPresence(presence);
+  }
+
+  void removePresence(Presence presence) {
+    presencesDataProvider.removePresence(presence);
+  }
+
+  bool isPresenceExists(Presence presence) {
+    return presencesDataProvider.isPresenceExists(presence);
+  }
 }

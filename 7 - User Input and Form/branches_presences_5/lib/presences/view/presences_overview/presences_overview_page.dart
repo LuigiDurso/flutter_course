@@ -1,7 +1,7 @@
 import 'package:branches_presences_5/app/bloc/app_bloc.dart';
 import 'package:branches_presences_5/branches/bloc/branches_cubit.dart';
 import 'package:branches_presences_5/branches/branches.dart';
-import 'package:branches_presences_5/presences/bloc/presences_cubit.dart';
+import 'package:branches_presences_5/presences/bloc/presences/presences_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

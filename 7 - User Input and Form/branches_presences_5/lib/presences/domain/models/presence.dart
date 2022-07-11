@@ -1,8 +1,10 @@
+import 'package:branches_presences_5/app/domain/models/equatable_date_time.dart';
 import 'package:equatable/equatable.dart';
+import 'package:intl/intl.dart';
 
 class Presence extends Equatable {
   final int branchId;
-  final DateTime dateTime;
+  final EquatableDateTime dateTime;
   final String username;
 
   const Presence({
@@ -12,25 +14,13 @@ class Presence extends Equatable {
   });
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is Presence &&
-          runtimeType == other.runtimeType &&
-          branchId == other.branchId &&
-          dateTime == other.dateTime &&
-          username == other.username);
-
-  @override
-  int get hashCode => branchId.hashCode ^ dateTime.hashCode ^ username.hashCode;
-
-  @override
   String toString() {
     return 'Presence{ branchId: $branchId, dateTime: $dateTime, username: $username,}';
   }
 
   Presence copyWith({
     int? branchId,
-    DateTime? dateTime,
+    EquatableDateTime? dateTime,
     String? username,
   }) {
     return Presence(
@@ -51,11 +41,15 @@ class Presence extends Equatable {
   factory Presence.fromMap(Map<String, dynamic> map) {
     return Presence(
       branchId: map['branchId'] as int,
-      dateTime: map['dateTime'] as DateTime,
+      dateTime: map['dateTime'] as EquatableDateTime,
       username: map['username'] as String,
     );
   }
 
   @override
-  List<Object> get props => [branchId, dateTime, username];
+  List<Object> get props => [
+    branchId,
+    dateTime,
+    username
+  ];
 }

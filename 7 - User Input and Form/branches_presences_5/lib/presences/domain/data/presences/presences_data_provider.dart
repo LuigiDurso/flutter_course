@@ -5,4 +5,7 @@ abstract class PresencesDataProvider {
   List<Presence> getPresencesByBranchIdAndDateAfter(
       int branchId, DateTime date);
   List<Presence> getAllPresences();
+  void addPresence(Presence presence);
+  bool isPresenceExists(Presence presence);
+  void removePresence(Presence presence);
 }

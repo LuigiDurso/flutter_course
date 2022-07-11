@@ -1,7 +1,7 @@
 import 'package:branches_presences_5/app/bloc/app_bloc.dart';
 import 'package:branches_presences_5/branches/bloc/branches_cubit.dart';
 import 'package:branches_presences_5/branches/branches.dart';
-import 'package:branches_presences_5/presences/bloc/presences_cubit.dart';
+import 'package:branches_presences_5/presences/bloc/presences/presences_cubit.dart';
 import 'package:branches_presences_5/presences/domain/data/presences/local_presences.dart';
 import 'package:branches_presences_5/presences/domain/repository/presences/presences_repository.dart';
 import 'package:branches_presences_5/users/domain/data/users/local_users.dart';

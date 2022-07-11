@@ -1,4 +1,5 @@
 import 'package:branches_presences_5/app/view/home_view.dart';
+import 'package:branches_presences_5/branches/domain/models/branch.dart';
 import 'package:branches_presences_5/users/view/user_detail/user_detail_page.dart';
 import 'package:branches_presences_5/users/view/view.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     case BranchPresencesPage.branchPresencesRoute:
       return MaterialPageRoute(
         builder: (_) => BranchPresencesPage(
-          selectedBranch: args as int,
+          selectedBranch: args as Branch,
         ),
         settings:
             rotationSettings(routeSettings, ScreenOrientation.portraitOnly),

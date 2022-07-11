@@ -17,7 +17,7 @@ class BranchGridItem extends StatelessWidget {
       onTap: () {
         navigator.pushReplacementNamed(
             BranchPresencesPage.branchPresencesRoute,
-          arguments: branch.id
+          arguments: branch
         );
       },
       child: Padding(
