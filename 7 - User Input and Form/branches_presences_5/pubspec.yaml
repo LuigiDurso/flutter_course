@@ -41,6 +41,7 @@ dependencies:
   bloc: ^8.0.3
   provider: ^6.0.3
   flutter_bloc: ^8.0.1
+  flutter_launcher_icons: ^0.9.3
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/si2001-logo-bianco.png
+    - assets/images/spinner_slow.gif
+    - assets/images/spinner_fast.gif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -112,3 +115,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/images/si2001-logo-bianco.png"
+  adaptive_icon_background: "assets/images/si2001-logo-bianco.png"
+  adaptive_icon_foreground: "#20488FFF"

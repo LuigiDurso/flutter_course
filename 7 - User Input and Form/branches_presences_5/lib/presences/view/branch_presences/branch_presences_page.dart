@@ -1,3 +1,4 @@
+import 'package:branches_presences_5/app/utils/spinner_dialog.dart';
 import 'package:branches_presences_5/branches/branches.dart';
 import 'package:branches_presences_5/presences/bloc/presences/presences_cubit.dart';
 import 'package:branches_presences_5/presences/bloc/presences_form/presences_form_cubit.dart';
@@ -45,7 +46,7 @@ class BranchPresencesPage extends StatelessWidget {
               }
               if (state.status ==
                   PresencesFormStatus.submissionInProgress) {
-                _buildShowDialog(context);
+                SpinnerDialog.buildShowDialog(context);
               }
               if (state.status == PresencesFormStatus.submissionSuccess) {
                 navigator.pop();
@@ -103,16 +104,5 @@ class BranchPresencesPage extends StatelessWidget {
         }),
       ),
     );
-  }
-
-  _buildShowDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
   }
 }
