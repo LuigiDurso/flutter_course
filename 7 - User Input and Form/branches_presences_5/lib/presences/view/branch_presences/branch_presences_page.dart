@@ -1,4 +1,5 @@
 import 'package:branches_presences_5/app/utils/spinner_dialog.dart';
+import 'package:branches_presences_5/app/view/home_view.dart';
 import 'package:branches_presences_5/branches/branches.dart';
 import 'package:branches_presences_5/presences/bloc/presences/presences_cubit.dart';
 import 'package:branches_presences_5/presences/bloc/presences_form/presences_form_cubit.dart';
@@ -33,6 +34,7 @@ class BranchPresencesPage extends StatelessWidget {
         ),
         child: Builder(builder: (context) {
           return BlocConsumer<PresencesFormCubit, PresencesFormState>(
+            listenWhen: (previous, current) => previous.status != current.status,
             listener: (context, state) {
               if (state.status == PresencesFormStatus.submissionFailed) {
                 navigator.pop();
@@ -44,8 +46,8 @@ class BranchPresencesPage extends StatelessWidget {
                   ),
                 );
               }
-              if (state.status ==
-                  PresencesFormStatus.submissionInProgress) {
+              if (state.status == PresencesFormStatus.submissionInProgress) {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 SpinnerDialog.buildShowDialog(context);
               }
               if (state.status == PresencesFormStatus.submissionSuccess) {
@@ -55,7 +57,7 @@ class BranchPresencesPage extends StatelessWidget {
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
                   ..showSnackBar(
-                    const SnackBar(content: Text('Presenza aggiunta!')),
+                    const SnackBar(content: Text('Operazione effettuata!')),
                   );
                 context
                     .read<PresencesFormCubit>()
@@ -66,7 +68,7 @@ class BranchPresencesPage extends StatelessWidget {
               return Scaffold(
                 appBar: AppBar(
                   leading: IconButton(
-                    onPressed: () => navigator.pushReplacementNamed('/'),
+                    onPressed: () => navigator.pushReplacementNamed(HomeView.homeRoute),
                     icon: const Icon(Icons.home),
                   ),
                   title: Text("Presenze ${selectedBranch.name}"),

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.si2001.branches_presences_5">
    <application
-        android:label="branches_presences_5"
+        android:label="Si2001 Branches Presences"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

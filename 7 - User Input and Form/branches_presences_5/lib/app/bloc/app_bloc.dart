@@ -6,7 +6,6 @@ import 'package:equatable/equatable.dart';
 import '../../branches/bloc/branches_cubit.dart';
 import '../../branches/domain/models/branch.dart';
 import '../../users/domain/models/user.dart';
-import '../../users/domain/repository/users/users_repository.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
@@ -16,23 +15,21 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   late StreamSubscription branchesSubscription;
   
   final BranchesCubit branchesCubit;
-  final UsersRepository usersRepository;
 
   AppBloc({
     required this.branchesCubit,
-    required this.usersRepository,
   }) : super(const AppState.unauthenticated()) {
 
     branchesSubscription = branchesCubit.stream.listen((BranchesState branchesState) {
       _onBranchesChanged(branchesState);
     });
 
-    on<FetchAppUser>(_onFetchAppUser);
+    on<AppUserChanged>(_onAppUserChanged);
     on<UserBranchChanged>(_onUserBranchChanged);
   }
 
-  void _onFetchAppUser(FetchAppUser event, Emitter<AppState> emit) {
-    var currentUser = usersRepository.getCurrentUser();
+  void _onAppUserChanged(AppUserChanged event, Emitter<AppState> emit) {
+    var currentUser = event.user;
     emit(
       currentUser.isNotEmpty
           ? AppState.authenticated(

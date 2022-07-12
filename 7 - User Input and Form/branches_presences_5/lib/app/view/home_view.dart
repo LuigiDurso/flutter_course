@@ -4,6 +4,8 @@ import '../../branches/view/branches_overview/branches_overview_page.dart';
 import '../../presences/view/presences_overview/presences_overview_page.dart';
 
 class HomeView extends StatelessWidget {
+  static const String homeRoute = '/home';
+
   const HomeView({Key? key}) : super(key: key);
 
   @override

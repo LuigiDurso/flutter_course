@@ -1,9 +1,10 @@
 import '../../models/user.dart';
 
 abstract class UsersDataProvider {
-  User getCurrentUser();
+  User? getUserByEmailAndPassword(String email, String password);
 
-  User updateCurrentUser(
+  User? updateUser(
+    int id,
     String name,
     String email,
     String imagePath,

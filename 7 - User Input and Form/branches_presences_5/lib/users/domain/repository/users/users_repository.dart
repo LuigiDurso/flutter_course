@@ -6,16 +6,17 @@ class UsersRepository {
 
   UsersRepository({required this.usersDataProvider});
 
-  User getCurrentUser() {
-    return usersDataProvider.getCurrentUser();
+  User? getUserByEmailAndPassword(String email, String password) {
+    return usersDataProvider.getUserByEmailAndPassword(email, password);
   }
 
-  User updateCurrentUser(
+  User? updateUser(
+    int id,
     String name,
     String email,
     String imagePath,
     String about,
   ) {
-    return usersDataProvider.updateCurrentUser(name, email, imagePath, about);
+    return usersDataProvider.updateUser(id, name, email, imagePath, about);
   }
 }

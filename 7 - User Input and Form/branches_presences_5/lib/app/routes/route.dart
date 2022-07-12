@@ -1,6 +1,6 @@
 import 'package:branches_presences_5/app/view/home_view.dart';
 import 'package:branches_presences_5/branches/domain/models/branch.dart';
-import 'package:branches_presences_5/users/view/user_detail/user_detail_page.dart';
+import 'package:branches_presences_5/users/view/login/login_page.dart';
 import 'package:branches_presences_5/users/view/view.dart';
 import 'package:flutter/material.dart';
 
@@ -24,10 +24,16 @@ RouteSettings rotationSettings(
 Route? onGenerateRoute(RouteSettings routeSettings) {
   var args = routeSettings.arguments;
   switch (routeSettings.name) {
-    case '/':
+    case HomeView.homeRoute:
       return MaterialPageRoute(
         builder: (_) => const HomeView(),
         settings: rotationSettings(routeSettings, ScreenOrientation.rotating),
+      );
+    case LoginPage.loginRoute:
+      return MaterialPageRoute(
+        builder: (_) => const LoginPage(),
+        settings:
+        rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
       );
     case UserDetailPage.userDetailRoute:
       return MaterialPageRoute(
@@ -49,10 +55,6 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
         settings:
             rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
       );
-    default:
-      return MaterialPageRoute(
-        builder: (_) => const HomeView(),
-        settings: rotationSettings(routeSettings, ScreenOrientation.rotating),
-      );
   }
+  return null;
 }

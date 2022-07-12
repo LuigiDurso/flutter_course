@@ -6,18 +6,26 @@ import 'package:branches_presences_5/users/domain/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../app/utils/spinner_dialog.dart';
 import '../../../app/widget/widget.dart';
 
-class EditUserDetailView extends StatelessWidget {
+class EditUserDetailView extends StatefulWidget {
   final User currentUser;
-  final _form = GlobalKey<FormState>();
 
-  EditUserDetailView({Key? key, required this.currentUser}) : super(key: key);
+  const EditUserDetailView({Key? key, required this.currentUser}) : super(key: key);
+
+  @override
+  State<EditUserDetailView> createState() => _EditUserDetailViewState();
+}
+
+class _EditUserDetailViewState extends State<EditUserDetailView> {
+  final _form = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     var navigator = Navigator.of(context);
     return BlocConsumer<EditUserDetailFormBloc, EditUserDetailFormState>(
+      listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status == EditUserDetailFormStatus.submissionFailed) {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -29,15 +37,22 @@ class EditUserDetailView extends StatelessWidget {
           );
         }
         if (state.status == EditUserDetailFormStatus.submissionInProgress) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              const SnackBar(content: Text('Elaborazione...')),
-            );
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          SpinnerDialog.buildShowDialog(context);
         }
         if (state.status == EditUserDetailFormStatus.submissionSuccess) {
+          navigator.pop();
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          context.read<AppBloc>().add(const FetchAppUser());
+          context.read<AppBloc>()
+              .add(
+            AppUserChanged(
+              user: widget.currentUser.copyWith(
+                name: state.name,
+                email: state.email,
+                about: state.about
+              ),
+            ),
+          );
           navigator.pop();
         }
       },
@@ -51,7 +66,7 @@ class EditUserDetailView extends StatelessWidget {
                 const SizedBox(height: 24),
                 TextFieldWidget(
                   label: 'Nome',
-                  text: currentUser.name,
+                  text: widget.currentUser.name,
                   focusNode: state.nameFocusNode,
                   onFieldSubmitted: (_) {
                     FocusScope.of(ctx).requestFocus(state.emailFocusNode);
@@ -71,7 +86,7 @@ class EditUserDetailView extends StatelessWidget {
                 const SizedBox(height: 24),
                 TextFieldWidget(
                   label: 'Email',
-                  text: currentUser.email,
+                  text: widget.currentUser.email,
                   focusNode: state.emailFocusNode,
                   textInputType: TextInputType.emailAddress,
                   onFieldSubmitted: (_) {
@@ -91,7 +106,7 @@ class EditUserDetailView extends StatelessWidget {
                 const SizedBox(height: 24),
                 TextFieldWidget(
                   label: 'About',
-                  text: currentUser.about,
+                  text: widget.currentUser.about,
                   maxLines: 5,
                   focusNode: state.aboutFocusNode,
                   onFieldSubmitted: (_) {

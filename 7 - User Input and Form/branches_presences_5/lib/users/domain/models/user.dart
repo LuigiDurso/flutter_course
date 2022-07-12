@@ -5,6 +5,7 @@ class User extends Equatable {
   final String name;
   final String lastname;
   final String email;
+  final String password;
   final String imagePath;
   final String about;
   final int branchId;
@@ -14,6 +15,7 @@ class User extends Equatable {
     required this.name,
     required this.lastname,
     required this.email,
+    required this.password,
     required this.imagePath,
     required this.about,
     required this.branchId,
@@ -24,6 +26,7 @@ class User extends Equatable {
         name = '',
         lastname = '',
         email = '',
+        password = '',
         imagePath = '',
         about = '',
         branchId = -1;
@@ -41,6 +44,7 @@ class User extends Equatable {
           name == other.name &&
           lastname == other.lastname &&
           email == other.email &&
+          password == other.password &&
           imagePath == other.imagePath &&
           about == other.about &&
           branchId == other.branchId);
@@ -51,13 +55,23 @@ class User extends Equatable {
       name.hashCode ^
       lastname.hashCode ^
       email.hashCode ^
+      password.hashCode ^
       imagePath.hashCode ^
       about.hashCode ^
       branchId.hashCode;
 
   @override
   String toString() {
-    return 'User{ id: $id, name: $name, lastname: $lastname, email: $email, imagePath: $imagePath, about: $about, branchId: $branchId,}';
+    return 'User{'
+        ' id: $id,'
+        ' name: $name,'
+        ' lastname: $lastname,'
+        ' email: $email,'
+        ' password: $password,'
+        ' imagePath: $imagePath,'
+        ' about: $about,'
+        ' branchId: $branchId,'
+        '}';
   }
 
   User copyWith({
@@ -65,6 +79,7 @@ class User extends Equatable {
     String? name,
     String? lastname,
     String? email,
+    String? password,
     String? imagePath,
     String? about,
     int? branchId,
@@ -74,6 +89,7 @@ class User extends Equatable {
       name: name ?? this.name,
       lastname: lastname ?? this.lastname,
       email: email ?? this.email,
+      password: password ?? this.password,
       imagePath: imagePath ?? this.imagePath,
       about: about ?? this.about,
       branchId: branchId ?? this.branchId,
@@ -86,6 +102,7 @@ class User extends Equatable {
       'name': name,
       'lastname': lastname,
       'email': email,
+      'password': password,
       'imagePath': imagePath,
       'about': about,
       'branchId': branchId,
@@ -98,6 +115,7 @@ class User extends Equatable {
       name: map['name'] as String,
       lastname: map['lastname'] as String,
       email: map['email'] as String,
+      password: map['password'] as String,
       imagePath: map['imagePath'] as String,
       about: map['about'] as String,
       branchId: map['branchId'] as int,
@@ -105,5 +123,5 @@ class User extends Equatable {
   }
 
   @override
-  List<Object> get props => [id, name, lastname, email, imagePath, about, branchId];
+  List<Object> get props => [id, name, lastname, email, password, imagePath, about, branchId];
 }

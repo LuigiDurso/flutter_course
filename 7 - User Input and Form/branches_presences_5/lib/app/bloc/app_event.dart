@@ -7,9 +7,11 @@ abstract class AppEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchAppUser extends AppEvent {
+class AppUserChanged extends AppEvent {
 
-  const FetchAppUser();
+  final User user;
+
+  const AppUserChanged({ required this.user });
 
   @override
   List<Object> get props => [];
