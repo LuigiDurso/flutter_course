@@ -46,28 +46,32 @@ class LocalBranches implements BranchesDataProvider {
       'imagePath': 'https://picsum.photos/id/7/500/500'
     },
     {
-      'id': 6,
-      'name': 'Pescara',
+      'id': 8,
+      'name': 'Cagliari',
       'address': 'xxx',
-      'imagePath': 'https://picsum.photos/id/6/500/500'
+      'imagePath': 'https://picsum.photos/id/8/500/500'
     },
     {
-      'id': 7,
-      'name': 'Roma',
-      'address': 'xxx',
-      'imagePath': 'https://picsum.photos/id/7/500/500'
+      'id': 9,
+      'name': 'Lugano',
+      'address': 'Via G. Calgari 2 6900 Lugano',
+      'imagePath': 'https://picsum.photos/id/8/500/500'
     }
   ];
 
   @override
-  List<Branch> getBranches() {
-    return _branches.map((e) => Branch.fromMap(e)).toList();
+  Future<List<Branch>> getBranches() async {
+    return await Future.value(
+        _branches.map((e) => Branch.fromMap(e)).toList()
+    );
   }
 
   @override
-  Branch findBranchById(int id) {
-    return _branches.where((b) => b['id'] == id)
-        .map((e) => Branch.fromMap(e))
-        .first;
+  Future<Branch> findBranchById(int id) async {
+    return Future.value(
+        _branches.where((b) => b['id'] == id)
+            .map((e) => Branch.fromMap(e))
+            .first
+    );
   }
 }

@@ -9,23 +9,25 @@ class PresencesRepository {
     required this.presencesDataProvider
   });
 
-  List<Presence> getPresencesByBranchId(int branchId) {
-    return presencesDataProvider.getPresencesByBranchId(branchId);
+  Future<List<Presence>> getPresencesByBranchId(int branchId) async {
+    return await presencesDataProvider.getPresencesByBranchId(branchId);
   }
 
-  List<Presence> getPresencesByBranchIdAndDateAfter(int branchId, DateTime dateTime) {
-    return presencesDataProvider.getPresencesByBranchIdAndDateAfter(branchId, dateTime);
+  Future<List<Presence>> getPresencesByBranchIdAndDateAfter(int branchId, DateTime dateTime) async {
+    return await presencesDataProvider.getPresencesByBranchIdAndDateAfter(
+        branchId, dateTime
+    );
   }
 
-  void addPresence(Presence presence) {
-    presencesDataProvider.addPresence(presence);
+  Future<void> addPresence(Presence presence) async {
+    await presencesDataProvider.addPresence(presence);
   }
 
-  void removePresence(Presence presence) {
-    presencesDataProvider.removePresence(presence);
+  Future<void> removePresence(Presence presence) async {
+    await presencesDataProvider.removePresence(presence);
   }
 
-  bool isPresenceExists(Presence presence) {
-    return presencesDataProvider.isPresenceExists(presence);
+  Future<bool> isPresenceExists(Presence presence) async {
+    return await presencesDataProvider.isPresenceExists(presence);
   }
 }

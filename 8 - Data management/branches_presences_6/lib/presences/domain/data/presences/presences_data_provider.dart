@@ -1,11 +1,11 @@
 import '../../models/presence.dart';
 
 abstract class PresencesDataProvider {
-  List<Presence> getPresencesByBranchId(int branchId);
-  List<Presence> getPresencesByBranchIdAndDateAfter(
+  Future<List<Presence>> getPresencesByBranchId(int branchId);
+  Future<List<Presence>> getPresencesByBranchIdAndDateAfter(
       int branchId, DateTime date);
-  List<Presence> getAllPresences();
-  void addPresence(Presence presence);
-  bool isPresenceExists(Presence presence);
-  void removePresence(Presence presence);
+  Future<List<Presence>> getAllPresences();
+  Future<void> addPresence(Presence presence);
+  Future<bool> isPresenceExists(Presence presence);
+  Future<void> removePresence(Presence presence);
 }

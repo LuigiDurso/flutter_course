@@ -26,7 +26,7 @@ class _LoginViewState extends State<LoginView> {
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status == LoginFormStatus.submissionFailed) {
-          navigator.pop();
+          SpinnerDialog.closeSpinnerDialog(navigator);
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           showDialog<void>(
             context: context,
@@ -40,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
           SpinnerDialog.buildShowDialog(context);
         }
         if (state.status == LoginFormStatus.submissionSuccess) {
-          navigator.pop();
+          SpinnerDialog.closeSpinnerDialog(navigator);
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           context.read<AppBloc>()
               .add(

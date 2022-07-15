@@ -9,11 +9,11 @@ class BranchesRepository {
     required this.branchesDataProvider
   });
 
-  List<Branch> getAllBranches() {
+  Future<List<Branch>> getAllBranches() {
     return branchesDataProvider.getBranches();
   }
 
-  Branch findBranchById(int id) {
+  Future<Branch> findBranchById(int id) {
     return branchesDataProvider.findBranchById(id);
   }
 }

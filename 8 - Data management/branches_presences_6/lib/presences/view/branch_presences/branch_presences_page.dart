@@ -37,7 +37,7 @@ class BranchPresencesPage extends StatelessWidget {
             listenWhen: (previous, current) => previous.status != current.status,
             listener: (context, state) {
               if (state.status == PresencesFormStatus.submissionFailed) {
-                navigator.pop();
+                SpinnerDialog.closeSpinnerDialog(navigator);
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 showDialog<void>(
                   context: context,
@@ -51,14 +51,8 @@ class BranchPresencesPage extends StatelessWidget {
                 SpinnerDialog.buildShowDialog(context);
               }
               if (state.status == PresencesFormStatus.submissionSuccess) {
-                navigator.pop();
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                SpinnerDialog.closeSpinnerDialog(navigator);
                 context.read<PresencesCubit>().fetchPresencesByBranchId(selectedBranch.id);
-                ScaffoldMessenger.of(context)
-                  ..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    const SnackBar(content: Text('Operazione effettuata!')),
-                  );
                 context
                     .read<PresencesFormCubit>()
                     .selectDate(state.selectedDate);
@@ -97,9 +91,7 @@ class BranchPresencesPage extends StatelessWidget {
                   ],
                   centerTitle: true,
                 ),
-                body: BranchPresencesView(
-                  presences: context.watch<PresencesCubit>().state.presences,
-                ),
+                body: const BranchPresencesView(),
               );
             },
           );

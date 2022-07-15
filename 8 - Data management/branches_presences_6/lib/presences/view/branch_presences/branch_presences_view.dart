@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+import '../../bloc/presences/presences_cubit.dart';
 import '../../domain/data/presences/calendar_presences.dart';
 import '../../domain/models/presence.dart';
 
 class BranchPresencesView extends StatelessWidget {
 
-  final List<Presence> presences;
-
   const BranchPresencesView({
     Key? key,
-    required this.presences
   }) : super(key: key);
 
   @override
@@ -26,7 +24,7 @@ class BranchPresencesView extends StatelessWidget {
       view: CalendarView.month,
       firstDayOfWeek: 1,
       monthViewSettings: const MonthViewSettings(showAgenda: true),
-      dataSource: MeetingDataSource(presences),
+      dataSource: MeetingDataSource(context.watch<PresencesCubit>().state.presences),
     );
   }
 }

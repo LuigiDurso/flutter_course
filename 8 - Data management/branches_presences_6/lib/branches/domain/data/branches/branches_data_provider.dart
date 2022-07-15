@@ -1,6 +1,6 @@
 import '../../models/branch.dart';
 
 abstract class BranchesDataProvider {
-  List<Branch> getBranches();
-  Branch findBranchById(int id);
+  Future<List<Branch>> getBranches();
+  Future<Branch> findBranchById(int id);
 }

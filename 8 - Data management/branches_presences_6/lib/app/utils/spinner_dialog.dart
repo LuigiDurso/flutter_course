@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SpinnerDialog {
+  static var isOpen = false;
+
   static Future<dynamic> buildShowDialog(BuildContext context) {
+    SpinnerDialog.isOpen = true;
     return showDialog(
         context: context,
         barrierDismissible: false,
@@ -13,6 +16,12 @@ class SpinnerDialog {
               height: 350,
             ),
           );
-        });
+        }).then((value) => SpinnerDialog.isOpen = false);
+  }
+
+  static void closeSpinnerDialog(NavigatorState navigatorState) {
+    if (SpinnerDialog.isOpen) {
+      navigatorState.pop();
+    }
   }
 }
