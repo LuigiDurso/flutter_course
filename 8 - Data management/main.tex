@@ -1,0 +1,209 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This project aims to create the template for presentation.                   %%
+%% author: Luigi Durso                                                          %%
+%% contacts:                                                                    %%
+%%    e-mail: luigi.durso@si2001.it                                             %%
+%%    linktree: https://linktr.ee/maumneto                                      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{../libs/presentation_format}
+% Inserting the preamble file with the packages
+\input{../libs/preamble.tex}
+% Inserting the references file
+\bibliography{../references.bib}
+
+% Title
+\title[Flutter-Dart]{\huge\textbf{Flutter e Dart - Le basi}}
+% Subtitle
+\subtitle{Flutter - Gestione dei dati}
+% Author of the presentation
+\author{Luigi Durso}
+% Company's Name
+\institute[SI2001]{
+    % email for contact
+    \normalsize{\email{luigi.durso@si2001.it}}
+    \newline
+    \centering
+    \includegraphics[scale=0.3]{../libs/emblem.png}
+    \newline
+    % company name
+    \company
+}
+% date of the presentation
+\date{\today}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start Document of the Presentation                                           %%               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% insert the code style
+\input{../libs/code_style}
+
+%% ---------------------------------------------------------------------------
+% First frame (with tile, subtitle, ...)
+\begin{frame}{}
+    \maketitle
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Table of content frame
+\begin{frame}{Sommario}
+    \begin{multicols}{2}
+        \tableofcontents
+    \end{multicols}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Lezione precedente}
+\begin{frame}{Un po' di codice}
+	\begin{tabular}{lll}
+		\raisebox{-.5\height}{\includegraphics[scale=0.3]{../libs/Developer-Friendly.png}}
+		\emph{Analizziamo l'elaborato precedente!}\\
+	\end{tabular}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Persistenza}
+\begin{frame}{Persistenza dei dati}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[scale=0.18]{../libs/storing-data}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Quanti modi abbiamo per gestire i dati:}
+				\begin{itemize}
+					\item Memoria del dispositivo,
+					\item Dati remoti.
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Persistenza locale}
+\begin{frame}{Persistenza locale}
+	\emph{Sfruttare la memoria del dispositivo:}
+	\begin{itemize}
+		\item Installazione database locale;
+		\item Shared preferences;
+		\item Utilizzo di librerie per la gestione del dato ( hydrated BLoC )
+	\end{itemize}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Hydrated BLoC}
+	\emph{Utilizzare BLoC per la persistenza locale:}
+	\begin{itemize}
+		\item Utilizzare l'estensione di BLoC: \emph{hydrated bloc};
+		\item Memorizza automaticamente lo stato del bloc/cubit;
+	\end{itemize}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Flusso Hydrated BLoC}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[scale=0.18]{../libs/hydrated-bloc-flow}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Come funziona hydrated BLoC?}
+				\begin{itemize}
+					\item Gestione della memoria attraverso il formato JSON,
+					\item Richiesta di override nello stato dei metodi toJson, fromJson.
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Dati in remoto}
+\begin{frame}{Richiesta di dati in remoto}
+	\emph{Gestione di dati in remoto:}
+	\begin{itemize}
+		\item Dati gestiti da altre applicazioni;
+		\item Richiesta dei dati attraverso chiamate asincrone;
+	\end{itemize}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Architettura REST}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[scale=0.18]{../libs/hydrated-bloc-flow}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Comunicare con delle REST API:}
+				\begin{itemize}
+					\item Utilizzo del protocollo \emph{http};
+					\item Gestione delle risorse attraverso degli \emph{url};
+					\item Possiamo utilizzare il package \emph{http} \href{https://pub.dev/packages/http}{\beamergotobutton{Documentazione}}
+					\item In Dart lavoriamo con il codice asincrono attraverso i \emph{Future} \href{https://dart.dev/codelabs/async-await}{\beamergotobutton{Documentazione}}
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Esercitazione}
+\begin{frame}{Migliorare la precedente esercitazione}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[width=2cm]{../libs/login-page}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\emph{Alcuni spunti:}
+				\begin{itemize}
+					\item Aggiungere la persistenza al bloc/cubit di autenticazione
+					\item Realizzare un backend ed utilizzare le chiamate remote con il pacchetto \emph{http}
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+% Reference frames
+%\begin{frame}[allowframebreaks]
+%    \frametitle{Riferimenti}
+%    \printbibliography
+%\end{frame}
+
+%% ---------------------------------------------------------------------------
+% Final frame
+\section{Fine}
+\begin{frame}{}
+	\huge\emph{Grazie per l'attenzione!}
+	\newline
+	\vfill
+	\hfill\includegraphics[width=6cm]{../libs/alphonse-gaston-regards}
+\end{frame}
+
+\end{document}
