@@ -1,4 +1,4 @@
-import 'package:branches_presences_6/app/bloc/app_bloc.dart';
+import 'package:branches_presences_6/app/bloc/app/app_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +17,9 @@ class UserDetailPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: Image.asset(
+            'assets/images/si2001-logo-bianco.png',
+          ),
           title: Text(
             "Profilo utente",
             style: theme.textTheme.titleLarge!.copyWith(

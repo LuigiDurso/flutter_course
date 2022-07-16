@@ -1,4 +1,4 @@
-import 'package:branches_presences_6/app/bloc/app_bloc.dart';
+import 'package:branches_presences_6/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_6/app/utils/email_validation.dart';
 import 'package:branches_presences_6/app/widget/confirm_message_dialog.dart';
 import 'package:branches_presences_6/users/bloc/edit_user_detail_form/edit_user_detail_form_bloc.dart';

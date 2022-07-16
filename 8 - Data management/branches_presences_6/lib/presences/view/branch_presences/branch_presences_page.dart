@@ -1,5 +1,6 @@
 import 'package:branches_presences_6/app/utils/spinner_dialog.dart';
-import 'package:branches_presences_6/app/view/home_view.dart';
+import 'package:branches_presences_6/app/view/home/home_page.dart';
+import 'package:branches_presences_6/app/view/home/home_view.dart';
 import 'package:branches_presences_6/branches/branches.dart';
 import 'package:branches_presences_6/presences/bloc/presences/presences_cubit.dart';
 import 'package:branches_presences_6/presences/bloc/presences_form/presences_form_cubit.dart';
@@ -7,7 +8,7 @@ import 'package:branches_presences_6/presences/domain/repository/presences/prese
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../app/bloc/app_bloc.dart';
+import '../../../app/bloc/app/app_bloc.dart';
 import '../../../app/widget/confirm_message_dialog.dart';
 import '../../../users/domain/models/user.dart';
 import 'branch_presences_view.dart';
@@ -61,10 +62,6 @@ class BranchPresencesPage extends StatelessWidget {
             builder: (context, state) {
               return Scaffold(
                 appBar: AppBar(
-                  leading: IconButton(
-                    onPressed: () => navigator.pushReplacementNamed(HomeView.homeRoute),
-                    icon: const Icon(Icons.home),
-                  ),
                   title: Text("Presenze ${selectedBranch.name}"),
                   actions: [
                     if (state.status == PresencesFormStatus.initial )

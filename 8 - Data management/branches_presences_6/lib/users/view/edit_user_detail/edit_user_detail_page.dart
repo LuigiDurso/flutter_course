@@ -1,4 +1,4 @@
-import 'package:branches_presences_6/app/bloc/app_bloc.dart';
+import 'package:branches_presences_6/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_6/users/bloc/edit_user_detail_form/edit_user_detail_form_bloc.dart';
 import 'package:branches_presences_6/users/domain/repository/users/users_repository.dart';
 import 'package:flutter/material.dart';

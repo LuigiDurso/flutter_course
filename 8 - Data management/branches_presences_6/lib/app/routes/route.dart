@@ -1,10 +1,12 @@
-import 'package:branches_presences_6/app/view/home_view.dart';
+import 'package:branches_presences_6/app/view/home/home_page.dart';
 import 'package:branches_presences_6/branches/domain/models/branch.dart';
 import 'package:branches_presences_6/users/view/login/login_page.dart';
 import 'package:branches_presences_6/users/view/view.dart';
 import 'package:flutter/material.dart';
 
+import '../../branches/view/branches_overview/branches_overview_page.dart';
 import '../../presences/view/branch_presences/branch_presences_page.dart';
+import '../bloc/navigation/navigation_cubit.dart';
 import 'navigator_observer.dart';
 
 class RouteSettingsData {
@@ -24,9 +26,9 @@ RouteSettings rotationSettings(
 Route? onGenerateRoute(RouteSettings routeSettings) {
   var args = routeSettings.arguments;
   switch (routeSettings.name) {
-    case HomeView.homeRoute:
+    case HomePage.homeRoute:
       return MaterialPageRoute(
-        builder: (_) => const HomeView(),
+        builder: (_) => const HomePage(),
         settings: rotationSettings(routeSettings, ScreenOrientation.rotating),
       );
     case LoginPage.loginRoute:
@@ -57,4 +59,17 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
       );
   }
   return null;
+}
+
+Widget getPageByNavBarItem(BuildContext context, NavigationState state) {
+  switch( state.navbarItem ) {
+    case NavbarItem.home:
+      return const HomePage();
+    case NavbarItem.branches:
+      return const BranchesPage();
+    case NavbarItem.profile:
+      return const UserDetailPage();
+    default:
+      return const HomePage();
+  }
 }

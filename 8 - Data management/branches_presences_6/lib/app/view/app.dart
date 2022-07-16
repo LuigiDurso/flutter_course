@@ -1,4 +1,5 @@
-import 'package:branches_presences_6/app/bloc/app_bloc.dart';
+import 'package:branches_presences_6/app/bloc/app/app_bloc.dart';
+import 'package:branches_presences_6/app/bloc/navigation/navigation_cubit.dart';
 import 'package:branches_presences_6/branches/bloc/branches_cubit.dart';
 import 'package:branches_presences_6/branches/branches.dart';
 import 'package:branches_presences_6/presences/bloc/presences/presences_cubit.dart';
@@ -13,7 +14,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../theme/theme.dart';
 import '../routes/navigator_observer.dart';
 import '../routes/route.dart';
-import 'home_view.dart';
+import 'home/home_view.dart';
+import 'root/root_page.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -51,6 +53,9 @@ class App extends StatelessWidget {
               branchesCubit: ctx.read<BranchesCubit>(),
             ),
           ),
+          BlocProvider(
+            create: (ctx) => NavigationCubit(),
+          ),
         ],
         child: const AppView(),
       ),
@@ -86,7 +91,7 @@ class _AppViewState extends State<AppView> {
             switch (state.status) {
               case AppStatus.authenticated:
                 _navigator.pushNamedAndRemoveUntil<void>(
-                  HomeView.homeRoute,
+                  RootPage.rootRoute,
                   (route) => false,
                 );
                 break;
@@ -105,9 +110,9 @@ class _AppViewState extends State<AppView> {
       onUnknownRoute: (routeSettings) {
         return context.read<AppBloc>().state.status == AppStatus.authenticated
             ? MaterialPageRoute(
-                builder: (_) => const HomeView(),
+                builder: (_) => const RootPage(),
                 settings:
-                    rotationSettings(routeSettings, ScreenOrientation.rotating),
+                    rotationSettings(routeSettings, ScreenOrientation.portraitOnly),
               )
             : MaterialPageRoute(
                 builder: (_) => const LoginPage(),

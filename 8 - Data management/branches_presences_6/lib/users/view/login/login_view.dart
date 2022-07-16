@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../app/bloc/app_bloc.dart';
+import '../../../app/bloc/app/app_bloc.dart';
 import '../../../app/utils/email_validation.dart';
 import '../../../app/utils/spinner_dialog.dart';
 import '../../../app/widget/confirm_message_dialog.dart';

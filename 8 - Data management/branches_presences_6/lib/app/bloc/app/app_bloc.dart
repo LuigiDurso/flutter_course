@@ -1,12 +1,11 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../../branches/bloc/branches_cubit.dart';
-import '../../branches/domain/models/branch.dart';
-import '../../users/domain/models/user.dart';
+import '../../../branches/bloc/branches_cubit.dart';
+import '../../../branches/domain/models/branch.dart';
+import '../../../users/domain/models/user.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';

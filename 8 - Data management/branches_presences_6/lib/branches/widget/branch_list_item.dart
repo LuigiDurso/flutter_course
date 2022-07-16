@@ -1,6 +1,5 @@
 import 'package:branches_presences_6/presences/view/branch_presences/branch_presences_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../domain/domain.dart';
 
@@ -15,7 +14,7 @@ class BranchGridItem extends StatelessWidget {
     var navigator = Navigator.of(context);
     return InkWell(
       onTap: () {
-        navigator.pushReplacementNamed(
+        navigator.pushNamed(
             BranchPresencesPage.branchPresencesRoute,
           arguments: branch
         );
