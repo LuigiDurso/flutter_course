@@ -5,7 +5,6 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../../bloc/presences/presences_cubit.dart';
 import '../../domain/data/presences/calendar_presences.dart';
-import '../../domain/models/presence.dart';
 
 class BranchPresencesView extends StatelessWidget {
 
