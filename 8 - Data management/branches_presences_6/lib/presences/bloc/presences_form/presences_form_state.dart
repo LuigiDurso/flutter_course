@@ -14,8 +14,10 @@ class PresencesFormState extends Equatable {
   final String username;
   final int branchId;
   final PresencesFormStatus status;
+  final String? error;
 
   const PresencesFormState({
+    this.error,
     required this.selectedDate,
     required this.status,
     required this.username,
@@ -28,6 +30,7 @@ class PresencesFormState extends Equatable {
       username: username,
       branchId: branchId,
       status: PresencesFormStatus.initial,
+      error: '',
     );
   }
 
@@ -39,6 +42,7 @@ class PresencesFormState extends Equatable {
           selectedDate == other.selectedDate &&
           status == other.status &&
           branchId == other.branchId &&
+          error == other.error &&
           username == other.username
       );
 
@@ -46,6 +50,7 @@ class PresencesFormState extends Equatable {
   int get hashCode => selectedDate.hashCode ^
   status.hashCode ^
   username.hashCode ^
+  error.hashCode ^
   branchId.hashCode;
 
   @override
@@ -55,6 +60,7 @@ class PresencesFormState extends Equatable {
         ' status: $status,'
         ' username: $username,'
         ' branchId: $branchId,'
+        ' error: $error,'
         '}';
   }
 
@@ -63,12 +69,14 @@ class PresencesFormState extends Equatable {
     PresencesFormStatus? status,
     String? username,
     int? branchId,
+    String? error,
   }) {
     return PresencesFormState(
       selectedDate: selectedDate ?? this.selectedDate,
       status: status ?? this.status,
       username: username ?? this.username,
       branchId: branchId ?? this.branchId,
+      error: error ?? this.error,
     );
   }
 
@@ -78,6 +86,7 @@ class PresencesFormState extends Equatable {
       'status': status,
       'username': username,
       'branchId': branchId,
+      'error': error,
     };
   }
 
@@ -86,6 +95,7 @@ class PresencesFormState extends Equatable {
       selectedDate: map['selectedDate'] as DateTime,
       status: map['status'] as PresencesFormStatus,
       username: map['username'] as String,
+      error: map['error'] as String,
       branchId: map['branchId'] as int,
     );
   }

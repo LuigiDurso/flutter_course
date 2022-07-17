@@ -17,6 +17,15 @@ class PresencesFormCubit extends Cubit<PresencesFormState> {
   }) : super(PresencesFormState.initial(username, branchId));
 
   Future<void> selectDate(DateTime dateTime) async {
+    if (dateTime.isBefore(DateTime.now())) {
+      emit(
+        state.copyWith(
+          selectedDate: DateTime.now().add(const Duration(days: 1)),
+          status: PresencesFormStatus.initial,
+        ),
+      );
+      return;
+    }
     bool exists = await presencesRepository.isPresenceExists(
       Presence(
         branchId: state.branchId,

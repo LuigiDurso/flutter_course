@@ -1,6 +1,7 @@
 import 'package:branches_presences_6/app/utils/async_call_status.dart';
 import 'package:branches_presences_6/app/widget/base_app_bar.dart';
 import 'package:branches_presences_6/branches/bloc/branches_cubit.dart';
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,8 +20,10 @@ class BranchesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
     var navigator = Navigator.of(context);
+    var theme = Theme.of(context);
 
-    return SafeArea(
+    return ColorfulSafeArea(
+      color: theme.primaryColor,
       child: Scaffold(
         appBar: mediaQuery.orientation == Orientation.landscape
             ? AppBar(

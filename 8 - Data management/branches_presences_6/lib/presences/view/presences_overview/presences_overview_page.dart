@@ -2,6 +2,7 @@ import 'package:branches_presences_6/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_6/branches/bloc/branches_cubit.dart';
 import 'package:branches_presences_6/branches/branches.dart';
 import 'package:branches_presences_6/presences/bloc/presences/presences_cubit.dart';
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,10 +29,13 @@ class PresencesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var navigator = Navigator.of(context);
+    var theme = Theme.of(context);
+
     User currentUser = context.read<AppBloc>().state.user;
     Branch userBranch = context.read<AppBloc>().state.userBranch;
 
-    return SafeArea(
+    return ColorfulSafeArea(
+      color: theme.primaryColor,
       child: Scaffold(
         appBar: AppBar(
           leading: Image.asset(

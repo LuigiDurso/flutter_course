@@ -1,4 +1,5 @@
 import 'package:branches_presences_6/app/view/home/home_view.dart';
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,10 +15,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+
     var userBranch = context.read<AppBloc>().state.userBranch;
     context.read<PresencesCubit>().fetchPresencesByBranchId(userBranch.id);
-    return const SafeArea(
-      child: Scaffold(
+
+    return ColorfulSafeArea(
+      color: theme.primaryColor,
+      child: const Scaffold(
         body: HomeView(),
       ),
     );

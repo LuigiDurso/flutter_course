@@ -16,7 +16,10 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var navigator = Navigator.of(context);
-    var userBranch = context.read<AppBloc>().state.userBranch;
+    var userBranch = context
+        .read<AppBloc>()
+        .state
+        .userBranch;
 
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
@@ -103,11 +106,9 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget _buildUserBranchRecap(
-    BuildContext context,
-    ThemeData theme,
-    Branch userBranch,
-  ) {
+  Widget _buildUserBranchRecap(BuildContext context,
+      ThemeData theme,
+      Branch userBranch,) {
     return SizedBox(
       width: double.infinity,
       height: 150,
@@ -141,7 +142,7 @@ class HomeView extends StatelessWidget {
                 child: Text(
                   userBranch.name,
                   style:
-                      theme.textTheme.headline5!.copyWith(color: Colors.white),
+                  theme.textTheme.headline5!.copyWith(color: Colors.white),
                 ),
               ),
             ),
@@ -151,9 +152,7 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget _buildLatestPresencesGraph(
-    BuildContext context,
-  ) {
+  Widget _buildLatestPresencesGraph(BuildContext context,) {
     return SizedBox(
       height: 150,
       width: double.infinity,
@@ -161,9 +160,12 @@ class HomeView extends StatelessWidget {
         elevation: 10,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         color: const Color(0xff2c4260),
-        child: BarChartPresences(
-          currentPresences:
-              context.watch<PresencesCubit>().state.presences,
+        child: BlocBuilder<PresencesCubit, PresencesState>(
+          builder: (context, state) {
+            return BarChartPresences(
+              currentPresences: state.presences,
+            );
+          },
         ),
       ),
     );

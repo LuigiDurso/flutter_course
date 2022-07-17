@@ -15,6 +15,7 @@ class PresencesCubit extends Cubit<PresencesState> {
   }) : super(PresencesState.initial());
   
   Future<void> fetchPresencesByBranchId(int branchId) async {
+    print('fetchPresencesByBranchId');
     try {
       emit(state.copyWith(status: AsyncCallStatus.loading));
       await Future<void>.delayed(const Duration(seconds: 1));

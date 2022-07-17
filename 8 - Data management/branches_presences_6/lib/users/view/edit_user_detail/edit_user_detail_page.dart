@@ -1,6 +1,7 @@
 import 'package:branches_presences_6/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_6/users/bloc/edit_user_detail_form/edit_user_detail_form_bloc.dart';
 import 'package:branches_presences_6/users/domain/repository/users/users_repository.dart';
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +16,8 @@ class EditUserDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
 
-    return SafeArea(
+    return ColorfulSafeArea(
+      color: theme.primaryColor,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
