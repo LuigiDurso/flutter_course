@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:branches_presences_6/branches/branches.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../../../branches/bloc/branches_cubit.dart';
-import '../../../branches/domain/models/branch.dart';
 import '../../../users/domain/models/user.dart';
 
 part 'app_event.dart';
@@ -12,47 +11,32 @@ part 'app_state.dart';
 
 class AppBloc extends HydratedBloc<AppEvent, AppState> {
 
-  late StreamSubscription branchesSubscription;
-  
-  final BranchesCubit branchesCubit;
+  final BranchesRepository branchesRepository;
 
   AppBloc({
-    required this.branchesCubit,
+    required this.branchesRepository,
   }) : super(const AppState.unauthenticated()) {
 
-    branchesSubscription = branchesCubit.stream.listen((BranchesState branchesState) {
-      _onBranchesChanged(branchesState);
-    });
-
     on<AppUserChanged>(_onAppUserChanged);
-    on<UserBranchChanged>(_onUserBranchChanged);
   }
 
-  void _onAppUserChanged(AppUserChanged event, Emitter<AppState> emit) {
+  void _onAppUserChanged(AppUserChanged event, Emitter<AppState> emit) async {
     var currentUser = event.user;
+    var userBranch = await _getUserBranch(currentUser);
     emit(
       currentUser.isNotEmpty
           ? AppState.authenticated(
           currentUser,
-          _getUserBranch(branchesCubit.state.branches, currentUser),
+          userBranch,
       ) : const AppState.unauthenticated(),
     );
   }
 
-  void _onUserBranchChanged(UserBranchChanged event, Emitter<AppState> emit) {
-    emit(state.copyWith(userBranch: event.branch));
-  }
-  
-  void _onBranchesChanged(BranchesState branchesState) {
-    add(UserBranchChanged(_getUserBranch(branchesState.branches, state.user)));
-  }
-
-  Branch _getUserBranch(List<Branch> branches, User user) {
-    if ( branches.isEmpty || user.branchId <= 0 ) {
+  Future<Branch> _getUserBranch(User user) async {
+    if ( user.branchId <= 0 ) {
       return const Branch.empty();
     }
-    return branches
-        .firstWhere((Branch element) => element.id == user.branchId);
+    return await branchesRepository.findBranchById(user.branchId);
   }
 
   @override
@@ -67,7 +51,6 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
 
   @override
   Future<void> close() {
-    branchesSubscription.cancel();
     return super.close();
   }
 }

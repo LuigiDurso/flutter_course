@@ -31,8 +31,10 @@ class BranchesPage extends StatelessWidget {
                   'assets/images/si2001-logo-bianco.png',
                 ),
               )
-            : const BaseAppBar(title: "Sedi",),
-        body: BlocConsumer<BranchesCubit, BranchesState>(
+            : const BaseAppBar(
+                title: "Sedi",
+              ),
+        body: BlocListener<BranchesCubit, BranchesState>(
           listener: (context, state) {
             if (state.status == AsyncCallStatus.failure) {
               SpinnerDialog.closeSpinnerDialog(navigator);
@@ -52,12 +54,18 @@ class BranchesPage extends StatelessWidget {
               SpinnerDialog.closeSpinnerDialog(navigator);
             }
           },
-          builder: (context, state) {
-            return RefreshIndicator(
-              onRefresh: () => _fetchBranches(context),
-              child: const BranchesOverview(),
-            );
-          },
+          child: Builder(
+            builder: (context) {
+              var branches = context.read<BranchesCubit>().state.branches;
+              if ( branches.isEmpty) {
+                _fetchBranches(context);
+              }
+              return RefreshIndicator(
+                onRefresh: () => _fetchBranches(context),
+                child: const BranchesOverview(),
+              );
+            }
+          ),
         ),
       ),
     );

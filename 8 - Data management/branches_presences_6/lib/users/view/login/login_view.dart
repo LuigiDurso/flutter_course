@@ -1,3 +1,4 @@
+import 'package:branches_presences_6/branches/bloc/branches_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,7 +25,7 @@ class _LoginViewState extends State<LoginView> {
 
     return BlocConsumer<LoginFormBloc, LoginFormState>(
       listenWhen: (previous, current) => previous.status != current.status,
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state.status == LoginFormStatus.submissionFailed) {
           SpinnerDialog.closeSpinnerDialog(navigator);
           ScaffoldMessenger.of(context).hideCurrentSnackBar();

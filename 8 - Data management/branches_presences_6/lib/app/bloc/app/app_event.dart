@@ -16,12 +16,3 @@ class AppUserChanged extends AppEvent {
   @override
   List<Object> get props => [];
 }
-
-class UserBranchChanged extends AppEvent {
-  final Branch branch;
-
-  const UserBranchChanged(this.branch);
-
-  @override
-  List<Object> get props => [branch];
-}

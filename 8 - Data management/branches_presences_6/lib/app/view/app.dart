@@ -2,6 +2,7 @@ import 'package:branches_presences_6/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_6/app/bloc/navigation/navigation_cubit.dart';
 import 'package:branches_presences_6/branches/bloc/branches_cubit.dart';
 import 'package:branches_presences_6/branches/branches.dart';
+import 'package:branches_presences_6/branches/domain/data/branches/firestore_branches_client.dart';
 import 'package:branches_presences_6/presences/bloc/presences/presences_cubit.dart';
 import 'package:branches_presences_6/presences/domain/data/presences/local_presences.dart';
 import 'package:branches_presences_6/presences/domain/repository/presences/presences_repository.dart';
@@ -26,7 +27,7 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider(
           create: (_) =>
-              BranchesRepository(branchesDataProvider: LocalBranches()),
+              BranchesRepository(branchesDataProvider: FirestoreBranchesClient()),
         ),
         RepositoryProvider(
           create: (_) =>
@@ -41,7 +42,7 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (ctx) => BranchesCubit(
               branchesRepository: ctx.read<BranchesRepository>(),
-            )..fetchAllBranches(),
+            ),
           ),
           BlocProvider(
             create: (ctx) => PresencesCubit(
@@ -50,7 +51,7 @@ class App extends StatelessWidget {
           ),
           BlocProvider(
             create: (ctx) => AppBloc(
-              branchesCubit: ctx.read<BranchesCubit>(),
+              branchesRepository: ctx.read<BranchesRepository>(),
             ),
           ),
           BlocProvider(

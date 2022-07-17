@@ -16,14 +16,13 @@ class BranchesCubit extends Cubit<BranchesState> {
   Future<void> fetchAllBranches() async {
     try {
       emit(state.copyWith(status: AsyncCallStatus.loading));
-      await Future<void>.delayed(const Duration(seconds: 1));
       emit(
           state.copyWith(
             branches: await branchesRepository.getAllBranches(),
             status: AsyncCallStatus.success,
           )
       );
-    } on Exception {
+    } on Exception catch (e) {
       emit(state.copyWith(status: AsyncCallStatus.failure));
     }
   }
