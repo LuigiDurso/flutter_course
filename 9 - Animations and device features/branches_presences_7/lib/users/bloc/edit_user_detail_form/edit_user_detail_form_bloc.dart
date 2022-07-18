@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../domain/models/user.dart';
 import '../../domain/repository/users/users_repository.dart';
@@ -26,6 +29,7 @@ class EditUserDetailFormBloc extends Bloc<EditUserDetailFormEvent, EditUserDetai
     on<EmailChanged>(_onEmailChanged);
     on<AboutChanged>(_onAboutChanged);
     on<ImagePathChanged>(_onImagePathChanged);
+    on<ImageFileChanged>(_onUserImageChange);
     on<FormSubmitted>(_onFormSubmitted);
   }
 
@@ -43,6 +47,10 @@ class EditUserDetailFormBloc extends Bloc<EditUserDetailFormEvent, EditUserDetai
 
   void _onImagePathChanged(ImagePathChanged event, Emitter<EditUserDetailFormState> emit) {
     emit(state.copyWith(imagePath: event.imagePath));
+  }
+
+  void _onUserImageChange(ImageFileChanged event, Emitter<EditUserDetailFormState> emit) {
+    emit(state.copyWith(imageFile: event.imageFile));
   }
 
   void _onFormSubmitted(FormSubmitted event, Emitter<EditUserDetailFormState> emit) async {

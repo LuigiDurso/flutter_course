@@ -40,6 +40,15 @@ class ImagePathChanged extends EditUserDetailFormEvent {
   List<Object> get props => [imagePath];
 }
 
+class ImageFileChanged extends EditUserDetailFormEvent {
+  final XFile imageFile;
+
+  const ImageFileChanged({ required this.imageFile });
+
+  @override
+  List<Object> get props => [ imageFile ];
+}
+
 class FormSubmitted extends EditUserDetailFormEvent {
   final GlobalKey<FormState> form;
 

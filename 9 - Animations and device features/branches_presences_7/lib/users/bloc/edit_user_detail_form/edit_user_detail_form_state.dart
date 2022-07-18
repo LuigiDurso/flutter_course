@@ -12,6 +12,7 @@ class EditUserDetailFormState extends Equatable {
   final String email;
   final String about;
   final String imagePath;
+  final XFile? imageFile;
 
   final FocusNode nameFocusNode;
   final FocusNode emailFocusNode;
@@ -25,6 +26,7 @@ class EditUserDetailFormState extends Equatable {
     required this.email,
     required this.about,
     required this.imagePath,
+    this.imageFile,
     required this.nameFocusNode,
     required this.emailFocusNode,
     required this.aboutFocusNode,
@@ -107,6 +109,7 @@ class EditUserDetailFormState extends Equatable {
     String? email,
     String? about,
     String? imagePath,
+    XFile? imageFile,
     FocusNode? nameFocusNode,
     FocusNode? emailFocusNode,
     FocusNode? aboutFocusNode,
@@ -118,6 +121,7 @@ class EditUserDetailFormState extends Equatable {
       email: email ?? this.email,
       about: about ?? this.about,
       imagePath: imagePath ?? this.imagePath,
+      imageFile: imageFile ?? this.imageFile,
       nameFocusNode: nameFocusNode ?? this.nameFocusNode,
       emailFocusNode: emailFocusNode ?? this.emailFocusNode,
       aboutFocusNode: aboutFocusNode ?? this.aboutFocusNode,

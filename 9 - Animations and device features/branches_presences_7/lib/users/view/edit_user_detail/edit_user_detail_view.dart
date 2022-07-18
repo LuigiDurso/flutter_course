@@ -1,13 +1,18 @@
+import 'dart:io';
+
 import 'package:branches_presences_7/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_7/app/utils/email_validation.dart';
 import 'package:branches_presences_7/app/widget/confirm_message_dialog.dart';
 import 'package:branches_presences_7/users/bloc/edit_user_detail_form/edit_user_detail_form_bloc.dart';
 import 'package:branches_presences_7/users/domain/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../app/utils/spinner_dialog.dart';
 import '../../../app/widget/widget.dart';
+import '../../widget/image_profile.dart';
 
 class EditUserDetailView extends StatefulWidget {
   final User currentUser;
@@ -21,9 +26,28 @@ class EditUserDetailView extends StatefulWidget {
 class _EditUserDetailViewState extends State<EditUserDetailView> {
   final _form = GlobalKey<FormState>();
 
+  Future<XFile?> _pickImage() async {
+    try {
+      final image = await ImagePicker()
+          .pickImage(source: ImageSource.camera);
+
+      if ( image == null ) {
+        return null;
+      }
+
+      return image;
+
+    } on PlatformException catch(e) {
+      print('Failed to pick image: $e');
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     var navigator = Navigator.of(context);
+    var formCubit = context.read<EditUserDetailFormBloc>();
+
     return BlocConsumer<EditUserDetailFormBloc, EditUserDetailFormState>(
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
@@ -63,6 +87,21 @@ class _EditUserDetailViewState extends State<EditUserDetailView> {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
+                const SizedBox(height: 24),
+                ProfileWidget(
+                  imagePath: state.imageFile != null ?
+                  null : widget.currentUser.imagePath,
+                  imageFile: state.imageFile,
+                  isEdit: true,
+                  onClicked: () async {
+                    var file = await _pickImage();
+                    if (file != null ) {
+                      formCubit.add(
+                        ImageFileChanged(imageFile: file),
+                      );
+                    }
+                  },
+                ),
                 const SizedBox(height: 24),
                 TextFieldWidget(
                   label: 'Nome',

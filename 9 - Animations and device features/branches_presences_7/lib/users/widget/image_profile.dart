@@ -1,13 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileWidget extends StatelessWidget {
-  final String imagePath;
+  final String? imagePath;
+  final XFile? imageFile;
   final bool isEdit;
   final VoidCallback onClicked;
 
   const ProfileWidget({
     Key? key,
-    required this.imagePath,
+    this.imageFile,
+    this.imagePath,
     this.isEdit = false,
     required this.onClicked,
   }) : super(key: key);
@@ -32,7 +37,13 @@ class ProfileWidget extends StatelessWidget {
   }
 
   Widget buildImage() {
-    final image = NetworkImage(imagePath);
+    var image;
+    if ( imageFile != null ) {
+      image = FileImage(File(imageFile!.path));
+    }
+    if ( imagePath != null && imagePath!.isNotEmpty ) {
+      image = NetworkImage(imagePath!);
+    }
 
     return ClipOval(
       child: Material(
