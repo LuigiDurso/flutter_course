@@ -73,7 +73,6 @@ class BranchPresencesPage extends StatelessWidget {
                 listenWhen: (previous, current) =>
                     previous.status != current.status,
                 listener: (context, state) {
-                  print('Presences changed ${state.status}');
                   if (state.status == AsyncCallStatus.failure) {
                     SpinnerDialog.closeSpinnerDialog(navigator);
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();

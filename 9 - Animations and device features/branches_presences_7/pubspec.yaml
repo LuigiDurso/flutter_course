@@ -77,6 +77,8 @@ flutter:
     - assets/images/si2001-logo-bianco.png
     - assets/images/spinner_slow.gif
     - assets/images/spinner_fast.gif
+    - assets/images/user-placeholder.png
+    - assets/images/branch-placeholder.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

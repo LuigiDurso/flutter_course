@@ -129,10 +129,11 @@ class HomeView extends StatelessWidget {
               tag: userBranch.name,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  userBranch.imagePath,
+                child: FadeInImage.assetNetwork(
+                  image: userBranch.imagePath,
                   fit: BoxFit.cover,
                   height: 70,
+                  placeholder: 'assets/images/branch-placeholder.png',
                 ),
               ),
             ),

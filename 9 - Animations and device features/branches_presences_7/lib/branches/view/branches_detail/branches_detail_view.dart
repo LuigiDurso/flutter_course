@@ -27,10 +27,11 @@ class BranchesDetailView extends StatelessWidget {
               Hero(
                 tag: selectedBranch.name,
                 child: ClipRect(
-                  child: Image.network(
-                    selectedBranch.imagePath,
+                  child: FadeInImage.assetNetwork(
+                    image: selectedBranch.imagePath,
                     fit: BoxFit.cover,
                     height: 70,
+                    placeholder: 'assets/images/branch-placeholder.png',
                   ),
                 ),
               ),

@@ -47,11 +47,12 @@ class PresencesOverview extends StatelessWidget {
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              branchImagePath,
+                            child: FadeInImage.assetNetwork(
+                              image: branchImagePath,
                               fit: BoxFit.cover,
                               width: constraints.maxWidth,
                               height: constraints.maxHeight,
+                              placeholder: 'assets/images/branch-placeholder.png',
                             ),
                           ),
                         ),

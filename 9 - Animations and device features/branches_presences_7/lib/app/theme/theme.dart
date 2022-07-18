@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'custom_transition_builder.dart';
+
 var primaryColor = const Color(0xff20488f);
 
 final theme = ThemeData(
@@ -22,5 +24,14 @@ final theme = ThemeData(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
     ),
+  ),
+  pageTransitionsTheme: const PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: CustomTransitionBuilder(),
+      TargetPlatform.iOS: CustomTransitionBuilder(),
+      TargetPlatform.macOS: CustomTransitionBuilder(),
+      TargetPlatform.windows: CustomTransitionBuilder(),
+      TargetPlatform.linux: CustomTransitionBuilder(),
+    },
   ),
 );

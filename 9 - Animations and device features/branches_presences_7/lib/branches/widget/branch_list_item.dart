@@ -27,10 +27,11 @@ class BranchGridItem extends StatelessWidget {
               flex: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  branch.imagePath,
+                child: FadeInImage.assetNetwork(
+                  image: branch.imagePath,
                   fit: BoxFit.cover,
                   height: 70,
+                  placeholder: 'assets/images/branch-placeholder.png',
                 ),
               ),
             ),
