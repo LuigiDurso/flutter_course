@@ -4,6 +4,10 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {1}{Lezione precedente}{3}{0}{1}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {2}{Esercitazione}{4}{0}{2}
+\beamer@sectionintoc {2}{Animazioni}{4}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{Fine}{5}{0}{3}
+\beamer@sectionintoc {3}{Funzionalità del dispositivo}{5}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{Esercitazione}{6}{0}{4}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{Fine}{7}{0}{5}

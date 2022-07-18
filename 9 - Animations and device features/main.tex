@@ -65,6 +65,33 @@
 
 %% ---------------------------------------------------------------------------
 
+\section{Animazioni}
+\begin{frame}{Gestire le animazioni}
+	\emph{Come possiamo animare la nostra app:}
+	\begin{itemize}
+		\item Gestire manualmente le anumazioni con gli animation controller;
+		\item Creare dei  widget che estendano \emph{Animated­Widget};
+		\item Possiamo gestire l'animazione con un \emph{AnimatedBuilder};
+		\item Più semplicemente, usiamo packages di widget animati oppure widget built-in animati (Es. AnimatedContainer) \href{https://docs.flutter.dev/development/ui/widgets/animation}{\beamergotobutton{Catalogo}}
+	\end{itemize}
+	\centering
+	\href{https://docs.flutter.dev/development/ui/animations/tutorial}{\beamergotobutton{Documentazione}}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{Funzionalità del dispositivo}
+\begin{frame}{Funzionalità del dispositivo}
+	\emph{Come possiamo sfruttare il nostro dispositivo}
+	\begin{itemize}
+		\item Abbiamo già visto come persistere i dati con gli \emph{Hydrated BLoC};
+		\item Possiamo recuparare immagini dal filesystem o dalla fotocamera \href{https://pub.dev/packages/image_picker}{\beamergotobutton{Package}}
+		\item Gestire informazioni sulla nostra posizione \href{https://pub.dev/packages/location}{\beamergotobutton{Package}}
+	\end{itemize}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
 \section{Esercitazione}
 \begin{frame}{Migliorare la precedente esercitazione}
 	\begin{minipage}[0.2\textheight]{\textwidth}
@@ -78,8 +105,9 @@
 			\begin{column}{0.6\textwidth}
 				\emph{Alcuni spunti:}
 				\begin{itemize}
-					\item Aggiungere la persistenza al bloc/cubit di autenticazione
-					\item Simulare un backend con i Future.
+					\item Aggiungere qualche animazione (Es. Hero, Image Placeholders, Route transitions );
+					\item Aggiungere una pagina di dettaglio alla propria sede che ne mostri la posizione dulla mappa
+					\item \href{https://pub.dev/packages/flutter_map}{\beamergotobutton{Package mappa suggerito}}
 				\end{itemize}
 			\end{column}
 		\end{columns}
