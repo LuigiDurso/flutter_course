@@ -1,5 +1,5 @@
 import 'package:branches_presences_7/app/bloc/app/app_bloc.dart';
-import 'package:branches_presences_7/branches/bloc/branches_cubit.dart';
+import 'package:branches_presences_7/branches/bloc/branches/branches_cubit.dart';
 import 'package:branches_presences_7/branches/branches.dart';
 import 'package:branches_presences_7/presences/bloc/presences/presences_cubit.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';

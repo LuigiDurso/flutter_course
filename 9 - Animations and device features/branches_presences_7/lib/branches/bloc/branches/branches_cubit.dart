@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:branches_presences_7/branches/branches.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../app/utils/async_call_status.dart';
+import '../../../app/utils/async_call_status.dart';
 
 part 'branches_state.dart';
 

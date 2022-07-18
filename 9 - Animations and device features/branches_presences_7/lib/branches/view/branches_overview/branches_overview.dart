@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/widget/list_divider.dart';
-import '../../bloc/branches_cubit.dart';
+import '../../bloc/branches/branches_cubit.dart';
 import '../../branches.dart';
 
 class BranchesOverview extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:branches_presences_7/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_7/app/bloc/navigation/navigation_cubit.dart';
-import 'package:branches_presences_7/branches/bloc/branches_cubit.dart';
+import 'package:branches_presences_7/branches/bloc/branches/branches_cubit.dart';
 import 'package:branches_presences_7/branches/branches.dart';
 import 'package:branches_presences_7/branches/domain/data/branches/firestore_branches_client.dart';
 import 'package:branches_presences_7/presences/bloc/presences/presences_cubit.dart';

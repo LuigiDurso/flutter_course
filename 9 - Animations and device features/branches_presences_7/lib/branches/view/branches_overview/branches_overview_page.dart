@@ -1,6 +1,6 @@
 import 'package:branches_presences_7/app/utils/async_call_status.dart';
 import 'package:branches_presences_7/app/widget/base_app_bar.dart';
-import 'package:branches_presences_7/branches/bloc/branches_cubit.dart';
+import 'package:branches_presences_7/branches/bloc/branches/branches_cubit.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

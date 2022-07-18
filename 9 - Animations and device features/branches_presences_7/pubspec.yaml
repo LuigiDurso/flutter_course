@@ -47,6 +47,8 @@ dependencies:
   http: ^0.13.4
   colorful_safe_area: ^0.3.0
   image_picker: ^0.8.5+3
+  flutter_map: ^2.0.0
+  latlong2: ^0.8.1
 
 dev_dependencies:
   flutter_test:
