@@ -17,7 +17,6 @@ class PresencesCubit extends Cubit<PresencesState> {
   Future<void> fetchPresencesByBranchId(int branchId) async {
     try {
       emit(state.copyWith(status: AsyncCallStatus.loading));
-      await Future<void>.delayed(const Duration(seconds: 1));
       emit(
           state.copyWith(
               presences: await presencesRepository.getPresencesByBranchId(
@@ -26,7 +25,7 @@ class PresencesCubit extends Cubit<PresencesState> {
             status: AsyncCallStatus.success,
           )
       );
-    } on Exception {
+    } on Exception catch(e) {
       emit(state.copyWith(status: AsyncCallStatus.failure));
     }
   }
@@ -34,7 +33,6 @@ class PresencesCubit extends Cubit<PresencesState> {
   Future<void> fetchPresencesByBranchIdAndDateAfter(int branchId, DateTime date) async {
     try {
       emit(state.copyWith(status: AsyncCallStatus.loading));
-      await Future<void>.delayed(const Duration(seconds: 1));
       emit(
           state.copyWith(
               presences: await presencesRepository.getPresencesByBranchIdAndDateAfter(

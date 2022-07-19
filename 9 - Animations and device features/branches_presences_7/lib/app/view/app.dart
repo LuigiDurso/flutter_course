@@ -12,6 +12,7 @@ import 'package:branches_presences_7/users/view/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../presences/domain/data/presences/firestore_presences_client.dart';
 import '../theme/theme.dart';
 import '../routes/navigator_observer.dart';
 import '../routes/route.dart';
@@ -31,7 +32,7 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (_) =>
-              PresencesRepository(presencesDataProvider: LocalPresences()),
+              PresencesRepository(presencesDataProvider: FirestorePresencesClient()),
         ),
         RepositoryProvider(
           create: (_) => UsersRepository(usersDataProvider: LocalUsers()),

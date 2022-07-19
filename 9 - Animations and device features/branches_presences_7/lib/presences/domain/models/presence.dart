@@ -33,7 +33,7 @@ class Presence extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       'branchId': branchId,
-      'dateTime': dateTime,
+      'dateTime': dateTime.toIso8601String(),
       'username': username,
     };
   }
@@ -41,7 +41,7 @@ class Presence extends Equatable {
   factory Presence.fromMap(Map<String, dynamic> map) {
     return Presence(
       branchId: map['branchId'] as int,
-      dateTime: map['dateTime'] as EquatableDateTime,
+      dateTime: EquatableDateTime.fromDateTime(DateTime.parse(map['dateTime'])),
       username: map['username'] as String,
     );
   }
