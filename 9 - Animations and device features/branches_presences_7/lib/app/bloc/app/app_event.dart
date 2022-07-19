@@ -16,3 +16,17 @@ class AppUserChanged extends AppEvent {
   @override
   List<Object> get props => [];
 }
+
+class UserLoggedIn extends AppEvent {
+
+  final String token;
+  final String email;
+
+  const UserLoggedIn({ required this.token, required this.email });
+
+  @override
+  List<Object> get props => [ token, email ];
+}
+
+class LogoutRequested extends AppEvent {
+}

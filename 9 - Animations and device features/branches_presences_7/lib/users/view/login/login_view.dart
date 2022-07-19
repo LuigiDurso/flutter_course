@@ -45,8 +45,9 @@ class _LoginViewState extends State<LoginView> {
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
           context.read<AppBloc>()
               .add(
-            AppUserChanged(
-              user: state.loggedUser!,
+            UserLoggedIn(
+              token: state.token!,
+              email: state.email,
             ),
           );
         }

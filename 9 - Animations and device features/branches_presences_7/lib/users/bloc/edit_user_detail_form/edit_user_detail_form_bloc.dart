@@ -61,10 +61,9 @@ class EditUserDetailFormBloc extends Bloc<EditUserDetailFormEvent, EditUserDetai
       emit(state.copyWith(status: EditUserDetailFormStatus.submissionFailed));
       return;
     }
-    usersRepository.updateUser(
+    await usersRepository.updateUser(
         user!.id, state.name, state.email, state.imagePath, state.about
     );
-    await Future<void>.delayed(const Duration(seconds: 1));
     emit(state.copyWith(status: EditUserDetailFormStatus.submissionSuccess));
   }
 

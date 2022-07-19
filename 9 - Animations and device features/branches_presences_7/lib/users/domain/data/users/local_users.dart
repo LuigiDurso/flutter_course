@@ -57,31 +57,42 @@ class LocalUsers implements UsersDataProvider {
   ];
 
   @override
-  User? getUserByEmailAndPassword(String email, String password) {
+  Future<String> authenticate(String email, String password) async {
     List<User> foundUser = _users
         .where((User u) => u.email == email && u.password == password)
         .toList();
     if (foundUser.isNotEmpty && foundUser.length == 1) {
-      return foundUser.first;
+      return foundUser.first.email;
     }
-    return null;
+    return '';
   }
 
   @override
-  User? updateUser(
+  Future<User> updateUser(
     int id,
     String name,
     String email,
     String imagePath,
     String about
-  ) {
+  ) async {
     int foundIndex = _users.indexWhere((User u) => id == u.id);
     if (foundIndex < 0) {
-      return null;
+      return const User.empty();
     }
     _users[foundIndex] = _users[foundIndex].copyWith(
         name: name, email: email, imagePath: imagePath, about: about
     );
     return _users[foundIndex];
+  }
+
+  @override
+  Future<User> getUserByEmail(String email) async {
+    List<User> foundUser = _users
+        .where((User u) => u.email == email)
+        .toList();
+    if (foundUser.isNotEmpty && foundUser.length == 1) {
+      return foundUser.first;
+    }
+    return const User.empty();
   }
 }

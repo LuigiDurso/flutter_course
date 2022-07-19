@@ -28,7 +28,6 @@ class LocationCubit extends Cubit<LocationState> {
           )
       );
     } on Exception catch (e) {
-      print('$e');
       emit(state.copyWith(status: AsyncCallStatus.failure));
     }
   }

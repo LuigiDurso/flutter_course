@@ -44,6 +44,7 @@ class ProfileWidget extends StatelessWidget {
     if ( imagePath != null && imagePath!.isNotEmpty ) {
       image = NetworkImage(imagePath!);
     }
+    image ??= const AssetImage('assets/images/user-placeholder.png',);
 
     return ClipOval(
       child: Material(

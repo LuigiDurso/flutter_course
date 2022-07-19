@@ -1,5 +1,7 @@
+import 'package:branches_presences_7/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_7/users/domain/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../widget/image_profile.dart';
 
@@ -27,6 +29,25 @@ class UserDetailView extends StatelessWidget {
           buildName(currentUser),
           const SizedBox(height: 48),
           buildAbout(currentUser),
+          const SizedBox(height: 24),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 12,
+                ),
+              ),
+              child: const Text('Logout'),
+              onPressed: () {
+                context.read<AppBloc>().add(
+                  LogoutRequested(),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );

@@ -8,12 +8,12 @@ import 'branches_data_provider.dart';
 class BranchNotFoundFailure implements Exception {}
 class BranchRequestFailure implements Exception {}
 
-class FirestoreBranchesClient implements BranchesDataProvider {
+class FirebaseBranchesClient implements BranchesDataProvider {
   final _baseUrl = "si-presences-default-rtdb.firebaseio.com";
 
   final http.Client _httpClient;
 
-  FirestoreBranchesClient({http.Client? httpClient})
+  FirebaseBranchesClient({http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();
 
   @override

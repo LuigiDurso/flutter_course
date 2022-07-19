@@ -6,11 +6,11 @@ class UsersRepository {
 
   UsersRepository({required this.usersDataProvider});
 
-  User? getUserByEmailAndPassword(String email, String password) {
-    return usersDataProvider.getUserByEmailAndPassword(email, password);
+  Future<String> authenticate(String email, String password) {
+    return usersDataProvider.authenticate(email, password);
   }
 
-  User? updateUser(
+  Future<User> updateUser(
     int id,
     String name,
     String email,
@@ -18,5 +18,9 @@ class UsersRepository {
     String about,
   ) {
     return usersDataProvider.updateUser(id, name, email, imagePath, about);
+  }
+
+  Future<User> getUserByEmail(String email) {
+    return usersDataProvider.getUserByEmail(email);
   }
 }

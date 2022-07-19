@@ -19,10 +19,10 @@ class LoginFormState {
 
   final LoginFormStatus status;
 
-  final User? loggedUser;
+  final String? token;
 
   const LoginFormState({
-    this.loggedUser,
+    this.token,
     this.error,
     required this.email,
     required this.password,
@@ -33,7 +33,7 @@ class LoginFormState {
 
   factory LoginFormState.initial() {
     return LoginFormState(
-      loggedUser: const User.empty(),
+      token: '',
       error: '',
       email: '',
       password: '',
@@ -53,7 +53,7 @@ class LoginFormState {
           password == other.password &&
           emailFocusNode == other.emailFocusNode &&
           error == other.error &&
-          loggedUser == other.loggedUser &&
+          token == other.token &&
           passwordFocusNode == other.passwordFocusNode);
 
   @override
@@ -63,7 +63,7 @@ class LoginFormState {
       password.hashCode ^
       emailFocusNode.hashCode ^
       error.hashCode ^
-      loggedUser.hashCode ^
+      token.hashCode ^
       passwordFocusNode.hashCode;
 
   @override
@@ -75,7 +75,7 @@ class LoginFormState {
         ' emailFocusNode: $emailFocusNode,'
         ' passwordFocusNode: $passwordFocusNode,'
         ' error: $error,'
-        ' loggedUser: $loggedUser,'
+        ' token: $token,'
         '}';
   }
 
@@ -86,7 +86,7 @@ class LoginFormState {
     String? error,
     FocusNode? emailFocusNode,
     FocusNode? passwordFocusNode,
-    User? loggedUser,
+    String? token,
   }) {
     return LoginFormState(
       status: status ?? this.status,
@@ -95,7 +95,7 @@ class LoginFormState {
       emailFocusNode: emailFocusNode ?? this.emailFocusNode,
       passwordFocusNode: passwordFocusNode ?? this.passwordFocusNode,
       error: error ?? this.error,
-      loggedUser: loggedUser ?? this.loggedUser,
+      token: token ?? this.token,
     );
   }
 
@@ -107,7 +107,7 @@ class LoginFormState {
       'emailFocusNode': emailFocusNode,
       'passwordFocusNode': passwordFocusNode,
       'error': error,
-      'loggedUser': loggedUser,
+      'token': token,
     };
   }
 
@@ -119,7 +119,7 @@ class LoginFormState {
       error: map['error'] as String,
       emailFocusNode: map['emailFocusNode'] as FocusNode,
       passwordFocusNode: map['passwordFocusNode'] as FocusNode,
-      loggedUser: map['loggedUser'] as User,
+      token: map['token'] as String,
     );
   }
 }

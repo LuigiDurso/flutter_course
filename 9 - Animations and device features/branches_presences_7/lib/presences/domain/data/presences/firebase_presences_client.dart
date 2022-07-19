@@ -7,19 +7,19 @@ import 'package:http/http.dart' as http;
 class PresencesNotFoundFailure implements Exception {}
 class PresencesRequestFailure implements Exception {}
 
-class FirestorePresencesClient implements PresencesDataProvider {
+class FirebasePresencesClient implements PresencesDataProvider {
   final _baseUrl = "si-presences-default-rtdb.firebaseio.com";
 
   final http.Client _httpClient;
 
-  FirestorePresencesClient({http.Client? httpClient})
+  FirebasePresencesClient({http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();
 
   @override
   Future<void> addPresence(Presence presence) async {
     final presencesRequest = Uri.https(
       _baseUrl,
-      '/presences/${presence.hashCode}.json',
+      '/presences/${presence.id}.json',
     );
     final presencesResponse = await _httpClient.put(presencesRequest, body: jsonEncode(presence.toMap()));
 
@@ -87,7 +87,7 @@ class FirestorePresencesClient implements PresencesDataProvider {
   Future<bool> isPresenceExists(Presence presence) async {
     final presencesRequest = Uri.https(
       _baseUrl,
-      '/presences/${presence.hashCode}.json',
+      '/presences/${presence.id}.json',
     );
     final presencesResponse = await _httpClient.get(presencesRequest);
 
@@ -110,7 +110,7 @@ class FirestorePresencesClient implements PresencesDataProvider {
   Future<void> removePresence(Presence presence) async {
     final presencesRequest = Uri.https(
       _baseUrl,
-      '/presences/${presence.hashCode}.json',
+      '/presences/${presence.id}.json',
     );
     final presencesResponse = await _httpClient.delete(presencesRequest);
 

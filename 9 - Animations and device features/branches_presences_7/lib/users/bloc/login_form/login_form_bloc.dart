@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:branches_presences_7/users/domain/data/users/firebase_users_client.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -30,38 +31,38 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
   }
 
   void _onFormSubmitted(FormSubmitted event, Emitter<LoginFormState> emit) async {
-    emit(state.copyWith(status: LoginFormStatus.submissionInProgress));
-    var form = event.form;
-    var isValid = form.currentState?.validate();
-    if ( isValid != null && !isValid ) {
-      emit(
+    try {
+      emit(state.copyWith(status: LoginFormStatus.submissionInProgress));
+      var form = event.form;
+      var isValid = form.currentState?.validate();
+      if ( isValid != null && !isValid ) {
+        emit(
           state.copyWith(
             status: LoginFormStatus.submissionFailed,
             error: 'Errore di immissione!',
           ),
+        );
+        return;
+      }
+      var token = await usersRepository.authenticate(
+          state.email, state.password
       );
-      return;
-    }
-    var loggedUser = usersRepository.getUserByEmailAndPassword(
-        state.email, state.password
-    );
-    if ( loggedUser == null ) {
+
+      emit(
+          state.copyWith(
+            status: LoginFormStatus.submissionSuccess,
+            error: '',
+            token: token,
+          )
+      );
+    } on UsersRequestFailure catch (e) {
       emit(
         state.copyWith(
           status: LoginFormStatus.submissionFailed,
           error: 'Credenziali errate!',
         ),
       );
-      return;
     }
-    await Future<void>.delayed(const Duration(seconds: 1));
-    emit(
-        state.copyWith(
-          status: LoginFormStatus.submissionSuccess,
-          error: '',
-          loggedUser: loggedUser,
-        )
-    );
   }
 
   @override

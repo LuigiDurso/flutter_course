@@ -2,17 +2,18 @@ import 'package:branches_presences_7/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_7/app/bloc/navigation/navigation_cubit.dart';
 import 'package:branches_presences_7/branches/bloc/branches/branches_cubit.dart';
 import 'package:branches_presences_7/branches/branches.dart';
-import 'package:branches_presences_7/branches/domain/data/branches/firestore_branches_client.dart';
+import 'package:branches_presences_7/branches/domain/data/branches/firebase_branches_client.dart';
 import 'package:branches_presences_7/presences/bloc/presences/presences_cubit.dart';
 import 'package:branches_presences_7/presences/domain/data/presences/local_presences.dart';
 import 'package:branches_presences_7/presences/domain/repository/presences/presences_repository.dart';
+import 'package:branches_presences_7/users/domain/data/users/firebase_users_client.dart';
 import 'package:branches_presences_7/users/domain/data/users/local_users.dart';
 import 'package:branches_presences_7/users/domain/repository/users/users_repository.dart';
 import 'package:branches_presences_7/users/view/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../presences/domain/data/presences/firestore_presences_client.dart';
+import '../../presences/domain/data/presences/firebase_presences_client.dart';
 import '../theme/theme.dart';
 import '../routes/navigator_observer.dart';
 import '../routes/route.dart';
@@ -28,14 +29,14 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider(
           create: (_) =>
-              BranchesRepository(branchesDataProvider: FirestoreBranchesClient()),
+              BranchesRepository(branchesDataProvider: FirebaseBranchesClient()),
         ),
         RepositoryProvider(
           create: (_) =>
-              PresencesRepository(presencesDataProvider: FirestorePresencesClient()),
+              PresencesRepository(presencesDataProvider: FirebasePresencesClient()),
         ),
         RepositoryProvider(
-          create: (_) => UsersRepository(usersDataProvider: LocalUsers()),
+          create: (_) => UsersRepository(usersDataProvider: FirebaseUsersClient()),
         ),
       ],
       child: MultiBlocProvider(
@@ -53,6 +54,7 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (ctx) => AppBloc(
               branchesRepository: ctx.read<BranchesRepository>(),
+              usersRepository: ctx.read<UsersRepository>(),
             ),
           ),
           BlocProvider(
@@ -102,6 +104,7 @@ class _AppViewState extends State<AppView> {
                   LoginPage.loginRoute,
                   (route) => false,
                 );
+                context.read<AppBloc>().clear();
                 break;
             }
           },

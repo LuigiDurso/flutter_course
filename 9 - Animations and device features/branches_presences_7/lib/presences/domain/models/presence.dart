@@ -13,6 +13,10 @@ class Presence extends Equatable {
     required this.username,
   });
 
+  get id {
+    return '$branchId${dateTime.millisecondsSinceEpoch}${username.replaceAll(".", "")}';
+  }
+
   @override
   String toString() {
     return 'Presence{ branchId: $branchId, dateTime: $dateTime, username: $username,}';

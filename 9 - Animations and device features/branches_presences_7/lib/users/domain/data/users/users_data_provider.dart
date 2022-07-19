@@ -1,9 +1,9 @@
 import '../../models/user.dart';
 
 abstract class UsersDataProvider {
-  User? getUserByEmailAndPassword(String email, String password);
-
-  User? updateUser(
+  Future<User> getUserByEmail(String email);
+  Future<String> authenticate(String email, String password);
+  Future<User> updateUser(
     int id,
     String name,
     String email,
