@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../../../../app/domain/data/constants/firebase_constants.dart';
 import '../../models/branch.dart';
 import 'branches_data_provider.dart';
 
@@ -9,7 +10,7 @@ class BranchNotFoundFailure implements Exception {}
 class BranchRequestFailure implements Exception {}
 
 class FirebaseBranchesClient implements BranchesDataProvider {
-  final _baseUrl = "si-presences-default-rtdb.firebaseio.com";
+  final _baseUrl = FirebaseConstants.baseUrl;
 
   final http.Client _httpClient;
 

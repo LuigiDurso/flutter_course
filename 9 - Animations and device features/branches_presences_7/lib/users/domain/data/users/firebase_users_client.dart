@@ -4,13 +4,15 @@ import 'package:branches_presences_7/users/domain/data/users/users_data_provider
 import 'package:branches_presences_7/users/domain/models/user.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../app/domain/data/constants/firebase_constants.dart';
+
 class UsersNotFoundFailure implements Exception {}
 
 class UsersRequestFailure implements Exception {}
 
 class FirebaseUsersClient implements UsersDataProvider {
-  final _baseUrl = "si-presences-default-rtdb.firebaseio.com";
-  final _loginBaseUrl = "identitytoolkit.googleapis.com";
+  final _baseUrl = FirebaseConstants.baseUrl;
+  final _loginBaseUrl = FirebaseConstants.loginBaseUrl;
 
   final http.Client _httpClient;
 

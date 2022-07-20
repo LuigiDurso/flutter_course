@@ -1,5 +1,6 @@
 import 'package:branches_presences_7/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences_7/app/bloc/navigation/navigation_cubit.dart';
+import 'package:branches_presences_7/app/domain/data/interceptors/token_api_interceptor.dart';
 import 'package:branches_presences_7/branches/bloc/branches/branches_cubit.dart';
 import 'package:branches_presences_7/branches/branches.dart';
 import 'package:branches_presences_7/branches/domain/data/branches/firebase_branches_client.dart';
@@ -12,6 +13,8 @@ import 'package:branches_presences_7/users/domain/repository/users/users_reposit
 import 'package:branches_presences_7/users/view/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:http_interceptor/http/intercepted_client.dart';
 
 import '../../presences/domain/data/presences/firebase_presences_client.dart';
 import '../theme/theme.dart';
@@ -25,18 +28,37 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var secureStorage = const FlutterSecureStorage();
+    var httpClient = InterceptedClient.build(
+      interceptors: [
+        TokenApiInterceptor(storage: secureStorage)
+      ],
+      // retryPolicy: ExpiredTokenRetryPolicy(),
+    );
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(
           create: (_) =>
-              BranchesRepository(branchesDataProvider: FirebaseBranchesClient()),
+              BranchesRepository(
+                  branchesDataProvider: FirebaseBranchesClient(
+                    httpClient: httpClient,
+                  ),
+              ),
         ),
         RepositoryProvider(
           create: (_) =>
-              PresencesRepository(presencesDataProvider: FirebasePresencesClient()),
+              PresencesRepository(
+                  presencesDataProvider: FirebasePresencesClient(
+                    httpClient: httpClient,
+                  ),
+              ),
         ),
         RepositoryProvider(
-          create: (_) => UsersRepository(usersDataProvider: FirebaseUsersClient()),
+          create: (_) => UsersRepository(
+              usersDataProvider: FirebaseUsersClient(
+                httpClient: httpClient,
+              ),
+          ),
         ),
       ],
       child: MultiBlocProvider(
@@ -55,6 +77,7 @@ class App extends StatelessWidget {
             create: (ctx) => AppBloc(
               branchesRepository: ctx.read<BranchesRepository>(),
               usersRepository: ctx.read<UsersRepository>(),
+              secureStorage: secureStorage,
             ),
           ),
           BlocProvider(

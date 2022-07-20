@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:branches_presences_7/app/domain/data/constants/firebase_constants.dart';
 import 'package:branches_presences_7/presences/domain/data/presences/presences_data_provider.dart';
 import 'package:branches_presences_7/presences/domain/models/presence.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +9,7 @@ class PresencesNotFoundFailure implements Exception {}
 class PresencesRequestFailure implements Exception {}
 
 class FirebasePresencesClient implements PresencesDataProvider {
-  final _baseUrl = "si-presences-default-rtdb.firebaseio.com";
+  final _baseUrl = FirebaseConstants.baseUrl;
 
   final http.Client _httpClient;
 
