@@ -20,9 +20,11 @@ class LoginFormState {
   final LoginFormStatus status;
 
   final String? token;
+  final String? refreshToken;
 
   const LoginFormState({
     this.token,
+    this.refreshToken,
     this.error,
     required this.email,
     required this.password,
@@ -34,6 +36,7 @@ class LoginFormState {
   factory LoginFormState.initial() {
     return LoginFormState(
       token: '',
+      refreshToken: '',
       error: '',
       email: '',
       password: '',
@@ -54,6 +57,7 @@ class LoginFormState {
           emailFocusNode == other.emailFocusNode &&
           error == other.error &&
           token == other.token &&
+          refreshToken == other.refreshToken &&
           passwordFocusNode == other.passwordFocusNode);
 
   @override
@@ -64,6 +68,7 @@ class LoginFormState {
       emailFocusNode.hashCode ^
       error.hashCode ^
       token.hashCode ^
+      refreshToken.hashCode ^
       passwordFocusNode.hashCode;
 
   @override
@@ -76,6 +81,7 @@ class LoginFormState {
         ' passwordFocusNode: $passwordFocusNode,'
         ' error: $error,'
         ' token: $token,'
+        ' refreshToken: $refreshToken,'
         '}';
   }
 
@@ -87,6 +93,7 @@ class LoginFormState {
     FocusNode? emailFocusNode,
     FocusNode? passwordFocusNode,
     String? token,
+    String? refreshToken,
   }) {
     return LoginFormState(
       status: status ?? this.status,
@@ -96,6 +103,7 @@ class LoginFormState {
       passwordFocusNode: passwordFocusNode ?? this.passwordFocusNode,
       error: error ?? this.error,
       token: token ?? this.token,
+      refreshToken: refreshToken ?? this.refreshToken,
     );
   }
 
@@ -108,6 +116,7 @@ class LoginFormState {
       'passwordFocusNode': passwordFocusNode,
       'error': error,
       'token': token,
+      'refreshToken': refreshToken,
     };
   }
 
@@ -120,6 +129,7 @@ class LoginFormState {
       emailFocusNode: map['emailFocusNode'] as FocusNode,
       passwordFocusNode: map['passwordFocusNode'] as FocusNode,
       token: map['token'] as String,
+      refreshToken: map['refreshToken'] as String,
     );
   }
 }

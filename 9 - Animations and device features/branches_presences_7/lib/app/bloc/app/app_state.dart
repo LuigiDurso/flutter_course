@@ -14,21 +14,20 @@ class AppState extends Equatable {
   final AppStatus status;
   final User user;
   final Branch userBranch;
-  final String token;
 
   const AppState._({
     required this.status,
     this.user = const User.empty(),
     this.userBranch = const Branch.empty(),
-    this.token = '',
   });
 
-  const AppState.authenticated(User user, Branch userBranch, String token)
+  const AppState.authenticated(
+      User user, Branch userBranch,
+      )
       : this._(
     status: AppStatus.authenticated,
     user: user,
     userBranch: userBranch,
-    token: token,
   );
 
   const AppState.unauthenticated() : this._(status: AppStatus.unauthenticated);
@@ -40,13 +39,11 @@ class AppState extends Equatable {
           runtimeType == other.runtimeType &&
           status == other.status &&
           user == other.user &&
-          token == other.token &&
           userBranch == other.userBranch);
 
   @override
   int get hashCode => status.hashCode ^
   user.hashCode ^
-  token.hashCode ^
   userBranch.hashCode;
 
   @override
@@ -54,7 +51,6 @@ class AppState extends Equatable {
     return 'AppState{'
         ' status: $status,'
         ' user: $user,'
-        ' token: $token,'
         ' userBranch: $userBranch,'
         '}';
   }
@@ -63,12 +59,10 @@ class AppState extends Equatable {
     AppStatus? status,
     User? user,
     Branch? userBranch,
-    String? token,
   }) {
     return AppState._(
       status: status ?? this.status,
       user: user ?? this.user,
-      token: token ?? this.token,
       userBranch: userBranch ?? this.userBranch,
     );
   }
@@ -78,7 +72,6 @@ class AppState extends Equatable {
       'status': status.toString(),
       'user': user.toMap(),
       'userBranch': userBranch.toMap(),
-      'token': token,
     };
   }
 
@@ -87,10 +80,9 @@ class AppState extends Equatable {
       status: AppStatusDeserializer.fromString(map['status']),
       user: User.fromMap(map['user']),
       userBranch: Branch.fromMap(map['userBranch']),
-      token: map['token'] as String,
     );
   }
 
   @override
-  List<Object> get props => [ status, user, userBranch, token ];
+  List<Object> get props => [ status, user, userBranch ];
 }

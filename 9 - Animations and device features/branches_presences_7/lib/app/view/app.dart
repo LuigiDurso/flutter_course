@@ -17,6 +17,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http_interceptor/http/intercepted_client.dart';
 
 import '../../presences/domain/data/presences/firebase_presences_client.dart';
+import '../domain/data/interceptors/expired_token_retry_policy.dart';
 import '../theme/theme.dart';
 import '../routes/navigator_observer.dart';
 import '../routes/route.dart';
@@ -33,7 +34,9 @@ class App extends StatelessWidget {
       interceptors: [
         TokenApiInterceptor(storage: secureStorage)
       ],
-      // retryPolicy: ExpiredTokenRetryPolicy(),
+      retryPolicy: ExpiredTokenRetryPolicy(
+        secureStorage: secureStorage
+      ),
     );
     return MultiRepositoryProvider(
       providers: [

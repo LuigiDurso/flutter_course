@@ -44,7 +44,7 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
         );
         return;
       }
-      var token = await usersRepository.authenticate(
+      var response = await usersRepository.authenticate(
           state.email, state.password
       );
 
@@ -52,7 +52,8 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
           state.copyWith(
             status: LoginFormStatus.submissionSuccess,
             error: '',
-            token: token,
+            token: response.token,
+            refreshToken: response.refreshToken,
           )
       );
     } on UsersRequestFailure catch (e) {

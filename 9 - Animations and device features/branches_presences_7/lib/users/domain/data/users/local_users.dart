@@ -57,14 +57,14 @@ class LocalUsers implements UsersDataProvider {
   ];
 
   @override
-  Future<String> authenticate(String email, String password) async {
+  Future<AuthenticationResponse> authenticate(String email, String password) async {
     List<User> foundUser = _users
         .where((User u) => u.email == email && u.password == password)
         .toList();
     if (foundUser.isNotEmpty && foundUser.length == 1) {
-      return foundUser.first.email;
+      return AuthenticationResponse(token: '', refreshToken: '', email: email);
     }
-    return '';
+    return AuthenticationResponse.empty();
   }
 
   @override

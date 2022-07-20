@@ -1,4 +1,3 @@
-import 'package:branches_presences_7/branches/bloc/branches/branches_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,6 +46,7 @@ class _LoginViewState extends State<LoginView> {
               .add(
             UserLoggedIn(
               token: state.token!,
+              refreshToken: state.refreshToken!,
               email: state.email,
             ),
           );

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:branches_presences_7/branches/branches.dart';
 import 'package:equatable/equatable.dart';
@@ -42,13 +41,13 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
           ? AppState.authenticated(
           currentUser,
           userBranch,
-        state.token,
       ) : const AppState.unauthenticated(),
     );
   }
 
   void _onUserLoggedIn(UserLoggedIn event, Emitter<AppState> emit) async {
     await secureStorage.write(key: "apiToken", value: event.token);
+    await secureStorage.write(key: "refreshApiToken", value: event.refreshToken);
     var currentUser = await usersRepository.getUserByEmail(event.email);
     var userBranch = await _getUserBranch(currentUser);
     emit(
@@ -56,7 +55,6 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
           ? AppState.authenticated(
         currentUser,
         userBranch,
-        event.token,
       ) : const AppState.unauthenticated(),
     );
   }

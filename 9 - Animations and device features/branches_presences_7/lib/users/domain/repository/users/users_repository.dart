@@ -6,7 +6,7 @@ class UsersRepository {
 
   UsersRepository({required this.usersDataProvider});
 
-  Future<String> authenticate(String email, String password) {
+  Future<AuthenticationResponse> authenticate(String email, String password) {
     return usersDataProvider.authenticate(email, password);
   }
 

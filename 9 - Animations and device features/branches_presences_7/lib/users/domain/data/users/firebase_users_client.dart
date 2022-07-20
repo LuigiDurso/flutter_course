@@ -13,6 +13,7 @@ class UsersRequestFailure implements Exception {}
 class FirebaseUsersClient implements UsersDataProvider {
   final _baseUrl = FirebaseConstants.baseUrl;
   final _loginBaseUrl = FirebaseConstants.loginBaseUrl;
+  final _apiKey = FirebaseConstants.apiKey;
 
   final http.Client _httpClient;
 
@@ -44,11 +45,11 @@ class FirebaseUsersClient implements UsersDataProvider {
   }
 
   @override
-  Future<String> authenticate(String email, String password) async {
+  Future<AuthenticationResponse> authenticate(String email, String password) async {
     final userRequest = Uri.https(
         _loginBaseUrl,
         '/v1/accounts:signInWithPassword',
-        {"key": "AIzaSyCwcGzqreAiYqRsdkUtvkVUbcUd5lA0ioQ"});
+        { "key": _apiKey });
     var userLoginRequestBody = {
       "email": email,
       "password": password,
@@ -72,7 +73,11 @@ class FirebaseUsersClient implements UsersDataProvider {
     if (loginJson.isEmpty || loginJson["idToken"] == null) {
       throw UsersNotFoundFailure();
     }
-    return loginJson["idToken"];
+    return AuthenticationResponse(
+      token: loginJson["idToken"],
+      refreshToken: loginJson["refreshToken"],
+      email: email,
+    );
   }
 
   @override
