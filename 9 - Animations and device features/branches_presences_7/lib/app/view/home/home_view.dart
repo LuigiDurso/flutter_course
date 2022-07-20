@@ -69,7 +69,7 @@ class HomeView extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                _buildLatestPresencesGraph(context),
+                _buildLatestPresencesGraph(context, navigator, userBranch),
               ],
             ),
           ),
@@ -166,20 +166,29 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget _buildLatestPresencesGraph(BuildContext context,) {
-    return SizedBox(
-      height: 150,
-      width: double.infinity,
-      child: Card(
-        elevation: 10,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: const Color(0xff2c4260),
-        child: BlocBuilder<PresencesCubit, PresencesState>(
-          builder: (context, state) {
-            return BarChartPresences(
-              currentPresences: state.presences,
-            );
-          },
+  Widget _buildLatestPresencesGraph(
+      BuildContext context, NavigatorState navigator, Branch userBranch) {
+    return InkWell(
+      onTap: () {
+        navigator.pushNamed(
+            BranchPresencesPage.branchPresencesRoute,
+            arguments: userBranch
+        );
+      },
+      child: SizedBox(
+        height: 150,
+        width: double.infinity,
+        child: Card(
+          elevation: 10,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          color: const Color(0xff2c4260),
+          child: BlocBuilder<PresencesCubit, PresencesState>(
+            builder: (context, state) {
+              return BarChartPresences(
+                currentPresences: state.presences,
+              );
+            },
+          ),
         ),
       ),
     );
