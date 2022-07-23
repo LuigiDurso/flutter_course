@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "551679136286",
+    "firebase_url": "https://si-presences-default-rtdb.firebaseio.com",
+    "project_id": "si-presences",
+    "storage_bucket": "si-presences.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551679136286:android:a9cd3e7895589c9f7d540f",
+        "android_client_info": {
+          "package_name": "it.si2001.branches_presences"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551679136286-r1oqrjrjtum8ard86m8789ifh00b20lc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZsXaXCNYq0MhybaGHG9hSmGfW-cbNz4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551679136286-r1oqrjrjtum8ard86m8789ifh00b20lc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
