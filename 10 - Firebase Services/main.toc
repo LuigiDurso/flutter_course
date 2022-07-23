@@ -1,0 +1,11 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {1}{Lezione precedente}{3}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{Firebase}{4}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{Esercitazione}{8}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{Fine}{9}{0}{4}
