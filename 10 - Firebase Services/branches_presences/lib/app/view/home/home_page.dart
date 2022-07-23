@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
     var theme = Theme.of(context);
 
     var userBranch = context.read<AppBloc>().state.userBranch;
-    context.read<PresencesCubit>().fetchPresencesByBranchId(userBranch.id);
+    context.read<PresencesCubit>().fetchPresencesByBranchId(userBranch.uid);
 
     return ColorfulSafeArea(
       color: theme.primaryColor,

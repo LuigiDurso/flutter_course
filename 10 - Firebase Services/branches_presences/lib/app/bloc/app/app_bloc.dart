@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:branches_presences/branches/branches.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../users/domain/models/user.dart';
@@ -15,12 +14,10 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
 
   final BranchesRepository branchesRepository;
   final UsersRepository usersRepository;
-  final FlutterSecureStorage secureStorage;
 
   AppBloc({
     required this.branchesRepository,
     required this.usersRepository,
-    required this.secureStorage,
   }) : super(const AppState.unauthenticated()) {
 
     on<AppUserChanged>(_onAppUserChanged);
@@ -29,7 +26,7 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
   }
 
   void _onLogoutRequested(LogoutRequested event, Emitter<AppState> emit) async {
-    await secureStorage.deleteAll();
+    await usersRepository.logOut();
     emit(const AppState.unauthenticated());
   }
 
@@ -46,8 +43,6 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
   }
 
   void _onUserLoggedIn(UserLoggedIn event, Emitter<AppState> emit) async {
-    await secureStorage.write(key: "apiToken", value: event.token);
-    await secureStorage.write(key: "refreshApiToken", value: event.refreshToken);
     var currentUser = await usersRepository.getUserByEmail(event.email);
     var userBranch = await _getUserBranch(currentUser);
     emit(
@@ -60,7 +55,7 @@ class AppBloc extends HydratedBloc<AppEvent, AppState> {
   }
 
   Future<Branch> _getUserBranch(User user) async {
-    if ( user.branchId <= 0 ) {
+    if ( user.branchId.isEmpty ) {
       return const Branch.empty();
     }
     return await branchesRepository.findBranchById(user.branchId);

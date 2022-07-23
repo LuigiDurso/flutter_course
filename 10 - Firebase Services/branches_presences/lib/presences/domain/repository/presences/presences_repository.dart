@@ -9,11 +9,11 @@ class PresencesRepository {
     required this.presencesDataProvider
   });
 
-  Future<List<Presence>> getPresencesByBranchId(int branchId) async {
+  Future<List<Presence>> getPresencesByBranchId(String branchId) async {
     return await presencesDataProvider.getPresencesByBranchId(branchId);
   }
 
-  Future<List<Presence>> getPresencesByBranchIdAndDateAfter(int branchId, DateTime dateTime) async {
+  Future<List<Presence>> getPresencesByBranchIdAndDateAfter(String branchId, DateTime dateTime) async {
     return await presencesDataProvider.getPresencesByBranchIdAndDateAfter(
         branchId, dateTime
     );

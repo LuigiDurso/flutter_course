@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
 class Presence extends Equatable {
-  final int branchId;
+  final String branchId;
   final EquatableDateTime dateTime;
   final String username;
 
@@ -13,8 +13,20 @@ class Presence extends Equatable {
     required this.username,
   });
 
+  factory Presence.empty() {
+    return Presence(
+        branchId: '',
+        dateTime: EquatableDateTime.fromDateTime(DateTime.now()),
+        username: ''
+    );
+  }
+
   get id {
     return '$branchId${dateTime.millisecondsSinceEpoch}${username.replaceAll(".", "")}';
+  }
+
+  bool get isNotEmpty {
+    return branchId.isNotEmpty;
   }
 
   @override
@@ -23,7 +35,7 @@ class Presence extends Equatable {
   }
 
   Presence copyWith({
-    int? branchId,
+    String? branchId,
     EquatableDateTime? dateTime,
     String? username,
   }) {
@@ -44,7 +56,7 @@ class Presence extends Equatable {
 
   factory Presence.fromMap(Map<String, dynamic> map) {
     return Presence(
-      branchId: map['branchId'] as int,
+      branchId: map['branchId'] as String,
       dateTime: EquatableDateTime.fromDateTime(DateTime.parse(map['dateTime'])),
       username: map['username'] as String,
     );

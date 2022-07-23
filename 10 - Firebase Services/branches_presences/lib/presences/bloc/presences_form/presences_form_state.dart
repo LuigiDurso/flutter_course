@@ -12,7 +12,7 @@ enum PresencesFormStatus {
 class PresencesFormState extends Equatable {
   final DateTime selectedDate;
   final String username;
-  final int branchId;
+  final String branchId;
   final PresencesFormStatus status;
   final String? error;
 
@@ -24,7 +24,7 @@ class PresencesFormState extends Equatable {
     required this.branchId,
   });
 
-  factory PresencesFormState.initial(String username, int branchId) {
+  factory PresencesFormState.initial(String username, String branchId) {
     return PresencesFormState(
       selectedDate: DateTime.now().add(const Duration(days: 1)),
       username: username,
@@ -68,7 +68,7 @@ class PresencesFormState extends Equatable {
     DateTime? selectedDate,
     PresencesFormStatus? status,
     String? username,
-    int? branchId,
+    String? branchId,
     String? error,
   }) {
     return PresencesFormState(
@@ -96,7 +96,7 @@ class PresencesFormState extends Equatable {
       status: map['status'] as PresencesFormStatus,
       username: map['username'] as String,
       error: map['error'] as String,
-      branchId: map['branchId'] as int,
+      branchId: map['branchId'] as String,
     );
   }
 

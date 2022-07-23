@@ -1,38 +1,35 @@
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
-  final int id;
+  final String uid;
   final String name;
   final String lastname;
   final String email;
-  final String password;
   final String imagePath;
   final String about;
-  final int branchId;
+  final String branchId;
 
   const User({
-    required this.id,
+    required this.uid,
     required this.name,
     required this.lastname,
     required this.email,
-    required this.password,
     required this.imagePath,
     required this.about,
     required this.branchId,
   });
 
   const User.empty() :
-        id = -1,
+        uid = '',
         name = '',
         lastname = '',
         email = '',
-        password = '',
         imagePath = '',
         about = '',
-        branchId = -1;
+        branchId = '';
 
   bool get isNotEmpty {
-    return id > 0;
+    return uid.isNotEmpty;
   }
 
   @override
@@ -40,22 +37,20 @@ class User extends Equatable {
       identical(this, other) ||
       (other is User &&
           runtimeType == other.runtimeType &&
-          id == other.id &&
+          uid == other.uid &&
           name == other.name &&
           lastname == other.lastname &&
           email == other.email &&
-          password == other.password &&
           imagePath == other.imagePath &&
           about == other.about &&
           branchId == other.branchId);
 
   @override
   int get hashCode =>
-      id.hashCode ^
+      uid.hashCode ^
       name.hashCode ^
       lastname.hashCode ^
       email.hashCode ^
-      password.hashCode ^
       imagePath.hashCode ^
       about.hashCode ^
       branchId.hashCode;
@@ -63,11 +58,10 @@ class User extends Equatable {
   @override
   String toString() {
     return 'User{'
-        ' id: $id,'
+        ' uid: $uid,'
         ' name: $name,'
         ' lastname: $lastname,'
         ' email: $email,'
-        ' password: $password,'
         ' imagePath: $imagePath,'
         ' about: $about,'
         ' branchId: $branchId,'
@@ -75,21 +69,19 @@ class User extends Equatable {
   }
 
   User copyWith({
-    int? id,
+    String? uid,
     String? name,
     String? lastname,
     String? email,
-    String? password,
     String? imagePath,
     String? about,
-    int? branchId,
+    String? branchId,
   }) {
     return User(
-      id: id ?? this.id,
+      uid: uid ?? this.uid,
       name: name ?? this.name,
       lastname: lastname ?? this.lastname,
       email: email ?? this.email,
-      password: password ?? this.password,
       imagePath: imagePath ?? this.imagePath,
       about: about ?? this.about,
       branchId: branchId ?? this.branchId,
@@ -98,11 +90,10 @@ class User extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'uid': uid,
       'name': name,
       'lastname': lastname,
       'email': email,
-      'password': password,
       'imagePath': imagePath,
       'about': about,
       'branchId': branchId,
@@ -111,17 +102,16 @@ class User extends Equatable {
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
-      id: map['id'] as int,
+      uid: (map['uid'] ?? '') as String,
       name: map['name'] as String,
       lastname: map['lastname'] as String,
       email: map['email'] as String,
-      password: map['password'] as String,
       imagePath: map['imagePath'] as String,
       about: map['about'] as String,
-      branchId: map['branchId'] as int,
+      branchId: map['branchId'] as String,
     );
   }
 
   @override
-  List<Object> get props => [id, name, lastname, email, password, imagePath, about, branchId];
+  List<Object> get props => [uid, name, lastname, email, imagePath, about, branchId];
 }

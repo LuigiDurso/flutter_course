@@ -6,12 +6,16 @@ class UsersRepository {
 
   UsersRepository({required this.usersDataProvider});
 
-  Future<AuthenticationResponse> authenticate(String email, String password) {
-    return usersDataProvider.authenticate(email, password);
+  Future<void> authenticate(String email, String password) async {
+    await usersDataProvider.authenticate(email, password);
+  }
+
+  Future<void> logOut() async {
+    await usersDataProvider.logOut();
   }
 
   Future<User> updateUser(
-    int id,
+    String id,
     String name,
     String email,
     String imagePath,

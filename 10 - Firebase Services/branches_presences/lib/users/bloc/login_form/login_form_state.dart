@@ -7,7 +7,7 @@ enum LoginFormStatus {
   initial,
 }
 
-class LoginFormState {
+class LoginFormState implements Equatable {
 
   final String email;
   final String password;
@@ -19,12 +19,7 @@ class LoginFormState {
 
   final LoginFormStatus status;
 
-  final String? token;
-  final String? refreshToken;
-
   const LoginFormState({
-    this.token,
-    this.refreshToken,
     this.error,
     required this.email,
     required this.password,
@@ -35,8 +30,6 @@ class LoginFormState {
 
   factory LoginFormState.initial() {
     return LoginFormState(
-      token: '',
-      refreshToken: '',
       error: '',
       email: '',
       password: '',
@@ -56,8 +49,6 @@ class LoginFormState {
           password == other.password &&
           emailFocusNode == other.emailFocusNode &&
           error == other.error &&
-          token == other.token &&
-          refreshToken == other.refreshToken &&
           passwordFocusNode == other.passwordFocusNode);
 
   @override
@@ -67,8 +58,6 @@ class LoginFormState {
       password.hashCode ^
       emailFocusNode.hashCode ^
       error.hashCode ^
-      token.hashCode ^
-      refreshToken.hashCode ^
       passwordFocusNode.hashCode;
 
   @override
@@ -80,8 +69,6 @@ class LoginFormState {
         ' emailFocusNode: $emailFocusNode,'
         ' passwordFocusNode: $passwordFocusNode,'
         ' error: $error,'
-        ' token: $token,'
-        ' refreshToken: $refreshToken,'
         '}';
   }
 
@@ -92,8 +79,6 @@ class LoginFormState {
     String? error,
     FocusNode? emailFocusNode,
     FocusNode? passwordFocusNode,
-    String? token,
-    String? refreshToken,
   }) {
     return LoginFormState(
       status: status ?? this.status,
@@ -102,8 +87,6 @@ class LoginFormState {
       emailFocusNode: emailFocusNode ?? this.emailFocusNode,
       passwordFocusNode: passwordFocusNode ?? this.passwordFocusNode,
       error: error ?? this.error,
-      token: token ?? this.token,
-      refreshToken: refreshToken ?? this.refreshToken,
     );
   }
 
@@ -115,8 +98,6 @@ class LoginFormState {
       'emailFocusNode': emailFocusNode,
       'passwordFocusNode': passwordFocusNode,
       'error': error,
-      'token': token,
-      'refreshToken': refreshToken,
     };
   }
 
@@ -128,8 +109,12 @@ class LoginFormState {
       error: map['error'] as String,
       emailFocusNode: map['emailFocusNode'] as FocusNode,
       passwordFocusNode: map['passwordFocusNode'] as FocusNode,
-      token: map['token'] as String,
-      refreshToken: map['refreshToken'] as String,
     );
   }
+
+  @override
+  List<Object?> get props => [ status, email, password, error, emailFocusNode, passwordFocusNode ];
+
+  @override
+  bool? get stringify => true;
 }

@@ -1,81 +1,64 @@
 import 'dart:convert';
 
-import 'package:branches_presences/app/domain/data/constants/firebase_constants.dart';
 import 'package:branches_presences/presences/domain/data/presences/presences_data_provider.dart';
 import 'package:branches_presences/presences/domain/models/presence.dart';
-import 'package:http/http.dart' as http;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PresencesNotFoundFailure implements Exception {}
 class PresencesRequestFailure implements Exception {}
 
 class FirebasePresencesClient implements PresencesDataProvider {
-  final _baseUrl = FirebaseConstants.baseUrl;
+  final FirebaseFirestore _firestore;
 
-  final http.Client _httpClient;
+  FirebasePresencesClient({
+    FirebaseFirestore? firestore
+  })  : _firestore = firestore ?? FirebaseFirestore.instance;
 
-  FirebasePresencesClient({http.Client? httpClient})
-      : _httpClient = httpClient ?? http.Client();
+  Presence _fromFirestorePresenceConverter(DocumentSnapshot<Map<String, dynamic>> presenceMap, SnapshotOptions? options) {
+    return presenceMap.data() != null ?
+    Presence.fromMap(presenceMap.data()!) : Presence.empty();
+  }
+
+  Map<String, dynamic> _toFirestorePresenceConverter(Presence presence, SetOptions? options) {
+    return presence.isNotEmpty ? presence.toMap() : {};
+  }
 
   @override
   Future<void> addPresence(Presence presence) async {
-    final presencesRequest = Uri.https(
-      _baseUrl,
-      '/presences/${presence.id}.json',
-    );
-    final presencesResponse = await _httpClient.put(presencesRequest, body: jsonEncode(presence.toMap()));
-
-    if (presencesResponse.statusCode != 200) {
-      throw PresencesRequestFailure();
-    }
+    await _firestore.collection("/presences")
+        .doc(presence.id)
+        .set(presence.toMap());
   }
 
   @override
   Future<List<Presence>> getAllPresences() async {
-    final presencesRequest = Uri.https(
-      _baseUrl,
-      '/presences.json',
-    );
-    final presencesResponse = await _httpClient.get(presencesRequest);
-
-    if (presencesResponse.statusCode != 200) {
-      throw PresencesRequestFailure();
+    var result = await _firestore.collection("/presences")
+        .withConverter<Presence>(
+        fromFirestore:  _fromFirestorePresenceConverter,
+        toFirestore: _toFirestorePresenceConverter
+    ).get();
+    if ( result.docs.isEmpty ) {
+      throw PresencesNotFoundFailure();
     }
-
-    final presencesJson = (jsonDecode(
-      presencesResponse.body,
-    )) as List;
-
-    return presencesJson
-        .where((element) => element != null)
-        .map((e) => Presence.fromMap(e))
-        .toList();
+    return result.docs.map((e) => e.data()).toList();
   }
 
   @override
-  Future<List<Presence>> getPresencesByBranchId(int branchId) async {
-    final presencesRequest = Uri.https(
-      _baseUrl,
-      '/presences.json',
-      { "orderBy": "\"branchId\"", "equalTo": "$branchId" }
-    );
-    final presencesResponse = await _httpClient.get(presencesRequest);
-
-    if (presencesResponse.statusCode != 200) {
-      throw PresencesRequestFailure();
+  Future<List<Presence>> getPresencesByBranchId(String branchId) async {
+    var result = await _firestore.collection("/presences")
+        .where("branchId", isEqualTo: branchId)
+        .withConverter<Presence>(
+        fromFirestore:  _fromFirestorePresenceConverter,
+        toFirestore: _toFirestorePresenceConverter
+    ).get();
+    if ( result.docs.isEmpty ) {
+      return [];
     }
-
-    final presencesJson = presencesResponse.body.isNotEmpty && presencesResponse.body != "{}" ? (jsonDecode(
-      presencesResponse.body,
-    )) as Map<String, dynamic> : <String, dynamic>{};
-
-    return presencesJson.values
-        .where((element) => element != null)
-        .map((e) => Presence.fromMap(e))
-        .toList();
+    return result.docs.map((e) => e.data()).toList();
   }
 
   @override
-  Future<List<Presence>> getPresencesByBranchIdAndDateAfter(int branchId, DateTime date) async {
+  Future<List<Presence>> getPresencesByBranchIdAndDateAfter(String branchId, DateTime date) async {
     List<Presence> presences = await getPresencesByBranchId(branchId);
     return presences
         .where(
@@ -86,37 +69,19 @@ class FirebasePresencesClient implements PresencesDataProvider {
 
   @override
   Future<bool> isPresenceExists(Presence presence) async {
-    final presencesRequest = Uri.https(
-      _baseUrl,
-      '/presences/${presence.id}.json',
-    );
-    final presencesResponse = await _httpClient.get(presencesRequest);
-
-    if (presencesResponse.statusCode != 200) {
-      throw PresencesRequestFailure();
-    }
-
-    final presencesJson = presencesResponse.body.isNotEmpty && presencesResponse.body != 'null' ?(jsonDecode(
-      presencesResponse.body,
-    )) as Map<String, dynamic> : <String, dynamic>{};
-
-    if ( presencesJson.isEmpty ) {
+    var result = await _firestore.collection("/presences").doc(presence.id)
+        .withConverter<Presence>(
+        fromFirestore:  _fromFirestorePresenceConverter,
+        toFirestore: _toFirestorePresenceConverter
+    ).get();
+    if ( result.data() == null ) {
       return false;
     }
-
-    return Presence.fromMap(presencesJson).branchId > 0;
+    return result.data()!.isNotEmpty;
   }
 
   @override
   Future<void> removePresence(Presence presence) async {
-    final presencesRequest = Uri.https(
-      _baseUrl,
-      '/presences/${presence.id}.json',
-    );
-    final presencesResponse = await _httpClient.delete(presencesRequest);
-
-    if (presencesResponse.statusCode != 200) {
-      throw PresencesRequestFailure();
-    }
+    await _firestore.collection("/presences").doc(presence.id).delete();
   }
 }

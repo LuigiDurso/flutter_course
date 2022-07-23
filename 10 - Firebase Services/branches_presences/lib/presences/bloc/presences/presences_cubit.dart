@@ -14,7 +14,7 @@ class PresencesCubit extends Cubit<PresencesState> {
     required this.presencesRepository
   }) : super(PresencesState.initial());
   
-  Future<void> fetchPresencesByBranchId(int branchId) async {
+  Future<void> fetchPresencesByBranchId(String branchId) async {
     print('fetchPresencesByBranchId $branchId');
     try {
       emit(state.copyWith(status: AsyncCallStatus.loading));
@@ -31,7 +31,7 @@ class PresencesCubit extends Cubit<PresencesState> {
     }
   }
 
-  Future<void> fetchPresencesByBranchIdAndDateAfter(int branchId, DateTime date) async {
+  Future<void> fetchPresencesByBranchIdAndDateAfter(String branchId, DateTime date) async {
     try {
       emit(state.copyWith(status: AsyncCallStatus.loading));
       emit(

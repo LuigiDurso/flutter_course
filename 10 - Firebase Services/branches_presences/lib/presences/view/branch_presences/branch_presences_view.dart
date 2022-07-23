@@ -9,7 +9,7 @@ import '../../domain/data/presences/calendar_presences.dart';
 
 class BranchPresencesView extends StatelessWidget {
 
-  final int branchId;
+  final String branchId;
 
   const BranchPresencesView({
     Key? key,

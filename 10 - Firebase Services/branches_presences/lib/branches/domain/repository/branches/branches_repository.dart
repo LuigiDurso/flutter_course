@@ -13,7 +13,7 @@ class BranchesRepository {
     return branchesDataProvider.getBranches();
   }
 
-  Future<Branch> findBranchById(int id) {
+  Future<Branch> findBranchById(String id) {
     return branchesDataProvider.findBranchById(id);
   }
 }

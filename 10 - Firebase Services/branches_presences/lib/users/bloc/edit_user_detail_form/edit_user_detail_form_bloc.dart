@@ -62,7 +62,7 @@ class EditUserDetailFormBloc extends Bloc<EditUserDetailFormEvent, EditUserDetai
       return;
     }
     await usersRepository.updateUser(
-        user!.id, state.name, state.email, state.imagePath, state.about
+        user!.uid, state.name, state.email, state.imagePath, state.about
     );
     emit(state.copyWith(status: EditUserDetailFormStatus.submissionSuccess));
   }

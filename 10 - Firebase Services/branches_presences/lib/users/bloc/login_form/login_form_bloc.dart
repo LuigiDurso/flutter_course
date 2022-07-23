@@ -3,7 +3,6 @@ import 'package:branches_presences/users/domain/data/users/firebase_users_client
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../domain/models/user.dart';
 import '../../domain/repository/users/users_repository.dart';
 
 part 'login_form_event.dart';
@@ -44,7 +43,7 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
         );
         return;
       }
-      var response = await usersRepository.authenticate(
+      await usersRepository.authenticate(
           state.email, state.password
       );
 
@@ -52,15 +51,20 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
           state.copyWith(
             status: LoginFormStatus.submissionSuccess,
             error: '',
-            token: response.token,
-            refreshToken: response.refreshToken,
           )
       );
-    } on UsersRequestFailure catch (e) {
+    } on LogInWithEmailAndPasswordFailure catch (e) {
       emit(
         state.copyWith(
           status: LoginFormStatus.submissionFailed,
-          error: 'Credenziali errate!',
+          error: e.message,
+        ),
+      );
+    } catch (_) {
+      emit(
+        state.copyWith(
+          status: LoginFormStatus.submissionFailed,
+          error: "Errore sconosciuto!",
         ),
       );
     }

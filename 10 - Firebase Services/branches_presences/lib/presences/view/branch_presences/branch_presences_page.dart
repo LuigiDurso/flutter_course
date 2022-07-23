@@ -32,7 +32,7 @@ class BranchPresencesPage extends StatelessWidget {
       color: theme.primaryColor,
       child: BlocProvider(
         create: (context) => PresencesFormCubit(
-          branchId: selectedBranch.id,
+          branchId: selectedBranch.uid,
           username: currentUser.email,
           presencesRepository: context.read<PresencesRepository>(),
         ),
@@ -62,7 +62,7 @@ class BranchPresencesPage extends StatelessWidget {
                     SpinnerDialog.closeSpinnerDialog(navigator);
                     context
                         .read<PresencesCubit>()
-                        .fetchPresencesByBranchId(selectedBranch.id);
+                        .fetchPresencesByBranchId(selectedBranch.uid);
                     context
                         .read<PresencesFormCubit>()
                         .selectDate(state.selectedDate);
@@ -128,7 +128,7 @@ class BranchPresencesPage extends StatelessWidget {
                 ),
               ),
               body: BranchPresencesView(
-                branchId: selectedBranch.id,
+                branchId: selectedBranch.uid,
               ),
             ),
           );

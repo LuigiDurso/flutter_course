@@ -45,8 +45,6 @@ class _LoginViewState extends State<LoginView> {
           context.read<AppBloc>()
               .add(
             UserLoggedIn(
-              token: state.token!,
-              refreshToken: state.refreshToken!,
               email: state.email,
             ),
           );

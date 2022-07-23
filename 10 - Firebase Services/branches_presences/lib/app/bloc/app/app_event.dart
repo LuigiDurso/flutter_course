@@ -19,18 +19,14 @@ class AppUserChanged extends AppEvent {
 
 class UserLoggedIn extends AppEvent {
 
-  final String token;
-  final String refreshToken;
   final String email;
 
   const UserLoggedIn({
-    required this.token,
-    required this.refreshToken,
     required this.email
   });
 
   @override
-  List<Object> get props => [ token, refreshToken, email ];
+  List<Object> get props => [ email ];
 }
 
 class LogoutRequested extends AppEvent {

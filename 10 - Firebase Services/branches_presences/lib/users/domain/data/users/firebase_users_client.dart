@@ -1,105 +1,171 @@
-import 'dart:convert';
-
 import 'package:branches_presences/users/domain/data/users/users_data_provider.dart';
-import 'package:branches_presences/users/domain/models/user.dart';
-import 'package:http/http.dart' as http;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
-import '../../../../app/domain/data/constants/firebase_constants.dart';
+import '../../models/user.dart';
+
+class SignUpWithEmailAndPasswordFailure implements Exception {
+
+  const SignUpWithEmailAndPasswordFailure([
+    this.message = 'Errore inaspettato.',
+  ]);
+
+  factory SignUpWithEmailAndPasswordFailure.fromCode(String code) {
+    switch (code) {
+      case 'invalid-email':
+        return const SignUpWithEmailAndPasswordFailure(
+          'Email non valida.',
+        );
+      case 'user-disabled':
+        return const SignUpWithEmailAndPasswordFailure(
+          'Utente disabilitato.',
+        );
+      case 'email-already-in-use':
+        return const SignUpWithEmailAndPasswordFailure(
+          'Email esistente.',
+        );
+      case 'operation-not-allowed':
+        return const SignUpWithEmailAndPasswordFailure(
+          'Operazione non consentita.',
+        );
+      case 'weak-password':
+        return const SignUpWithEmailAndPasswordFailure(
+          'Password debole.',
+        );
+      default:
+        return const SignUpWithEmailAndPasswordFailure();
+    }
+  }
+
+  final String message;
+}
+
+class LogInWithEmailAndPasswordFailure implements Exception {
+
+  const LogInWithEmailAndPasswordFailure([
+    this.message = 'Errore inaspettato.',
+  ]);
+
+  factory LogInWithEmailAndPasswordFailure.fromCode(String code) {
+    switch (code) {
+      case 'invalid-email':
+        return const LogInWithEmailAndPasswordFailure(
+          'Email non valida.',
+        );
+      case 'user-disabled':
+        return const LogInWithEmailAndPasswordFailure(
+          'Utente disabilitato.',
+        );
+      case 'user-not-found':
+        return const LogInWithEmailAndPasswordFailure(
+          'Email non trovata.',
+        );
+      case 'wrong-password':
+        return const LogInWithEmailAndPasswordFailure(
+          'Password errata.',
+        );
+      default:
+        return const LogInWithEmailAndPasswordFailure();
+    }
+  }
+
+  final String message;
+}
 
 class UsersNotFoundFailure implements Exception {}
 
 class UsersRequestFailure implements Exception {}
 
+class LogOutFailure implements Exception {}
+
 class FirebaseUsersClient implements UsersDataProvider {
-  final _baseUrl = FirebaseConstants.baseUrl;
-  final _loginBaseUrl = FirebaseConstants.loginBaseUrl;
-  final _apiKey = FirebaseConstants.apiKey;
 
-  final http.Client _httpClient;
+  final firebase_auth.FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
 
-  FirebaseUsersClient({http.Client? httpClient})
-      : _httpClient = httpClient ?? http.Client();
+  FirebaseUsersClient({
+    firebase_auth.FirebaseAuth? firebaseAuth,
+    FirebaseFirestore? firestore
+  })  : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
+        _firestore = firestore ?? FirebaseFirestore.instance;
 
-  @override
-  Future<User> getUserByEmail(String email) async {
-    final userRequest = Uri.https(
-        _baseUrl, '/users.json',
-        {"orderBy": "\"email\"", "equalTo": "\"$email\""},
-    );
-    final userResponse = await _httpClient.get(userRequest);
 
-    if (userResponse.statusCode != 200) {
-      throw UsersRequestFailure();
-    }
+  User _fromFirestoreUserConverter(DocumentSnapshot<Map<String, dynamic>> userMap, SnapshotOptions? options) {
+    return userMap.data() != null ?
+    User.fromMap(userMap.data()!).copyWith(uid: userMap.id) : const User.empty();
+  }
 
-    final usersJson = userResponse.body.isNotEmpty && userResponse.body != '{}'
-        ? (jsonDecode(
-            userResponse.body,
-          )) as Map<String, dynamic>
-        : <String, dynamic>{};
-
-    return usersJson.values
-        .where((element) => element != null)
-        .map((e) => User.fromMap(e))
-        .first;
+  Map<String, dynamic> _toFirestoreUserConverter(User user, SetOptions? options) {
+    return user.isNotEmpty ? user.toMap() : {};
   }
 
   @override
-  Future<AuthenticationResponse> authenticate(String email, String password) async {
-    final userRequest = Uri.https(
-        _loginBaseUrl,
-        '/v1/accounts:signInWithPassword',
-        { "key": _apiKey });
-    var userLoginRequestBody = {
-      "email": email,
-      "password": password,
-      "returnSecureToken": "true"
-    };
-
-    final userResponse =
-        await _httpClient.post(userRequest, body: userLoginRequestBody);
-
-    if (userResponse.statusCode != 200) {
-      throw UsersRequestFailure();
-    }
-
-    final loginJson =
-        userResponse.body.isNotEmpty && userResponse.body != 'null'
-            ? (jsonDecode(
-                userResponse.body,
-              )) as Map<String, dynamic>
-            : <String, dynamic>{};
-
-    if (loginJson.isEmpty || loginJson["idToken"] == null) {
+  Future<User> getUserByEmail(String email) async {
+    var result = await _firestore.collection("/users")
+        .where("email", isEqualTo: email)
+        .withConverter<User>(
+        fromFirestore:  _fromFirestoreUserConverter,
+        toFirestore: _toFirestoreUserConverter
+    ).get();
+    if ( result.docs.isEmpty ) {
       throw UsersNotFoundFailure();
     }
-    return AuthenticationResponse(
-      token: loginJson["idToken"],
-      refreshToken: loginJson["refreshToken"],
-      email: email,
-    );
+    return result.docs.first.data();
+  }
+
+  @override
+  Future<void> authenticate(String email, String password) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      throw LogInWithEmailAndPasswordFailure.fromCode(e.code);
+    } catch (_) {
+      throw const LogInWithEmailAndPasswordFailure();
+    }
+  }
+
+  @override
+  Future<void> signUp( String email, String password ) async {
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      throw SignUpWithEmailAndPasswordFailure.fromCode(e.code);
+    } catch (_) {
+      throw const SignUpWithEmailAndPasswordFailure();
+    }
   }
 
   @override
   Future<User> updateUser(
-      int id, String name, String email, String imagePath, String about) async {
-    final userRequest = Uri.https(
-      _baseUrl,
-      '/users/$id.json',
-    );
-    final userResponse = await _httpClient.patch(
-      userRequest,
-      body: jsonEncode({
-        "name": name,
-        "email": email,
-        "imagePath": imagePath,
-        "about": about,
-      }),
-    );
-
-    if (userResponse.statusCode != 200) {
-      throw UsersRequestFailure();
-    }
+      String id, String name, String email, String imagePath, String about,
+      ) async {
+    await _firestore.collection("/users").doc(id)
+        .withConverter<User>(
+        fromFirestore:  _fromFirestoreUserConverter,
+        toFirestore: _toFirestoreUserConverter
+    ).update({
+      "name": name,
+      "email": email,
+      "imagePath": imagePath,
+      "about": about,
+    });
     return await getUserByEmail(email);
+  }
+
+  @override
+  Future<void> logOut() async {
+    try {
+      await Future.wait([
+        _firebaseAuth.signOut(),
+      ]);
+    } catch (_) {
+      throw LogOutFailure();
+    }
   }
 }

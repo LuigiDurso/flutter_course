@@ -1,8 +1,5 @@
-import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:http/http.dart' as http;
-
-import '../../../../app/domain/data/constants/firebase_constants.dart';
 import '../../models/branch.dart';
 import 'branches_data_provider.dart';
 
@@ -10,56 +7,44 @@ class BranchNotFoundFailure implements Exception {}
 class BranchRequestFailure implements Exception {}
 
 class FirebaseBranchesClient implements BranchesDataProvider {
-  final _baseUrl = FirebaseConstants.baseUrl;
+  final FirebaseFirestore _firestore;
 
-  final http.Client _httpClient;
+  FirebaseBranchesClient({
+    FirebaseFirestore? firestore
+  })  : _firestore = firestore ?? FirebaseFirestore.instance;
 
-  FirebaseBranchesClient({http.Client? httpClient})
-      : _httpClient = httpClient ?? http.Client();
+  Branch _fromFirestoreBranchConverter(DocumentSnapshot<Map<String, dynamic>> branchMap, SnapshotOptions? options) {
+    return branchMap.data() != null ?
+    Branch.fromMap(branchMap.data()!).copyWith(uid: branchMap.id) : const Branch.empty();
+  }
 
-  @override
-  Future<List<Branch>> getBranches() async {
-    final branchesRequest = Uri.https(
-      _baseUrl,
-      '/branches.json',
-    );
-    final branchesResponse = await _httpClient.get(branchesRequest);
-
-    if (branchesResponse.statusCode != 200) {
-      throw BranchRequestFailure();
-    }
-
-    final branchesJson = (jsonDecode(
-      branchesResponse.body,
-    )) as List;
-
-    if (branchesJson.isEmpty) {
-      throw BranchNotFoundFailure();
-    }
-
-    return branchesJson.where((element) => element != null).map((e) => Branch.fromMap(e)).toList();
+  Map<String, dynamic> _toFirestoreBranchConverter(Branch branch, SetOptions? options) {
+    return branch.isNotEmpty ? branch.toMap() : {};
   }
 
   @override
-  Future<Branch> findBranchById(int id) async {
-    final branchesRequest = Uri.https(
-      _baseUrl,
-      '/branches/$id.json',
-    );
-    final branchesResponse = await _httpClient.get(branchesRequest);
-
-    if (branchesResponse.statusCode != 200) {
-      throw BranchRequestFailure();
-    }
-
-    final branchJson = (jsonDecode(
-      branchesResponse.body,
-    )) as Map<String, dynamic>;
-
-    if (branchJson.isEmpty) {
+  Future<List<Branch>> getBranches() async {
+    var result = await _firestore.collection("/branches")
+        .withConverter<Branch>(
+        fromFirestore:  _fromFirestoreBranchConverter,
+        toFirestore: _toFirestoreBranchConverter
+    ).get();
+    if ( result.docs.isEmpty ) {
       throw BranchNotFoundFailure();
     }
+    return result.docs.map((e) => e.data()).toList();
+  }
 
-    return Branch.fromMap(branchJson);
+  @override
+  Future<Branch> findBranchById(String id) async {
+    var result = await _firestore.collection("/branches").doc(id)
+        .withConverter<Branch>(
+        fromFirestore:  _fromFirestoreBranchConverter,
+        toFirestore: _toFirestoreBranchConverter
+    ).get();
+    if ( result.data() == null ) {
+      throw BranchNotFoundFailure();
+    }
+    return result.data()!;
   }
 }

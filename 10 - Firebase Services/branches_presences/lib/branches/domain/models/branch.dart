@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class Branch extends Equatable {
-  final int id;
+  final String uid;
   final String name;
   final String address;
   final String imagePath;
   final bool isCoWorking;
 
   const Branch({
-    required this.id,
+    required this.uid,
     required this.name,
     required this.address,
     required this.imagePath,
@@ -16,14 +16,18 @@ class Branch extends Equatable {
   });
 
   const Branch.empty() :
-        id = -1, name = '', address = '', imagePath = '', isCoWorking = false;
+        uid = '', name = '', address = '', imagePath = '', isCoWorking = false;
+
+  get isNotEmpty {
+    return uid.isNotEmpty;
+  }
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Branch &&
           runtimeType == other.runtimeType &&
-          id == other.id &&
+          uid == other.uid &&
           name == other.name &&
           address == other.address &&
           imagePath == other.imagePath &&
@@ -31,21 +35,21 @@ class Branch extends Equatable {
 
   @override
   int get hashCode =>
-      id.hashCode ^
+      uid.hashCode ^
       name.hashCode ^
       address.hashCode ^
       imagePath.hashCode ^
       isCoWorking.hashCode;
 
   Branch copyWith({
-    int? id,
+    String? uid,
     String? name,
     String? address,
     String? imagePath,
     bool? isCoWorking,
   }) {
     return Branch(
-      id: id ?? this.id,
+      uid: uid ?? this.uid,
       name: name ?? this.name,
       address: address ?? this.address,
       imagePath: imagePath ?? this.imagePath,
@@ -55,7 +59,7 @@ class Branch extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'uid': uid,
       'name': name,
       'address': address,
       'imagePath': imagePath,
@@ -65,7 +69,7 @@ class Branch extends Equatable {
 
   factory Branch.fromMap(Map<String, dynamic> map) {
     return Branch(
-      id: (map['id'] ?? -1) as int,
+      uid: (map['uid'] ?? '') as String,
       name: map['name'] as String,
       address: map['address'] as String,
       imagePath: map['imagePath'] as String,
@@ -75,9 +79,9 @@ class Branch extends Equatable {
 
   @override
   String toString() {
-    return 'Branch{ id: $id, name: $name, address: $address, imagePath: $imagePath, isCoWorking: $isCoWorking,}';
+    return 'Branch{ uid: $uid, name: $name, address: $address, imagePath: $imagePath, isCoWorking: $isCoWorking,}';
   }
 
   @override
-  List<Object> get props => [id, name, address, imagePath, isCoWorking];
+  List<Object> get props => [uid, name, address, imagePath, isCoWorking];
 }
