@@ -13,6 +13,12 @@ class MeetingDataSource extends CalendarDataSource {
   }
 
   @override
+  DateTime getEndTime(int index) {
+    Presence presence = appointments![index];
+    return presence.dateTime;
+  }
+
+  @override
   String getSubject(int index) {
     Presence presence = appointments![index];
     return presence.username;
