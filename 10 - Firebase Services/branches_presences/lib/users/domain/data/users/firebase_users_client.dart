@@ -85,7 +85,7 @@ class FirebaseUsersClient implements UsersDataProvider {
 
   FirebaseUsersClient({
     firebase_auth.FirebaseAuth? firebaseAuth,
-    FirebaseFirestore? firestore
+    FirebaseFirestore? firestore,
   })  : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance,
         _firestore = firestore ?? FirebaseFirestore.instance;
 

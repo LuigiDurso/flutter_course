@@ -73,7 +73,8 @@ class _EditUserDetailViewState extends State<EditUserDetailView> {
               user: widget.currentUser.copyWith(
                 name: state.name,
                 email: state.email,
-                about: state.about
+                about: state.about,
+                imagePath: state.imagePath,
               ),
             ),
           );

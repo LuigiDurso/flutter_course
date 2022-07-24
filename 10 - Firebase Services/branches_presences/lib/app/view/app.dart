@@ -1,11 +1,13 @@
 import 'package:branches_presences/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences/app/bloc/navigation/navigation_cubit.dart';
+import 'package:branches_presences/app/domain/data/firebase_storage_client.dart';
 import 'package:branches_presences/branches/bloc/branches/branches_cubit.dart';
 import 'package:branches_presences/branches/branches.dart';
 import 'package:branches_presences/branches/domain/data/branches/firebase_branches_client.dart';
 import 'package:branches_presences/presences/bloc/presences/presences_cubit.dart';
 import 'package:branches_presences/presences/domain/repository/presences/presences_repository.dart';
 import 'package:branches_presences/users/domain/data/users/firebase_users_client.dart';
+import 'package:branches_presences/users/domain/repository/file/file_storage_repository.dart';
 import 'package:branches_presences/users/domain/repository/users/users_repository.dart';
 import 'package:branches_presences/users/view/login/login_page.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +41,11 @@ class App extends StatelessWidget {
         RepositoryProvider(
           create: (_) => UsersRepository(
               usersDataProvider: FirebaseUsersClient(),
+          ),
+        ),
+        RepositoryProvider(
+          create: (_) => FileStorageRepository(
+              fileStorageDataProvider: FirebaseStorageClient(),
           ),
         ),
       ],

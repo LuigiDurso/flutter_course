@@ -1,5 +1,6 @@
 import 'package:branches_presences/app/bloc/app/app_bloc.dart';
 import 'package:branches_presences/users/bloc/edit_user_detail_form/edit_user_detail_form_bloc.dart';
+import 'package:branches_presences/users/domain/repository/file/file_storage_repository.dart';
 import 'package:branches_presences/users/domain/repository/users/users_repository.dart';
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class EditUserDetailPage extends StatelessWidget {
         body: BlocProvider(
           create: (BuildContext context) => EditUserDetailFormBloc(
             usersRepository: context.read<UsersRepository>(),
+            fileStorageRepository: context.read<FileStorageRepository>(),
             user: context.read<AppBloc>().state.user,
           ),
           child: EditUserDetailView(
