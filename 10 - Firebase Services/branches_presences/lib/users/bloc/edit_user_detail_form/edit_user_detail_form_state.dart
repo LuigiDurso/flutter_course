@@ -9,41 +9,31 @@ enum EditUserDetailFormStatus {
 
 class EditUserDetailFormState extends Equatable {
   final String name;
+  final String lastname;
   final String email;
   final String about;
   final String imagePath;
   final XFile? imageFile;
 
-  final FocusNode nameFocusNode;
-  final FocusNode emailFocusNode;
-  final FocusNode aboutFocusNode;
-  final FocusNode imagePathFocusNode;
-
   final EditUserDetailFormStatus status;
 
   const EditUserDetailFormState({
     required this.name,
+    required this.lastname,
     required this.email,
     required this.about,
     required this.imagePath,
     this.imageFile,
-    required this.nameFocusNode,
-    required this.emailFocusNode,
-    required this.aboutFocusNode,
-    required this.imagePathFocusNode,
     required this.status,
   });
 
   factory EditUserDetailFormState.initial() {
-    return EditUserDetailFormState(
+    return const EditUserDetailFormState(
       name: '',
+      lastname: '',
       email: '',
       about: '',
       imagePath: '',
-      nameFocusNode: FocusNode(),
-      emailFocusNode: FocusNode(),
-      aboutFocusNode: FocusNode(),
-      imagePathFocusNode: FocusNode(),
       status: EditUserDetailFormStatus.initial,
     );
   }
@@ -51,13 +41,10 @@ class EditUserDetailFormState extends Equatable {
   factory EditUserDetailFormState.fromUser(User user) {
     return EditUserDetailFormState(
       name: user.name,
+      lastname: user.lastname,
       email: user.email,
       about: user.about,
       imagePath: user.imagePath,
-      nameFocusNode: FocusNode(),
-      emailFocusNode: FocusNode(),
-      aboutFocusNode: FocusNode(),
-      imagePathFocusNode: FocusNode(),
       status: EditUserDetailFormStatus.initial,
     );
   }
@@ -68,64 +55,49 @@ class EditUserDetailFormState extends Equatable {
       (other is EditUserDetailFormState &&
           runtimeType == other.runtimeType &&
           name == other.name &&
+          lastname == other.lastname &&
           email == other.email &&
           about == other.about &&
           imagePath == other.imagePath &&
-          nameFocusNode == other.nameFocusNode &&
-          emailFocusNode == other.emailFocusNode &&
-          aboutFocusNode == other.aboutFocusNode &&
-          imagePathFocusNode == other.imagePathFocusNode &&
           status == other.status);
 
   @override
   int get hashCode =>
       name.hashCode ^
+      lastname.hashCode ^
       email.hashCode ^
       about.hashCode ^
       imagePath.hashCode ^
-      nameFocusNode.hashCode ^
-      emailFocusNode.hashCode ^
-      aboutFocusNode.hashCode ^
-      imagePathFocusNode.hashCode ^
       status.hashCode;
 
   @override
   String toString() {
     return 'EditUserDetailFormState{'
         ' name: $name,'
+        ' lastname: $lastname,'
         ' email: $email,'
         ' about: $about,'
         ' imagePath: $imagePath,'
-        ' nameFocusNode: $nameFocusNode,'
-        ' emailFocusNode: $emailFocusNode,'
-        ' aboutFocusNode: $aboutFocusNode,'
-        ' imagePathFocusNode: $imagePathFocusNode,'
         ' status: $status,'
         '}';
   }
 
   EditUserDetailFormState copyWith({
     String? name,
+    String? lastname,
     String? email,
     String? about,
     String? imagePath,
     XFile? imageFile,
-    FocusNode? nameFocusNode,
-    FocusNode? emailFocusNode,
-    FocusNode? aboutFocusNode,
-    FocusNode? imagePathFocusNode,
     EditUserDetailFormStatus? status,
   }) {
     return EditUserDetailFormState(
       name: name ?? this.name,
+      lastname: lastname ?? this.lastname,
       email: email ?? this.email,
       about: about ?? this.about,
       imagePath: imagePath ?? this.imagePath,
       imageFile: imageFile ?? this.imageFile,
-      nameFocusNode: nameFocusNode ?? this.nameFocusNode,
-      emailFocusNode: emailFocusNode ?? this.emailFocusNode,
-      aboutFocusNode: aboutFocusNode ?? this.aboutFocusNode,
-      imagePathFocusNode: imagePathFocusNode ?? this.imagePathFocusNode,
       status: status ?? this.status,
     );
   }
@@ -133,13 +105,10 @@ class EditUserDetailFormState extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       'name': name,
+      'lastname': lastname,
       'email': email,
       'about': about,
       'imagePath': imagePath,
-      'nameFocusNode': nameFocusNode,
-      'emailFocusNode': emailFocusNode,
-      'aboutFocusNode': aboutFocusNode,
-      'imagePathFocusNode': imagePathFocusNode,
       'status': status,
     };
   }
@@ -147,13 +116,10 @@ class EditUserDetailFormState extends Equatable {
   factory EditUserDetailFormState.fromMap(Map<String, dynamic> map) {
     return EditUserDetailFormState(
       name: map['name'] as String,
+      lastname: map['lastname'] as String,
       email: map['email'] as String,
       about: map['about'] as String,
       imagePath: map['imagePath'] as String,
-      nameFocusNode: map['nameFocusNode'] as FocusNode,
-      emailFocusNode: map['emailFocusNode'] as FocusNode,
-      aboutFocusNode: map['aboutFocusNode'] as FocusNode,
-      imagePathFocusNode: map['imagePathFocusNode'] as FocusNode,
       status: map['status'] as EditUserDetailFormStatus,
     );
   }
@@ -161,13 +127,10 @@ class EditUserDetailFormState extends Equatable {
   @override
   List<Object> get props => [
     name,
+    lastname,
     email,
     about,
     imagePath,
-    nameFocusNode,
-    emailFocusNode,
-    aboutFocusNode,
-    imagePathFocusNode,
     status,
   ];
 }

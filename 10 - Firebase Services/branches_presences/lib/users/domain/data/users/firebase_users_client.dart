@@ -102,7 +102,7 @@ class FirebaseUsersClient implements UsersDataProvider {
   @override
   Future<User> getUserByEmail(String email) async {
     var result = await _firestore.collection("/users")
-        .where("email", isEqualTo: email)
+        .where("email", isEqualTo: email.toLowerCase())
         .withConverter<User>(
         fromFirestore:  _fromFirestoreUserConverter,
         toFirestore: _toFirestoreUserConverter

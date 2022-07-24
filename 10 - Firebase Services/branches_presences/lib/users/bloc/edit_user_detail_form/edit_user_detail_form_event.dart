@@ -13,13 +13,13 @@ class NameChanged extends EditUserDetailFormEvent {
   List<Object> get props => [name];
 }
 
-class EmailChanged extends EditUserDetailFormEvent {
-  final String email;
+class LastnameChanged extends EditUserDetailFormEvent {
+  final String lastname;
 
-  const EmailChanged({required this.email});
+  const LastnameChanged({required this.lastname});
 
   @override
-  List<Object> get props => [email];
+  List<Object> get props => [lastname];
 }
 
 class AboutChanged extends EditUserDetailFormEvent {
@@ -29,15 +29,6 @@ class AboutChanged extends EditUserDetailFormEvent {
 
   @override
   List<Object> get props => [about];
-}
-
-class ImagePathChanged extends EditUserDetailFormEvent {
-  final String imagePath;
-
-  const ImagePathChanged({required this.imagePath});
-
-  @override
-  List<Object> get props => [imagePath];
 }
 
 class ImageFileChanged extends EditUserDetailFormEvent {

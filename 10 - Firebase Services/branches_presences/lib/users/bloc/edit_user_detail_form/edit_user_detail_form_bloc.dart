@@ -29,9 +29,8 @@ class EditUserDetailFormBloc extends Bloc<EditUserDetailFormEvent, EditUserDetai
       EditUserDetailFormState.initial()
   ) {
     on<NameChanged>(_onNamedChanged);
-    on<EmailChanged>(_onEmailChanged);
+    on<LastnameChanged>(_onLastnameChanged);
     on<AboutChanged>(_onAboutChanged);
-    on<ImagePathChanged>(_onImagePathChanged);
     on<ImageFileChanged>(_onUserImageChange);
     on<FormSubmitted>(_onFormSubmitted);
   }
@@ -40,16 +39,12 @@ class EditUserDetailFormBloc extends Bloc<EditUserDetailFormEvent, EditUserDetai
     emit(state.copyWith(name: event.name));
   }
 
-  void _onEmailChanged(EmailChanged event, Emitter<EditUserDetailFormState> emit) {
-    emit(state.copyWith(email: event.email));
+  void _onLastnameChanged(LastnameChanged event, Emitter<EditUserDetailFormState> emit) {
+    emit(state.copyWith(lastname: event.lastname));
   }
 
   void _onAboutChanged(AboutChanged event, Emitter<EditUserDetailFormState> emit) {
     emit(state.copyWith(about: event.about));
-  }
-
-  void _onImagePathChanged(ImagePathChanged event, Emitter<EditUserDetailFormState> emit) {
-    emit(state.copyWith(imagePath: event.imagePath));
   }
 
   void _onUserImageChange(ImageFileChanged event, Emitter<EditUserDetailFormState> emit) {
@@ -85,10 +80,6 @@ class EditUserDetailFormBloc extends Bloc<EditUserDetailFormEvent, EditUserDetai
 
   @override
   Future<void> close() {
-    state.nameFocusNode.dispose();
-    state.emailFocusNode.dispose();
-    state.aboutFocusNode.dispose();
-    state.imagePathFocusNode.dispose();
     return super.close();
   }
 }

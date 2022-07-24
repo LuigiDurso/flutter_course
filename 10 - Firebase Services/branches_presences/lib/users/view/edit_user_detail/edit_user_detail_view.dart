@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:branches_presences/app/bloc/app/app_bloc.dart';
-import 'package:branches_presences/app/utils/email_validation.dart';
 import 'package:branches_presences/app/widget/confirm_message_dialog.dart';
 import 'package:branches_presences/users/bloc/edit_user_detail_form/edit_user_detail_form_bloc.dart';
 import 'package:branches_presences/users/domain/models/user.dart';
@@ -25,6 +22,9 @@ class EditUserDetailView extends StatefulWidget {
 
 class _EditUserDetailViewState extends State<EditUserDetailView> {
   final _form = GlobalKey<FormState>();
+  final FocusNode _nameFocusNode = FocusNode();
+  final FocusNode _lastnameFocusNode = FocusNode();
+  final FocusNode _aboutFocusNode = FocusNode();
 
   Future<XFile?> _pickImage() async {
     try {
@@ -72,7 +72,7 @@ class _EditUserDetailViewState extends State<EditUserDetailView> {
             AppUserChanged(
               user: widget.currentUser.copyWith(
                 name: state.name,
-                email: state.email,
+                lastname: state.lastname,
                 about: state.about,
                 imagePath: state.imagePath,
               ),
@@ -107,9 +107,9 @@ class _EditUserDetailViewState extends State<EditUserDetailView> {
                 TextFieldWidget(
                   label: 'Nome',
                   text: widget.currentUser.name,
-                  focusNode: state.nameFocusNode,
+                  focusNode: _nameFocusNode,
                   onFieldSubmitted: (_) {
-                    FocusScope.of(ctx).requestFocus(state.emailFocusNode);
+                    FocusScope.of(ctx).requestFocus(_lastnameFocusNode);
                   },
                   validator: (name) {
                     if (name == null || name.isEmpty) {
@@ -125,22 +125,22 @@ class _EditUserDetailViewState extends State<EditUserDetailView> {
                 ),
                 const SizedBox(height: 24),
                 TextFieldWidget(
-                  label: 'Email',
-                  text: widget.currentUser.email,
-                  focusNode: state.emailFocusNode,
-                  textInputType: TextInputType.emailAddress,
+                  label: 'Cognome',
+                  text: widget.currentUser.lastname,
+                  focusNode: _lastnameFocusNode,
                   onFieldSubmitted: (_) {
-                    FocusScope.of(ctx).requestFocus(state.aboutFocusNode);
+                    FocusScope.of(ctx).requestFocus(_aboutFocusNode);
                   },
-                  validator: (email) {
-                    return EmailValidation.emailRegex.hasMatch(email ?? '')
-                        ? null
-                        : 'Inserisci una email valida!';
+                  validator: (lastname) {
+                    if (lastname == null || lastname.isEmpty) {
+                      return 'Inserisci un cognome';
+                    }
+                    return null;
                   },
-                  onChanged: (email) {
-                    ctx.read<EditUserDetailFormBloc>().add(
-                          EmailChanged(email: email),
-                        );
+                  onChanged: (lastname) {
+                    ctx
+                        .read<EditUserDetailFormBloc>()
+                        .add(LastnameChanged(lastname: lastname));
                   },
                 ),
                 const SizedBox(height: 24),
@@ -148,7 +148,7 @@ class _EditUserDetailViewState extends State<EditUserDetailView> {
                   label: 'About',
                   text: widget.currentUser.about,
                   maxLines: 5,
-                  focusNode: state.aboutFocusNode,
+                  focusNode: _aboutFocusNode,
                   onFieldSubmitted: (_) {
                     ctx.read<EditUserDetailFormBloc>().add(
                       FormSubmitted(form: _form),
@@ -185,5 +185,13 @@ class _EditUserDetailViewState extends State<EditUserDetailView> {
             )),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _nameFocusNode.dispose();
+    _lastnameFocusNode.dispose();
+    _aboutFocusNode.dispose();
+    super.dispose();
   }
 }
