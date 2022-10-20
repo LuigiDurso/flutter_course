@@ -109,7 +109,7 @@
 
 %% ---------------------------------------------------------------------------
 
-\section{BLoC}
+\section{BLoC - Cosa}
 \begin{frame}{BLoC}
 	\begin{figure}[htpb]
 		\centering
@@ -172,6 +172,15 @@
 
 %% ---------------------------------------------------------------------------
 
+\begin{frame}{Event transformation}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=5cm]{../libs/event-transformation}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
 \begin{frame}{Struttura di Cubit}
 	\begin{figure}[htpb]
 		\centering
@@ -185,6 +194,15 @@
 	\begin{figure}[htpb]
 		\centering
 		\includegraphics[width=9cm]{../libs/cubit-flow}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Cosa possiamo osservare - Confronto}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/bloc-events}
 	\end{figure}
 \end{frame}
 
@@ -208,6 +226,73 @@
 			\end{column}
 		\end{columns}
 	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\section{BLoC - Come}
+\begin{frame}{Rendere disponibile BLoC}
+	\begin{minipage}[0.2\textheight]{\textwidth}
+		\begin{columns}[T]
+			\begin{column}{0.4\textwidth}
+				\begin{figure}[htpb]
+					\centering
+					\includegraphics[scale=0.15]{../libs/bloc-provider}
+				\end{figure}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\begin{itemize}
+					\item Attraverso il provider rendiamo iniettabile nel sottoalbero il BLoC.
+					\item Dal context recuperiamo il BLoC per l'utilizzo.
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	\end{minipage}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{BlocBuilder}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/bloc-builder}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{BlocListener}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/bloc-listener}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{BlocConsumer}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/bloc-consumer}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Extension Methods}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/extension-methods}
+	\end{figure}
+\end{frame}
+
+%% ---------------------------------------------------------------------------
+
+\begin{frame}{Watch vs BlocBuilder}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=9cm]{../libs/watch-vs-builder}
+	\end{figure}
 \end{frame}
 
 %% ---------------------------------------------------------------------------

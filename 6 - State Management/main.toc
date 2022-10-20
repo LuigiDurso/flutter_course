@@ -6,8 +6,10 @@
 \defcounter {refsection}{0}\relax 
 \beamer@sectionintoc {2}{Problema}{4}{0}{2}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {3}{BLoC}{7}{0}{3}
+\beamer@sectionintoc {3}{BLoC - Cosa}{7}{0}{3}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {4}{Esercitazione}{16}{0}{4}
+\beamer@sectionintoc {4}{BLoC - Come}{17}{0}{4}
 \defcounter {refsection}{0}\relax 
-\beamer@sectionintoc {5}{Fine}{17}{0}{5}
+\beamer@sectionintoc {5}{Esercitazione}{24}{0}{5}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {6}{Fine}{25}{0}{6}

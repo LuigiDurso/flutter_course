@@ -63,21 +63,17 @@
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {10}{10}}
 \defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {4}{0}{2}{11/11}{}{0}}
+\headcommand {\beamer@sectionpages {10}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\beamer@subsectionpages {10}{10}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\sectionentry {5}{Fine}{11}{Fine}{0}}
+\defcounter {refsection}{0}\relax 
+\headcommand {\slideentry {5}{0}{1}{11/11}{}{0}}
 \defcounter {refsection}{0}\relax 
 \headcommand {\beamer@framepages {11}{11}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\beamer@sectionpages {10}{11}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\beamer@subsectionpages {10}{11}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\sectionentry {5}{Fine}{12}{Fine}{0}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\slideentry {5}{0}{1}{12/12}{}{0}}
-\defcounter {refsection}{0}\relax 
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\beamer@partpages {1}{12}}
-\headcommand {\beamer@subsectionpages {12}{12}}
-\headcommand {\beamer@sectionpages {12}{12}}
-\headcommand {\beamer@documentpages {12}}
-\headcommand {\gdef \inserttotalframenumber {12}}
+\headcommand {\beamer@partpages {1}{11}}
+\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\beamer@sectionpages {11}{11}}
+\headcommand {\beamer@documentpages {11}}
+\headcommand {\gdef \inserttotalframenumber {11}}
