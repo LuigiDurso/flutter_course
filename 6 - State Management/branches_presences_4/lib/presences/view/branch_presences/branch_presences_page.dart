@@ -1,3 +1,4 @@
+import 'package:branches_presences_4/branches/bloc/branches_cubit.dart';
 import 'package:branches_presences_4/branches/branches.dart';
 import 'package:branches_presences_4/presences/bloc/presences_cubit.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,9 @@ class BranchPresencesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var navigator = Navigator.of(context);
-    Branch selectedBranchObj = context.read<AppBloc>().state.userBranch;
+    Branch selectedBranchObj = context.read<BranchesCubit>().state.branches
+        .where((element) => element.id == selectedBranch)
+        .first;
     context.read<PresencesCubit>().fetchPresencesByBranchId(selectedBranch);
     return SafeArea(
       child: Scaffold(
